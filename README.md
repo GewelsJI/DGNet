@@ -70,15 +70,15 @@ a single GeForce RTX TITAN GPU of 24 GB Memory.
 1. Prepare the data:
 
     + downloading testing dataset and move it into `./dataset/TestDataset/`, 
-    which can be found in [Baidu Driver](https://pan.baidu.com/s/16QnoxIK3UB_QwnGZMCZ3uQ) (Password: hvov).
-
-    + downloading training/validation dataset and move it into `./dataset/TrainDataset/`, 
-    which can be found in [Baidu Driver](https://pan.baidu.com/s/1yKaGYr4oztR0lGan1nJ4kQ) (Password: hdj7).
-    
+    which can be found in [Baidu Drive](https://pan.baidu.com/s/1Gg9zco1rt8314cuemqMFBg) (Password: 3wih), [Google Drive](https://drive.google.com/file/d/1LraHmnmgqibzqpqTi4E4l1O2MTusJjrZ/view?usp=sharing).
+    + downloading training dataset and move it into `./dataset/TrainDataset/`, 
+    which can be found in [Baidu Drive](https://pan.baidu.com/s/175Xx6SQbN2YE9A_ImtTM5A) (Password: dllm), [Google Drive](https://drive.google.com/file/d/1VLKI5pJdM6p4fW2cBZ_2EnoykbQeAHOe/view?usp=sharing).
     + downloading pretrained weights and move it into `./snapshot/DGNet/Net_epoch_best.pth`, 
-    which can be found in this [download link (Google Drive)](https://drive.google.com/file/d/1XrUOmgB86L84JefoNq0gq2scBZjGaTkm/view?usp=sharing).
-    
-    + downloading Res2Net weights on ImageNet dataset [download link (Google Drive)](https://drive.google.com/file/d/1_1N-cx1UpRQo7Ybsjno1PAg4KE1T9e5J/view?usp=sharing).
+    which can be found in this [Baidu Drive]() (Password: ), [Google Drive]().
+    + downloading pretrained weights and move it into `./snapshot/DGNet-S/Net_epoch_best.pth`, 
+    which can be found in this [Baidu Drive]() (Password: ), [Google Drive]()
+    + downloading EfficientNet-B4 weights on ImageNet dataset [Baidu Drive](https://pan.baidu.com/s/1xBC6qiXjC4oSztQNy_1Cmg) (Password: 66so), [Google Drive](https://drive.google.com/file/d/1XrUOmgB86L84JefoNq0gq2scBZjGaTkm/view?usp=sharing).
+    + downloading EfficientNet-B1 weights on ImageNet dataset [Baidu Drive](https://pan.baidu.com/s/1ORAVErkwvgqG0J3qX79pLw) (Password: 0wa9), [Google Drive](https://drive.google.com/file/d/1niq1xi5IMdBToyS8kUzoppFIqTYM9kRr/view?usp=sharing)
    
 1. Training Configuration:
 
