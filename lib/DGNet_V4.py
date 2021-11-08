@@ -243,13 +243,13 @@ class DGNet(nn.Module):
     def forward(self, x):
         # context path (encoder)
         endpoints = self.cp.extract_endpoints(x)
-        x3 = endpoints['reduction_3']   # torch.Size([1, 40, 44, 44])
-        x4 = endpoints['reduction_4']   # torch.Size([1, 112, 22, 22])
-        x5 = endpoints['reduction_5']   # torch.Size([1, 320, 11, 11])
+        x3 = endpoints['reduction_3']
+        x4 = endpoints['reduction_4']
+        x5 = endpoints['reduction_5']
 
-        x3_rfb = self.red3(x3)  # torch.Size([1, 32, 44, 44])
-        x4_rfb = self.red4(x4)  # torch.Size([1, 32, 22, 22])
-        x5_rfb = self.red5(x5)  # torch.Size([1, 32, 11, 11])
+        x3_rfb = self.red3(x3)
+        x4_rfb = self.red4(x4)
+        x5_rfb = self.red5(x5)
 
         # spatial path (encoder)
         feat_grad, pseudo_grad = self.sp(x)    # torch.Size([1, 1, 44, 44])
