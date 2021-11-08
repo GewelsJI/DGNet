@@ -1,7 +1,8 @@
+# common libraries
 import os
 import numpy as np
 from PIL import Image
-
+# torch libraries
 import torchvision.transforms as transforms
 
 
@@ -17,7 +18,6 @@ class test_dataset:
             transforms.Resize((self.testsize, self.testsize)),
             transforms.ToTensor(),
             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])])
-        self.gt_transform = transforms.ToTensor()
         self.size = len(self.images)
         self.index = 0
 
@@ -27,11 +27,10 @@ class test_dataset:
 
         gt = self.binary_loader(self.gts[self.index])
 
-        name = self.images[self.index].split('/')[-1]
-
         image_for_post = self.rgb_loader(self.images[self.index])
         image_for_post = image_for_post.resize(gt.size)
 
+        name = self.images[self.index].split('/')[-1]
         name = name.replace('.jpg', '.png') if name.endswith('.jpg') else name
 
         self.index += 1

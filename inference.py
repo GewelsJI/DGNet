@@ -1,34 +1,31 @@
+# common libraries
 import os
 import torch
 import argparse
 import numpy as np
-from scipy import misc  # NOTES: pip install scipy == 1.2.2 (prerequisite!)
-
+from scipy import misc
+# torch libraries
 import torch.nn.functional as F
 import torch.backends.cudnn as cudnn
-
-from utils.data_val import test_dataset as EvalDataset
-from lib.DGNet_V4 import DGNet as Network
+# customized libraries
+from utils.dataset import test_dataset as EvalDataset
+from lib.DGNet import DGNet as Network
 
 
 def evaluator(val_root, trainsize=352):
 
-    # set the device for training
-    if opt.gpu_id == '0':
-        os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-        print('USE GPU 0')
-    elif opt.gpu_id == '1':
-        os.environ["CUDA_VISIBLE_DEVICES"] = "1"
-        print('USE GPU 1')
-    elif opt.gpu_id == '2':
-        os.environ["CUDA_VISIBLE_DEVICES"] = "2"
-        print('USE GPU 2')
-    elif opt.gpu_id == '3':
-        os.environ["CUDA_VISIBLE_DEVICES"] = "3"
-        print('USE GPU 3')
-    cudnn.benchmark = True
+    if opt.gpu:
+        # set the device for training
+        if opt.gpu_id == '0':
+            os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+            print('USE GPU 0')
+        elif opt.gpu_id == '1':
+            os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+            print('USE GPU 1')
+        cudnn.benchmark = True
 
-    model = Network(channel=64, arc='B4', group_list=[8, 8, 8], group_list_N=[4, 8, 16]).cuda()
+    model = Network(channel=64, arc='B4', M=[8, 8, 8], N=[4, 8, 16])
+    model = model.cuda() if opt.gpu else model
 
     val_loader = EvalDataset(image_root=val_root + 'Imgs/',
                              gt_root=val_root + 'GT/',
@@ -39,9 +36,8 @@ def evaluator(val_root, trainsize=352):
         for i in range(val_loader.size):
             image, gt, name, _ = val_loader.load_data()
             gt = np.asarray(gt, np.float32)
-            # gt /= (gt.max() + 1e-8)
 
-            image = image.cuda()
+            image = image.cuda() if opt.gpu else image
 
             output = model(image)
             output = F.upsample(output[0], size=gt.shape, mode='bilinear', align_corners=False)
@@ -54,8 +50,8 @@ def evaluator(val_root, trainsize=352):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--gpu_id', type=str, default='1',
-                        help='train use gpu')
+    parser.add_argument('--gpu', type=bool, default=True)
+    parser.add_argument('--gpu_id', type=str, default='0')
     opt = parser.parse_args()
 
     txt_save_path = './result/{}/'.format(opt.snap_path.split('/')[-2])
