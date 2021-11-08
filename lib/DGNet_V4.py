@@ -2,8 +2,8 @@ import random
 import numpy as np
 import torch
 import torch.nn as nn
+
 from lib.EfficientNet import EfficientNet
-# from EfficientNet import EfficientNet
 
 
 class ConvBNReLU(nn.Module):

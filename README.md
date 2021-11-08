@@ -1,12 +1,10 @@
+***************************************
+ Under Review Please Do Not Transfer
+***************************************
 # Deep Gradient Learning for Efficient Camouflaged Object Detection
 
 PyTorch implementation of our Deep Gradient Network (DGNet).
 
-> **Authors:** 
-> [Ge-Peng Ji](https://scholar.google.com/citations?user=oaxKYKUAAAAJ&hl=en),
-> [Yu-Cheng Chou](https://scholar.google.com/citations?user=YVNRBTcAAAAJ&hl=en),
-> [Deng-Ping Fan](https://dpfan.net/), 
-> []
 
 ## 1. Preface
 
