@@ -1,8 +1,7 @@
-import random
-import numpy as np
+# torch libraries
 import torch
 import torch.nn as nn
-
+# customized libraries
 from lib.EfficientNet import EfficientNet
 
 
@@ -68,10 +67,6 @@ class MultiGroupAttention(nn.Module):
 
         pass
 
-        # self.alpha = nn.Parameter(torch.ones(1, out_channel, 1, 1))
-        # self.beta = nn.Parameter(torch.ones(1, out_channel, 1, 1))
-        # self.gamma = nn.Parameter(torch.ones(1, out_channel, 1, 1))
-
     def forward(self, x):
         return self.group_conv1(x) + self.group_conv2(x) + self.group_conv3(x)
 
@@ -84,7 +79,6 @@ class GradientInducedTransition(nn.Module):
         self.downsample2 = nn.Upsample(scale_factor=1/2, mode='bilinear', align_corners=True)
         self.downsample4 = nn.Upsample(scale_factor=1/4, mode='bilinear', align_corners=True)
 
-        # TODO: some attention modules?
         self.mga3 = MultiGroupAttention(channel+32, channel, group_list_N=group_list_N)
         self.mga4 = MultiGroupAttention(channel+32, channel, group_list_N=group_list_N)
         self.mga5 = MultiGroupAttention(channel+32, channel, group_list_N=group_list_N)
@@ -269,9 +263,7 @@ class DGNet(nn.Module):
 
 
 if __name__ == '__main__':
-    net = DGNet(channel=32, arc='B1', group_list=[8, 8, 8], group_list_N=[4,8,16]).eval()
+    net = DGNet(channel=64, arc='B4', group_list=[8, 8, 8], group_list_N=[4,8,16]).eval()
     inputs = torch.randn(1, 3, 352, 352)
-    # net = CubeAttention(45, 8, 45, 9)
-    # inputs = torch.randn(1, 45, 44, 44)
-    outs = net(inputs)  # torch.Size([1, 45, 44, 44])
+    outs = net(inputs)
     print(outs[0].shape)
