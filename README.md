@@ -5,21 +5,11 @@
 
 PyTorch implementation of our Deep Gradient Network (DGNet).
 
-
 ## 1. Preface
 
-- **Introduction.** This repository contains the source code, prediction results, and evaluation toolbox of our Deep Gradient Network, also called DGNet ([arXiv](), [SuppMaterial]()).
+- **Introduction.** This repository contains the source code our Deep Gradient Network, also called DGNet ([arXiv](), [SuppMaterial]()).
 
-> If you have any questions about our paper, feel free to contact me via e-mail (gepengai.ji@gmail.com). 
-> And if you are using our our and evaluation toolbox for your research, please cite this paper ([BibTeX](#4-citation)).
-
-
-## 2. :fire: NEWS :fire:
-
-- [2021/11/17] Create repository.
-
-
-## 3. Overview
+## 2. Overview
 
 <p align="center">
     <img src="./assest/FeatureVis.pdf"/> <br />
@@ -46,69 +36,18 @@ PyTorch implementation of our Deep Gradient Network (DGNet).
     </em>
 </p>
 
-
-## 4. Proposed Framework
-
-### 4.1. Training/Testing
-
-The training and testing experiments are conducted using [PyTorch](https://github.com/pytorch/pytorch) with 
-a single GeForce RTX TITAN GPU of 24 GB Memory.
-
-> Note that our model also supports low memory GPU, which means you should lower the batch size.
-
-1. Prerequisites:
-  
-    Note that DGNet is only tested on Ubuntu OS with the following environments. 
-    It may work on other operating systems (i.e., Windows) as well but we do not guarantee that it will.
-    
-    + Creating a virtual environment in terminal: `conda create -n DGNet python=3.6`.
-    
-    + Installing necessary packages: [PyTorch > 1.1](https://pytorch.org/), [opencv-python](https://pypi.org/project/opencv-python/)
+## 3. Inference
 
 1. Prepare the data:
 
     + downloading testing dataset and move it into `./dataset/TestDataset/`, 
     which can be found in [Baidu Drive](https://pan.baidu.com/s/1Gg9zco1rt8314cuemqMFBg) (Password: 3wih), [Google Drive](https://drive.google.com/file/d/1LraHmnmgqibzqpqTi4E4l1O2MTusJjrZ/view?usp=sharing).
-    + downloading training dataset and move it into `./dataset/TrainDataset/`, 
-    which can be found in [Baidu Drive](https://pan.baidu.com/s/175Xx6SQbN2YE9A_ImtTM5A) (Password: dllm), [Google Drive](https://drive.google.com/file/d/1VLKI5pJdM6p4fW2cBZ_2EnoykbQeAHOe/view?usp=sharing).
-    + downloading pretrained weights and move it into `./snapshot/DGNet/Net_epoch_best.pth`, 
-    which can be found in this [Baidu Drive]() (Password: ), [Google Drive]().
-    + downloading pretrained weights and move it into `./snapshot/DGNet-S/Net_epoch_best.pth`, 
-    which can be found in this [Baidu Drive]() (Password: ), [Google Drive]()
-    + downloading EfficientNet-B4 weights on ImageNet dataset [Baidu Drive](https://pan.baidu.com/s/1xBC6qiXjC4oSztQNy_1Cmg) (Password: 66so), [Google Drive](https://drive.google.com/file/d/1XrUOmgB86L84JefoNq0gq2scBZjGaTkm/view?usp=sharing).
-    + downloading EfficientNet-B1 weights on ImageNet dataset [Baidu Drive](https://pan.baidu.com/s/1ORAVErkwvgqG0J3qX79pLw) (Password: 0wa9), [Google Drive](https://drive.google.com/file/d/1niq1xi5IMdBToyS8kUzoppFIqTYM9kRr/view?usp=sharing)
-   
-1. Training Configuration:
 
-    + Assigning your costumed path, like `--save_path `, `--train_root` and `--val_root` in `MyTrain.py`.
-    + Just enjoy it via run `python MyTrain.py` in your terminal.
-    
-1. Evaluation Configuration:
+1. Inference Configuration:
 
-    + Assigning your costumed path, like `--gt_root `, `--pred_root`,`--data_lst` and `--model_lst` in `MyEval.py`.
-    + Just enjoy it via run `python MyEval.py` in your terminal.
-
-1. Testing Configuration:
-
-    + After you download all the pre-trained model and testing dataset, just run `MyTesting.py` to generate the final prediction map: 
-    replace your trained model directory (`--snap_path`).
+    + After you download the testing dataset, just run `bash inference.sh` to create a virtual environment and installing necessary packages to generate the final prediction map: 
     
     + Just enjoy it!
-
-### 3.2 Evaluating your trained model:
-
-One-key evaluation is written in MATLAB code `./eval/`, 
-please follow this the instructions in `./eval/main.m` and just run it to generate the evaluation results in `./res/`.
-
-### 3.3 Pre-computed maps: 
-They can be found in [download link]().
-
-
-## 4. Citation
-
-Please cite our paper if you find the work useful: 
-
-​    
 
 ---
 

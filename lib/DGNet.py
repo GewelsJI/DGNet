@@ -43,12 +43,12 @@ class DimensionalReduction(nn.Module):
 class SoftGroupingStrategy(nn.Module):
     def __init__(self, in_channel, out_channel, N):
         super(SoftGroupingStrategy, self).__init__()
-        self.group_conv1 = nn.Conv2d(in_channel, out_channel, kernel_size=1, groups=N[0], bias=False)
-        self.group_conv2 = nn.Conv2d(in_channel, out_channel, kernel_size=1, groups=N[1], bias=False)
-        self.group_conv3 = nn.Conv2d(in_channel, out_channel, kernel_size=1, groups=N[2], bias=False)
+        self.g_conv1 = nn.Conv2d(in_channel, out_channel, kernel_size=1, groups=N[0], bias=False)
+        self.g_conv2 = nn.Conv2d(in_channel, out_channel, kernel_size=1, groups=N[1], bias=False)
+        self.g_conv3 = nn.Conv2d(in_channel, out_channel, kernel_size=1, groups=N[2], bias=False)
 
     def forward(self, q):
-        return self.group_conv1(q) + self.group_conv2(q) + self.group_conv3(q)
+        return self.g_conv1(q) + self.g_conv2(q) + self.g_conv3(q)
 
 
 class GradientInducedTransition(nn.Module):
@@ -176,10 +176,10 @@ class DGNet(nn.Module):
         channel = channel
 
         if arc == 'B1':
-            self.context_encoder = EfficientNet.from_pretrained('efficientnet-b1')
+            self.context_encoder = EfficientNet.from_name('efficientnet-b1')
             in_channel_list = [40, 112, 320]
         elif arc == 'B4':
-            self.context_encoder = EfficientNet.from_pretrained('efficientnet-b4')
+            self.context_encoder = EfficientNet.from_name('efficientnet-b4')
             in_channel_list = [56, 160, 448]
         else:
             raise Exception("Invalid Architecture Symbol: {}".format(arc))
