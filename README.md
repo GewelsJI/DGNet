@@ -1,10 +1,11 @@
 ***************************************
- Under Review Please Do Not Transfer
+ Under Reviewing. Please Do Not Transfer
 ***************************************
-# Deep Gradient Learning for Efficient Camouflaged Object Detection (Supplementary Material)
 
-Anonymous CVPR 2022 submission
-Paper ID-2241
+# [PaperID-2241] Deep Gradient Learning for Efficient Camouflaged Object Detection
+
+Anonymous CVPR 2022 submission (Supplementary Material)
+
 
 PyTorch implementation of our Deep Gradient Network (DGNet).
 
@@ -20,6 +21,5 @@ We will release our training/inference code in the camera-ready phase. Please en
 
 ## 2. Inference
 
-+ Run `bash inference.sh` to create a virtual environment and install necessary packages for inference.  
+Run `bash inference.sh` to create a virtual environment and install necessary packages for inference.  
 
-+ Just enjoy it!
