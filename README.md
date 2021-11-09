@@ -21,7 +21,7 @@ We will release our training/inference code in the camera-ready phase. Please en
 
 1. Inference Configuration:
 
-    + Run `bash inference.sh` to create a virtual environment and installing necessary packages to generate the final prediction map: 
+    + Run `bash inference.sh` to create a virtual environment and install necessary packages for inference.  
     
     + Just enjoy it!
 
