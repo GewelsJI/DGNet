@@ -28,16 +28,17 @@ def evaluator(val_root, trainsize=352):
     val_loader = EvalDataset(image_root=val_root + 'Imgs/',
                              gt_root=val_root + 'GT/',
                              testsize=trainsize)
+
+    # 2. define our proposed FSNet
+    model = Network(channel=64, arc='B4', M=[8, 8, 8], N=[4, 8, 16])
+    model = model.cuda() if opt.gpu else model
+    model.load_state_dict(torch.load(opt.snap_path))
+
     for i in range(val_loader.size):
         image, gt, name, _ = val_loader.load_data()
         gt = np.asarray(gt, np.float32)
 
         image = image.cuda() if opt.gpu else image
-
-        # 2. define our proposed FSNet
-        model = Network(channel=64, arc='B4', M=[8, 8, 8], N=[4, 8, 16])
-        model = model.cuda() if opt.gpu else model
-        model.load_state_dict(torch.load(opt.snap_path))
 
         # 3. forward
         output = model(image)
@@ -63,5 +64,6 @@ if __name__ == '__main__':
           '\n--- Note ---\n'
           'tensor format: (BatchSize, Channel, Weight, Height)')
 
+    os.makedirs(opt.save_path, exist_ok=True)
     evaluator(val_root='./dataset/TestDataset/',
               trainsize=352)
