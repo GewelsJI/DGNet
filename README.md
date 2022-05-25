@@ -4,32 +4,46 @@
 > [Ge-Peng Ji](https://github.com/GewelsJI),
 > [Deng-Ping Fan](https://dengpingfan.github.io/),
 > [Yu-Cheng Chou](https://github.com/johnson111788),
-> [Dengxin Dai](),
-> [Alexander Liniger]() &
-> [Luc Van Gool]().
+> [Dengxin Dai](https://vas.mpi-inf.mpg.de/dengxin/),
+> [Alexander Liniger](https://people.ee.ethz.ch/~aliniger/) &
+> [Luc Van Gool](https://ee.ethz.ch/the-department/faculty/professors/person-detail.OTAyMzM=.TGlzdC80MTEsMTA1ODA0MjU5.html).
+
+This repository contains the source code, prediction results, and evaluation toolbox of our Deep Gradient Network, also called DGNet. Technical report could be found at [arXiv]().
+
+> If you have any questions about our paper, feel free to contact me via e-mail (gepengai.ji@gmail.com & johnson111788@gmail.com &dengpfan@gmail.com). And if you are using our code and evaluation toolbox for your research, please cite this paper ([BibTeX](#4-citation)).
+
 
 ## 1. Features
 
-- **Introduction.** This repository contains the source code, prediction results, and evaluation toolbox of our Deep
-  Gradient Network, also called DGNet ([arXiv]()).
+<p align="center">
+    <img src="assest/BubbleBarFig.png"/> <br />
+    <em> 
+    Figure 1: We present the scatter relationship between the performance weighted F-measure and parameters of all competitors on CAMO-Test. These scatters are in various colors for better visual recognition and are also corresponding to the histogram (Right).
+    The larger size of the coloured scatter point, the heavier the model parameter. (Right) We also report the parallel histogram comparison of model's parameters, MACs, and performance.
+    </em>
+</p>
 
-- **Highlights.** We achieve SOTA in the field of COD via gradient-induced transition (GIT) module and object gradient
-  supervision framework. Please refer to our paper for more details.
+- **Novel supervision.** We propose to excavate the texture information via learning the objectlevel gradient rather than using boundary-aware or uncertainty-aware modelling.
 
-> If you have any questions about our paper, feel free to contact me via e-mail (gepengai.ji@gmail.com).
-> And if you are using our code and evaluation toolbox for your research, please cite this paper ([BibTeX](#4-citation)).
+- **Simple but efficient.** We decouple all the heavy designs as much as we can, yeilding a simple but efficient framework. We hope this framework could be served as a baseline learning paradigm for the COD field.
+
+- **Best trade-off.** We achieve new SOTA with the best performance-efficiency trade-off on existing cutting-edge COD benchmarks.
 
 ## 2. :fire: NEWS :fire:
 
-- [2022/05/25] Creating repository.
+- [2022/05/25] Releasing the project and whole benmarking results.
+- [2022/05/23] Creating repository.
 
-## 3. Overview
+
+## 3. Proposed Framework
+
+### 3.1. Overview
 
 <p align="center">
     <img src="assest/DGNetFramework.png"/> <br />
     <em> 
-    Figure 1: Overall pipeline of the proposed DGNet, It consists of two connected learning branches, i.e., context encoder and texture encoder. 
-    Then, we introduce a gradient-induced transition (GIT) to collaboratively aggregate the feature that is derived from the above two encoders. Finally, a neighbor connected decoder (NCD) [1] is adopted to generate the prediction.
+    Figure 2: Overall pipeline of the proposed DGNet, It consists of two connected learning branches, i.e., context encoder and texture encoder. 
+    Then, we introduce a gradient-induced transition (GIT) to collaboratively aggregate the feature that is derived from the above two encoders. Finally, a neighbor connected decoder (NCD [1]) is adopted to generate the prediction.
     </em>
 </p>
 
@@ -37,42 +51,19 @@
 <p align="center">
     <img src="assest/GIT.png"/> <br />
     <em> 
-    Figure 2: Illustration of the proposed gradient-induced transition (GIT). 
+    Figure 3: Illustration of the proposed gradient-induced transition (GIT). 
     It use a soft grouping strategy to provide parallel nonlinear projections at multiple fine-grained sub-spaces, which enables the network to probe multi-source representations jointly.
     </em>
 </p>
 
-<p align="center">
-    <img src="assest/BubbleBarFig.png"/> <br />
-    <em> 
-    Figure 3: We present the scatter relationship between the performance weighted F-measure and parameters of all competitors on CAMO-Test.
-    These scatters are in various colors for better visual recognition and are also corresponding to the histogram (Right).
-    The larger size of the coloured scatter point, the heavier the model parameter.
-    (Right) We also report the parallel histogram comparison of model's parameters, MACs, and performance.
-    </em>
-</p>
-
-<p align="center">
-    <img src="assest/QualitativeResult_new_elite_v8.png"/> <br />
-    <em> 
-    Figure 3: Visualization of popular COD baselines and the proposed DGNet. 
-    Interestingly, these competitors fail to provide complete segmentation results for the camouflaged objects that touch the image boundary. 
-    By contrast, our approach can precisely locate the target region and provide exact predictions due to the gradient learning strategy.
-    </em>
-
-</p>
 
 > References of neighbor connected decoder (NCD) benchmark works<br>
 > [1] Concealed Object Detection. TPAMI, 2022. ([Code Page](https://github.com/GewelsJI/SINet-V2))<br>
 
-## 4. Proposed Framework
-
-### 4.1. Training/Testing
+### 3.2. Usage
 
 The training and testing experiments are conducted using [PyTorch](https://github.com/pytorch/pytorch) with a single
-GeForce RTX TITAN GPU of 24 GB Memory.
-
-> Note that our model also supports low memory GPU, which means you should lower the batch size.
+GeForce RTX TITAN GPU.
 
 1. Prerequisites:
 
@@ -84,53 +75,49 @@ GeForce RTX TITAN GPU of 24 GB Memory.
     + Installing necessary packages: `pip install -r requirements.txt
       `
 
-1. Prepare the data:
+2. Prepare the data:
 
-    + downloading testing dataset and move it into `./dataset/TestDataset/`, which can be found
-      in [Baidu Drive](https://pan.baidu.com/s/1Gg9zco1rt8314cuemqMFBg) (Password: 3wih)
-      , [Google Drive](https://drive.google.com/file/d/1LraHmnmgqibzqpqTi4E4l1O2MTusJjrZ/view?usp=sharing).
-    + downloading training dataset and move it into `./dataset/TrainDataset/`, which can be found
-      in [Baidu Drive](https://pan.baidu.com/s/175Xx6SQbN2YE9A_ImtTM5A) (Password: dllm)
-      , [Google Drive](https://drive.google.com/file/d/1VLKI5pJdM6p4fW2cBZ_2EnoykbQeAHOe/view?usp=sharing).
-    + downloading pretrained weights and move it into `./snapshot/DGNet/Net_epoch_best.pth`, which can be found in
-      this [Baidu Drive]() (Password: ), [Google Drive]().
-    + downloading pretrained weights and move it into `./snapshot/DGNet-S/Net_epoch_best.pth`, which can be found in
-      this [Baidu Drive]() (Password: ), [Google Drive]()
-    + downloading EfficientNet-B4 weights on ImageNet
-      dataset [Baidu Drive](https://pan.baidu.com/s/1xBC6qiXjC4oSztQNy_1Cmg) (Password: 66so)
-      , [Google Drive](https://drive.google.com/file/d/1XrUOmgB86L84JefoNq0gq2scBZjGaTkm/view?usp=sharing).
-    + downloading EfficientNet-B1 weights on ImageNet
-      dataset [Baidu Drive](https://pan.baidu.com/s/1ORAVErkwvgqG0J3qX79pLw) (Password: 0wa9)
-      , [Google Drive](https://drive.google.com/file/d/1niq1xi5IMdBToyS8kUzoppFIqTYM9kRr/view?usp=sharing)
+    + downloading testing dataset and move it into `./dataset/TestDataset/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EQixoFPEPnBHoH6tnG69Ip4BDu8H0-lZAsRkd_lk0hmvMA?e=rsc2eH).
+    + downloading training dataset and move it into `./dataset/TrainDataset/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/ES4rY6EjIrxEp6wsArncLywBxGOQgIXSTWGe2YPCMzHeqQ?e=Qx2hMV).
+    + downloading pretrained weights of DGNet and DGNet-S and move it into `./snapshot/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EdjQje05VJZPoEFfFRLWT0sBsevoeyFE8O3PyCRCusUK1A?e=P0Fi9M).
+    + preparing the EfficientNet-B1/B4 weights on ImageNet (refer to [here](https://github.com/GewelsJI/DGNet/blob/00e4d2b54667eb71f734f60d46fffe47fbf2725e/lib/utils.py#L556)).
 
-1. Training Configuration:
+3. Training Configuration:
 
     + Assigning your costumed path, like `--save_path `, `--train_root` and `--val_root` in `MyTrain.py`.
-    + Just enjoy it via run `python MyTrain.py` in your terminal.
+    + Just enjoy it via running `python MyTrain.py` in your terminal.
 
-1. Evaluation Configuration:
+4. Testing Configuration:
+
+    + After you download all the pre-trained model and testing dataset, just run `MyTest.py` to generate the final
+      prediction map: replace your trained model directory (`--snap_path`).
+
+    + Just enjoy it!
+
+5. Evaluation Configuration
 
     + Assigning your costumed path, like `--gt_root `, `--pred_root`,`--data_lst` and `--model_lst` in `MyEval.py`.
     + You can choose to evaluate the model by default setting or evaluate only the super-/subclass by configure
       the `--eval_type` in `MyEval.py`.
-    + Just enjoy it via run `python MyEval.py` in your terminal.
+    + Just enjoy it via running `python MyEval.py` in your terminal.
 
-1. Testing Configuration:
-
-    + After you download all the pre-trained model and testing dataset, just run `MyTest.py` to generate the final
-      prediction map:
-      replace your trained model directory (`--snap_path`).
-
-    + Just enjoy it!
-
-### 3.2 Evaluating your trained model:
+### 3.3 Evaluation
 
 One-key evaluation is written in MATLAB code `./eval/`, please follow this the instructions in `./eval/main.m` and just
 run it to generate the evaluation results in `./res/`.
 
-### 3.3 Pre-computed maps:
+### 3.4 COD Benchmark Results:
 
-They can be found in [download link]().
+The prediction of our DGNet and DGNet-S can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EfYhCVo-L4ZAmrQoq0oVD9kBdL7LO1wQEwmeJjS92u9nLA?e=IB3Onb). The whole benchmark results can be found at [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EUU-S6qsNWZJj7FEsvLPuv0Bu3CXAUaZQY7fKbwRdAqRGw?e=OYTyXQ).
+
+
+<p align="center">
+    <img src="assest/QualitativeResult_new_elite_v8.png"/> <br />
+    <em> 
+    Figure 4: Visualization of popular COD baselines and the proposed DGNet. Interestingly, these competitors fail to provide complete segmentation results for the camouflaged objects that touch the image boundary. By contrast, our approach can precisely locate the target region and provide exact predictions due to the gradient learning strategy.
+    </em>
+
+</p>
 
 ## 4. Citation
 
