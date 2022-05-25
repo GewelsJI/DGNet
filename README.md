@@ -104,7 +104,7 @@ GeForce RTX TITAN GPU.
 ### 3.3 Evaluation
 
 One-key evaluation is written in MATLAB code `./eval/`, please follow this the instructions in `./eval/main.m` and just
-run it to generate the evaluation results in `./res/`.
+run it to generate the evaluation results in `./eval-result/`.
 
 ### 3.4 COD Benchmark Results:
 

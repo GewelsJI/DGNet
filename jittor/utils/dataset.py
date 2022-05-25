@@ -1,164 +1,32 @@
+import os
+import numpy as np
+from PIL import Image
+
 from jittor import transform
 from jittor.dataset import Dataset
 
-import os
-import random
-import numpy as np
-from PIL import Image, ImageEnhance
 
-
-def cv_random_flip(img, label, grad):
-    flip_flag = random.randint(0, 1)
-    if (flip_flag == 1):
-        img = img.transpose(Image.FLIP_LEFT_RIGHT)
-        label = label.transpose(Image.FLIP_LEFT_RIGHT)
-        grad = grad.transpose(Image.FLIP_LEFT_RIGHT)
-    return (img, label, grad)
-
-
-def randomCrop(image, label, grad):
-    border = 30
-    image_width = image.size[0]
-    image_height = image.size[1]
-    crop_win_width = np.random.randint((image_width - border), image_width)
-    crop_win_height = np.random.randint((image_height - border), image_height)
-    random_region = (((image_width - crop_win_width) >> 1), ((image_height - crop_win_height) >> 1),
-                     ((image_width + crop_win_width) >> 1), ((image_height + crop_win_height) >> 1))
-    return (image.crop(random_region), label.crop(random_region), grad.crop(random_region))
-
-
-def randomRotation(image, label, grad):
-    mode = Image.BICUBIC
-    if (random.random() > 0.8):
-        random_angle = np.random.randint((- 15), 15)
-        image = image.rotate(random_angle, mode)
-        label = label.rotate(random_angle, mode)
-        grad = grad.rotate(random_angle, mode)
-    return (image, label, grad)
-
-
-def colorEnhance(image):
-    bright_intensity = (random.randint(5, 15) / 10.0)
-    image = ImageEnhance.Brightness(image).enhance(bright_intensity)
-    contrast_intensity = (random.randint(5, 15) / 10.0)
-    image = ImageEnhance.Contrast(image).enhance(contrast_intensity)
-    color_intensity = (random.randint(0, 20) / 10.0)
-    image = ImageEnhance.Color(image).enhance(color_intensity)
-    sharp_intensity = (random.randint(0, 30) / 10.0)
-    image = ImageEnhance.Sharpness(image).enhance(sharp_intensity)
-    return image
-
-
-def randomGaussian(image, mean=0.1, sigma=0.35):
-    def gaussianNoisy(im, mean=mean, sigma=sigma):
-        for _i in range(len(im)):
-            im[_i] += random.gauss(mean, sigma)
-        return im
-
-    img = np.asarray(image)
-    (width, height) = img.shape
-    img = gaussianNoisy(img[:].flatten(), mean, sigma)
-    img = img.reshape([width, height])
-    return Image.fromarray(np.uint8(img))
-
-
-def randomPeper(img):
-    img = np.array(img)
-    noiseNum = int(((0.0015 * img.shape[0]) * img.shape[1]))
-    for i in range(noiseNum):
-        randX = random.randint(0, (img.shape[0] - 1))
-        randY = random.randint(0, (img.shape[1] - 1))
-        if (random.randint(0, 1) == 0):
-            img[(randX, randY)] = 0
-        else:
-            img[(randX, randY)] = 255
-    return Image.fromarray(img)
-
-
-class CamObjDataset(Dataset):
-
-    def __init__(self, image_root, gt_root, grad_root, trainsize):
-        self.trainsize = trainsize
-        self.images = [(image_root + f) for f in os.listdir(image_root) if (f.endswith('.jpg') or f.endswith('.png'))]
-        self.gts = [(gt_root + f) for f in os.listdir(gt_root) if (f.endswith('.jpg') or f.endswith('.png'))]
-        self.grads = [(grad_root + f) for f in os.listdir(grad_root) if (f.endswith('.jpg') or f.endswith('.png'))]
-        self.images = sorted(self.images)
-        self.gts = sorted(self.gts)
-        self.grads = sorted(self.grads)
-        self.filter_files()
-        self.img_transform = transform.Compose(
-            [transform.Resize((self.trainsize, self.trainsize)), transform.ToTensor(),
-             transform.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])])
-        self.gt_transform = transform.Compose(
-            [transform.Resize((self.trainsize, self.trainsize)), transform.ToTensor()])
-        self.size = len(self.images)
-        print('>>> trainig/validing with {} samples'.format(self.size))
-
-    def __getitem__(self, index):
-        image = self.rgb_loader(self.images[index])
-        gt = self.binary_loader(self.gts[index])
-        grad = self.binary_loader(self.grads[index])
-        (image, gt, grad) = cv_random_flip(image, gt, grad)
-        (image, gt, grad) = randomCrop(image, gt, grad)
-        (image, gt, grad) = randomRotation(image, gt, grad)
-        image = colorEnhance(image)
-        gt = randomPeper(gt)
-        image = self.img_transform(image)
-        gt = self.gt_transform(gt)
-        grad = self.gt_transform(grad)
-        return (image, gt, grad)
-
-    def filter_files(self):
-        assert ((len(self.images) == len(self.gts)) and (len(self.gts) == len(self.images)))
-        images = []
-        gts = []
-        for (img_path, gt_path) in zip(self.images, self.gts):
-            img = Image.open(img_path)
-            gt = Image.open(gt_path)
-            if (img.size == gt.size):
-                images.append(img_path)
-                gts.append(gt_path)
-        self.images = images
-        self.gts = gts
-
-    def rgb_loader(self, path):
-        with open(path, 'rb') as f:
-            img = Image.open(f)
-            return img.convert('RGB')
-
-    def binary_loader(self, path):
-        with open(path, 'rb') as f:
-            img = Image.open(f)
-            return img.convert('L')
-
-    def __len__(self):
-        return self.size
-
-
-def get_loader(image_root, gt_root, grad_root, batchsize, trainsize, shuffle=True):
-    data_loader = CamObjDataset(image_root, gt_root, grad_root, trainsize).set_attrs(batch_size=batchsize,
-                                                                                     shuffle=shuffle, drop_last=True)
-
-    return data_loader
-
-
-class test_dataset():
+class test_dataset(Dataset):
 
     def __init__(self, image_root, gt_root, testsize):
+        super().__init__()
+
         self.testsize = testsize
         self.images = [(image_root + f) for f in os.listdir(image_root) if (f.endswith('.jpg') or f.endswith('.png'))]
         self.gts = [(gt_root + f) for f in os.listdir(gt_root) if (f.endswith('.tif') or f.endswith('.png'))]
         self.images = sorted(self.images)
         self.gts = sorted(self.gts)
-        self.transform = transform.Compose([transform.Resize((self.testsize, self.testsize)), transform.ToTensor(),
-                                            transform.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])])
+        self.transform = transform.Compose([
+            transform.Resize((self.testsize, self.testsize)),
+            transform.ToTensor(),
+            transform.ImageNormalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])])
         self.gt_transform = transform.ToTensor()
         self.size = len(self.images)
         self.index = 0
 
-    def load_data(self):
+    def __getitem__(self, index):
         image = self.rgb_loader(self.images[self.index])
-        image = self.transform(image).unsqueeze(0)
+        image = self.transform(image)
         gt = self.binary_loader(self.gts[self.index])
         name = self.images[self.index].split('/')[(- 1)]
         image_for_post = self.rgb_loader(self.images[self.index])

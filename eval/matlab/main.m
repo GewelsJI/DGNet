@@ -22,7 +22,7 @@ modelNum = length(Models);
 DataPath = './dataset/TestDataset/';
 Datasets = {'CAMO', 'NC4K', 'COD10K'};
 % ---- 3. Results Save Path Setting ----
-ResDir = './EvaluationResults/';
+ResDir = './eval-result/';
 ResName='_result.txt';  % You can change the result name.
 
 Thresholds = 1:-1/255:0;

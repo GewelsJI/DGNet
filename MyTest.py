@@ -11,7 +11,7 @@ from jittor.utils.dataset import test_dataset as EvalDataset
 from jittor.lib.DGNet import DGNet as Network
 
 
-def evaluator(model, val_root, trainsize=352):
+def evaluator(model, val_root, map_save_path, trainsize=352):
     val_loader = EvalDataset(image_root=val_root + 'Imgs/',
                              gt_root=val_root + 'GT/',
                              testsize=trainsize)
@@ -67,10 +67,10 @@ if __name__ == '__main__':
     model.eval()
 
     for data_name in ['CAMO', 'COD10K', 'NC4K']:
-        if opt.if_save_map:
-            map_save_path = txt_save_path + "res_map/{}/".format(data_name)
-            os.makedirs(map_save_path, exist_ok=True)
+        map_save_path = txt_save_path + "res_map/{}/".format(data_name)
+        os.makedirs(map_save_path, exist_ok=True)
         evaluator(
             model=model,
             val_root='./dataset/TestDataset/' + data_name + '/',
+            map_save_path=map_save_path,
             trainsize=352)
