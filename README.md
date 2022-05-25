@@ -52,8 +52,8 @@ Please refer to our paper for more details.
 </p>
 
 
-> References of Salient Object Detection (SOD) benchmark works<br>
-> [1] NCD: Concealed Object Detection. TPAMI, 2022. ([Code Page](https://github.com/GewelsJI/SINet-V2))<br>
+> References of neighbor connected decoder (NCD) benchmark works<br>
+> [1] Concealed Object Detection. TPAMI, 2022. ([Code Page](https://github.com/GewelsJI/SINet-V2))<br>
 
 
 ## 4. Proposed Framework
