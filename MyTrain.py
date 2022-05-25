@@ -1,20 +1,22 @@
 # author: Daniel-Ji (e-mail: gepengai.ji@gmail.com)
 # data: 2021-01-16
+# torch libraries
 import os
-import torch
-import torch.nn.functional as F
-from torch import nn, optim
+import logging
 import numpy as np
 from datetime import datetime
-from torchvision.utils import make_grid
-from lib.DGNet import DGNet as Network
-from utils.dataset import get_loader, test_dataset
-from utils.utils import clip_gradient, adjust_lr
 from tensorboardX import SummaryWriter
-import logging
+
+import torch
+import torch.nn.functional as F
 import torch.backends.cudnn as cudnn
-# from eval.builder import Metrics
+from torch import optim
+from torchvision.utils import make_grid
+# customized libraries
 import eval.metrics as Measure
+from lib.DGNet import DGNet as Network
+from utils.utils import clip_gradient
+from utils.dataset import get_loader, test_dataset
 
 
 def structure_loss(pred, mask):
@@ -110,21 +112,15 @@ def val(test_loader, model, epoch, save_path, writer):
     """
     global best_metric_dict, best_score, best_epoch
     FM = Measure.Fmeasure()
-    # mxFm = Measure.WeightedFmeasure()
     SM = Measure.Smeasure()
     EM = Measure.Emeasure()
-    # MAE = Measure.MAE()
     metrics_dict = dict()
-
-    # metric_fn = Metrics(metrics, w_metrics)
 
     model.eval()
     with torch.no_grad():
-        # mae_sum = 0
         for i in range(test_loader.size):
             image, gt, _, _ = test_loader.load_data()
             gt = np.asarray(gt, np.float32)
-            # gt /= (gt.max() + 1e-8)
             image = image.cuda()
 
             res = model(image)

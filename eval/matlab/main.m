@@ -15,18 +15,12 @@ clc;
 
 % ---- 1. Camouflage Map Path Setting ----
 CamMapPath = './results';   % Put model results in this folder.
-Models = {'2019-CVPR-CPD', '2019-CVPR-PoolNet', '2019-ICCV-EGNet', '2019-ICCV-SCRN', ...
-    '2020-ECCV-CSNet', '2020-AAAI-F3Net', '2020-CVPR-UCNet', '2020-CVPR-ITSD', ...
-    '2020-CVPR-MINet', '2020-CVPR-SINet', '2020-MICCAI-PraNet', '2021-arXiv-BAS', ...
-    '2021-IJCAI-C2FNet', '2021-AAAI-TINet', '2021-ICCV-UGTR', '2021-CVPR-PFNet', ...
-    '2021-CVPR-SMGL', '2021-CVPR-RMGL', '2021-CVPR-LSR', '2021-CVPR-JCSOD', ...
-    '2021-TPAMI-SINetV2', '2022-Ours-DGNetS', '2022-Ours-DGNet'};
+Models = {'DGNet'};
 modelNum = length(Models);
 
 % ---- 2. Ground-truth Datasets Setting ----
 DataPath = './dataset/TestDataset/';
 Datasets = {'CAMO', 'NC4K', 'COD10K'};
-% Datasets = {'COD10K-Amphibian', 'COD10K-Aquatic', 'COD10K-Flying', 'COD10K-Terrestrial'};
 % ---- 3. Results Save Path Setting ----
 ResDir = './EvaluationResults/';
 ResName='_result.txt';  % You can change the result name.

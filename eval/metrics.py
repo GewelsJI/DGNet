@@ -5,15 +5,11 @@
 # @FileName : metrics.py
 # @Reference: https://github.com/mczhuge/SOCToolbox
 
-import torch
 import numpy as np
-import torch.nn as nn
-from sklearn import metrics
-from torch.autograd import Function
 from scipy.ndimage import convolve, distance_transform_edt as bwdist
 
 
-_EPS = 1e-16
+_EPS = np.spacing(1)
 _TYPE = np.float64
 
 
@@ -78,13 +74,10 @@ class Fmeasure(object):
         changeable_fms = numerator / denominator
         return precisions, recalls, changeable_fms
 
-    def get_results(self) -> dict:
+    def get_results(self):
         adaptive_fm = np.mean(np.array(self.adaptive_fms, _TYPE))
         changeable_fm = np.mean(np.array(self.changeable_fms, dtype=_TYPE), axis=0)
-        precision = np.mean(np.array(self.precisions, dtype=_TYPE), axis=0)  # N, 256
-        recall = np.mean(np.array(self.recalls, dtype=_TYPE), axis=0)  # N, 256
-        return dict(fm=dict(adp=adaptive_fm, curve=changeable_fm),
-                    pr=dict(p=precision, r=recall))
+        return dict(adpFm=adaptive_fm, meanFm=changeable_fm, maxFm=changeable_fm)
 
 
 class MAE(object):
@@ -101,7 +94,7 @@ class MAE(object):
         mae = np.mean(np.abs(pred - gt))
         return mae
 
-    def get_results(self) -> dict:
+    def get_results(self):
         mae = np.mean(np.array(self.maes, _TYPE))
         return dict(mae=mae)
 
@@ -137,7 +130,7 @@ class Smeasure(object):
 
     def s_object(self, pred: np.ndarray, gt: np.ndarray) -> float:
         x = np.mean(pred[gt == 1])
-        sigma_x = np.std(pred[gt == 1])
+        sigma_x = np.std(pred[gt == 1], ddof=1)
         score = 2 * x / (np.power(x, 2) + 1 + sigma_x + _EPS)
         return score
 
@@ -212,7 +205,7 @@ class Smeasure(object):
             score = 0
         return score
 
-    def get_results(self) -> dict:
+    def get_results(self):
         sm = np.mean(np.array(self.sms, dtype=_TYPE))
         return dict(sm=sm)
 
@@ -324,7 +317,7 @@ class Emeasure(object):
         ]
         return parts_numel, combinations
 
-    def get_results(self) -> dict:
+    def get_results(self):
         adaptive_em = np.mean(np.array(self.adaptive_ems, dtype=_TYPE))
         changeable_em = np.mean(np.array(self.changeable_ems, dtype=_TYPE), axis=0)
         return dict(em=dict(adp=adaptive_em, curve=changeable_em))
@@ -392,105 +385,6 @@ class WeightedFmeasure(object):
             h /= sumh
         return h
 
-    def get_results(self) -> dict:
+    def get_results(self):
         weighted_fm = np.mean(np.array(self.weighted_fms, dtype=_TYPE))
-        return dict(wfm=weighted_fm)
-
-
-class DICE(object):
-    def __init__(self):
-        self.dice = []
-
-    def step(self, pred: np.ndarray, gt: np.ndarray):
-        # pred, gt = _prepare_data(pred=pred, gt=gt)
-        dice = self.cal_dice(pred, gt)
-        self.dice.append(dice)
-        return dice
-
-    def cal_dice(self, pred: np.ndarray, gt: np.ndarray):
-        # N = gt.size(0)
-        smooth = 1
-
-        pred_flat = pred.reshape(-1)
-        gt_flat = gt.reshape(-1)
-
-        intersection = pred_flat * gt_flat
-
-        dice = 2 * (intersection.sum() + smooth) / (pred_flat.sum() + gt_flat.sum() + smooth)
-        dice = 1 - dice.sum()
-
-        return dice
-
-    def get_results(self):
-        dice = np.mean(np.array(self.dice, dtype=_TYPE))
-        return dice
-
-
-class BinarizedF(Function):
-    '''
-    @ Reference: https://blog.csdn.net/weixin_42696356/article/details/100899711
-    '''
-    @staticmethod
-    def forward(ctx, input):
-        ctx.save_for_backward(input)
-        a = torch.ones_like(input)
-        b = torch.zeros_like(input)
-        output = torch.where(input>=0.5,a,b)
-        return output
-
-    @staticmethod
-    def backward(ctx, output_grad):
-        input, = ctx.saved_tensors
-        input_abs = torch.abs(input)
-        ones = torch.ones_like(input)
-        zeros = torch.zeros_like(input)
-        input_grad = torch.where(input_abs<=1,ones, zeros)
-        return input_grad
-
-
-class BinarizedModule(nn.Module):
-    '''
-    @ Reference: https://www.flyai.com/article/art7714fcddbf30a9ff5a35633f?type=e
-    '''
-    def __init__(self):
-        super(BinarizedModule, self).__init__()
-        self.BF = BinarizedF()
-
-    def forward(self, input):
-        output =self.BF.apply(torch.Tensor(input))
-        return output
-
-
-class IoU(object):
-    def __init__(self):
-        self.iou = []
-        self.n_classes = 2
-        self.bin = BinarizedModule()
-
-    def step(self, pred: np.ndarray, gt: np.ndarray):
-        iou = self.cal_iou(pred, gt)
-        self.iou.append(iou)
-        return iou
-
-    def _cal_iou(self, pred: np.ndarray, gt: np.ndarray):
-        def cal_cm(y_true, y_pred):
-            y_true = y_true.reshape(1, -1).squeeze()
-            y_pred = y_pred.reshape(1, -1).squeeze()
-            cm = metrics.confusion_matrix(y_true, y_pred)
-            return cm
-        pred = self.bin(pred)
-        confusion_matrix = cal_cm(pred, gt)
-        intersection = np.diag(confusion_matrix)  # 交集
-        union = np.sum(confusion_matrix, axis=1) + np.sum(confusion_matrix, axis=0) - np.diag(confusion_matrix)  # 并集
-        IoU = intersection / union  # 交并比，即IoU
-        return IoU
-
-    def cal_iou(self, pred: np.ndarray, target: np.ndarray):
-        Iand1 = np.sum(target * pred)
-        Ior1 = np.sum(target) + np.sum(pred) - Iand1
-        IoU1 = Iand1 / Ior1
-        return IoU1
-
-    def get_results(self):
-        iou = np.mean(np.array(self.iou, dtype=_TYPE))
-        return iou
+        return dict(wFmeasure=weighted_fm)

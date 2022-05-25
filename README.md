@@ -96,11 +96,12 @@ a single GeForce RTX TITAN GPU of 24 GB Memory.
 1. Evaluation Configuration:
 
     + Assigning your costumed path, like `--gt_root `, `--pred_root`,`--data_lst` and `--model_lst` in `MyEval.py`.
+    + You can choose to evaluate the model by default setting or evaluate only the super-/subclass by configure the `--eval_type` in `MyEval.py`.    
     + Just enjoy it via run `python MyEval.py` in your terminal.
 
 1. Testing Configuration:
 
-    + After you download all the pre-trained model and testing dataset, just run `MyTesting.py` to generate the final prediction map: 
+    + After you download all the pre-trained model and testing dataset, just run `MyTest.py` to generate the final prediction map: 
     replace your trained model directory (`--snap_path`).
     
     + Just enjoy it!
@@ -118,8 +119,12 @@ They can be found in [download link]().
 
 Please cite our paper if you find the work useful: 
 
-​    
-
+    @article{ji2022gradient,
+          title={Deep Gradient Learning for Efficient Camouflaged Object Detection},
+          author={Ge-Peng Ji and Deng-Ping Fan and Yu-Cheng Chou and Dengxin Dai and Alexander Liniger and Luc Van Gool},
+          journal={arXiv},
+          year={2022}
+    } 
 ---
 
 **[⬆ back to top](#0-preface)**
