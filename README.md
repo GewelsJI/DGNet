@@ -138,7 +138,7 @@ Please cite our paper if you find the work useful:
 
     @article{ji2022gradient,
           title={Deep Gradient Learning for Efficient Camouflaged Object Detection},
-          author={Ge-Peng Ji and Deng-Ping Fan and Yu-Cheng Chou and Dengxin Dai and Alexander Liniger and Luc Van Gool},
+          author={Ji, Ge-Peng and Fan, Deng-Ping and Chou, Yu-Cheng and Dai, Dengxin and Liniger, Alexander and Van Gool, Luc},
           journal={arXiv},
           year={2022}
     } 
