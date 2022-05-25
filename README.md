@@ -10,8 +10,6 @@
 
 This repository contains the source code, prediction results, and evaluation toolbox of our Deep Gradient Network, also called DGNet. The technical report could be found at [arXiv]().
 
-> If you have any questions about our paper, feel free to contact me via e-mail (gepengai.ji@gmail.com & johnson111788@gmail.com &dengpfan@gmail.com). And if you are using our code and evaluation toolbox for your research, please cite this paper ([BibTeX](#4-citation)).
-
 
 ## 1. Features
 
@@ -34,6 +32,7 @@ This repository contains the source code, prediction results, and evaluation too
 - [2022/05/25] Releasing the project and whole benchmarking results.
 - [2022/05/23] Creating repository.
 
+> This project is still work in progress, and we invite all to contribute in making it more acessible and useful. If you have any questions about our paper, feel free to contact me via e-mail (gepengai.ji@gmail.com & johnson111788@gmail.com &dengpfan@gmail.com). And if you are using our code and evaluation toolbox for your research, please cite this paper ([BibTeX](#4-citation)).
 
 ## 3. Proposed Framework
 
