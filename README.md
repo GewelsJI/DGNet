@@ -119,6 +119,32 @@ The prediction of our DGNet and DGNet-S can be found in [OneDrive](https://anu36
 
 </p>
 
+<p align="center">
+    <img src="assest/Benchmark.png"/> <br />
+    <em> 
+    Figure 5: Quantitative results in terms of full metrics for cutting-edge competitors, including 8 SOD-related and 12 COD-related, on three test datasets: NC4K-Test, CAMO-Test, and COD10K-Test. 
+    @R means the ranking of the current metric, and Mean@R indicates the mean ranking of all metrics.
+    Note that $E_\phi^{mx}$/$F_\beta^{mx}$, $E_\phi^{mn}$/$F_\beta^{mn}$, and $E_\phi^{ad}$/$F_\beta^{ad}$ denote the maximum, mean, and adaptive value of E-measure/F-measure, respectively.
+    </em>
+
+</p>
+
+<p align="center">
+    <img src="assest/SuperClass.png"/> <br />
+    <em> 
+    Figure 4: Visualization of popular COD baselines and the proposed DGNet. Interestingly, these competitors fail to provide complete segmentation results for the camouflaged objects that touch the image boundary. By contrast, our approach can precisely locate the target region and provide exact predictions due to the gradient learning strategy.
+    </em>
+
+</p>
+
+<p align="center">
+    <img src="assest/SubClass.png"/> <br />
+    <em> 
+    Figure 4: Visualization of popular COD baselines and the proposed DGNet. Interestingly, these competitors fail to provide complete segmentation results for the camouflaged objects that touch the image boundary. By contrast, our approach can precisely locate the target region and provide exact predictions due to the gradient learning strategy.
+    </em>
+
+</p>
+
 ## 4. Citation
 
 Please cite our paper if you find the work useful:
