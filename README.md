@@ -8,7 +8,7 @@
 > [Alexander Liniger](https://people.ee.ethz.ch/~aliniger/) &
 > [Luc Van Gool](https://ee.ethz.ch/the-department/faculty/professors/person-detail.OTAyMzM=.TGlzdC80MTEsMTA1ODA0MjU5.html).
 
-This repository contains the source code, prediction results, and evaluation toolbox of our Deep Gradient Network, also called DGNet. Technical report could be found at [arXiv]().
+This repository contains the source code, prediction results, and evaluation toolbox of our Deep Gradient Network, also called DGNet. The technical report could be found at [arXiv]().
 
 > If you have any questions about our paper, feel free to contact me via e-mail (gepengai.ji@gmail.com & johnson111788@gmail.com &dengpfan@gmail.com). And if you are using our code and evaluation toolbox for your research, please cite this paper ([BibTeX](#4-citation)).
 
@@ -23,15 +23,15 @@ This repository contains the source code, prediction results, and evaluation too
     </em>
 </p>
 
-- **Novel supervision.** We propose to excavate the texture information via learning the objectlevel gradient rather than using boundary-aware or uncertainty-aware modelling.
+- **Novel supervision.** We propose to excavate the texture information via learning the object level gradient rather than using boundary-supervised or uncertainty-aware modeling.
 
-- **Simple but efficient.** We decouple all the heavy designs as much as we can, yeilding a simple but efficient framework. We hope this framework could be served as a baseline learning paradigm for the COD field.
+- **Simple but efficient.** We decouple all the heavy designs as much as we can, yielding a simple but efficient framework. We hope this framework could be served as a baseline learning paradigm for the COD field.
 
-- **Best trade-off.** We achieve new SOTA with the best performance-efficiency trade-off on existing cutting-edge COD benchmarks.
+- **Best trade-off.** Our vision is to achieve new SOTA with the best performance-efficiency trade-off on existing cutting-edge COD benchmarks.
 
 ## 2. :fire: NEWS :fire:
 
-- [2022/05/25] Releasing the project and whole benmarking results.
+- [2022/05/25] Releasing the project and whole benchmarking results.
 - [2022/05/23] Creating repository.
 
 
@@ -57,8 +57,7 @@ This repository contains the source code, prediction results, and evaluation too
 </p>
 
 
-> References of neighbor connected decoder (NCD) benchmark works<br>
-> [1] Concealed Object Detection. TPAMI, 2022. ([Code Page](https://github.com/GewelsJI/SINet-V2))<br>
+> References of neighbor connected decoder (NCD) benchmark works [1] Concealed Object Detection. TPAMI, 2022. <br>
 
 ### 3.2. Usage
 
@@ -77,8 +76,8 @@ GeForce RTX TITAN GPU.
 
 2. Prepare the data:
 
-    + downloading testing dataset and move it into `./dataset/TestDataset/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EQixoFPEPnBHoH6tnG69Ip4BDu8H0-lZAsRkd_lk0hmvMA?e=rsc2eH).
-    + downloading training dataset and move it into `./dataset/TrainDataset/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/ES4rY6EjIrxEp6wsArncLywBxGOQgIXSTWGe2YPCMzHeqQ?e=Qx2hMV).
+    + downloading testing dataset and move it into `./dataset/TestDataset/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXcBqW3Ses5HlYFeTAPlmiwBtPwXisbr53uIDGoM4h0UOg?e=d5tK9C).
+    + downloading training dataset and move it into `./dataset/TrainDataset/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EUgtKNJSBYpElpgQzrIZLDEBmu9Stp5UL3P5HHkrHGXIyQ?e=5OgCok).
     + downloading pretrained weights of DGNet and DGNet-S and move it into `./snapshot/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EdjQje05VJZPoEFfFRLWT0sBsevoeyFE8O3PyCRCusUK1A?e=P0Fi9M).
     + preparing the EfficientNet-B1/B4 weights on ImageNet (refer to [here](https://github.com/GewelsJI/DGNet/blob/00e4d2b54667eb71f734f60d46fffe47fbf2725e/lib/utils.py#L556)).
 
@@ -89,7 +88,7 @@ GeForce RTX TITAN GPU.
 
 4. Testing Configuration:
 
-    + After you download all the pre-trained model and testing dataset, just run `MyTest.py` to generate the final
+    + After you download all the pre-trained models and testing datasets, just run `MyTest.py` to generate the final
       prediction map: replace your trained model directory (`--snap_path`).
 
     + Just enjoy it!
@@ -97,34 +96,30 @@ GeForce RTX TITAN GPU.
 5. Evaluation Configuration
 
     + Assigning your costumed path, like `--gt_root `, `--pred_root`,`--data_lst` and `--model_lst` in `MyEval.py`.
-    + You can choose to evaluate the model by default setting or evaluate only the super-/subclass by configure
-      the `--eval_type` in `MyEval.py`.
+    + You can choose to evaluate the model by default setting or evaluate only the super-/subclass by configuring the `--eval_type` in `MyEval.py`.
     + Just enjoy it via running `python MyEval.py` in your terminal.
 
 ### 3.3 Evaluation
 
-One-key evaluation is written in MATLAB code `./eval/`, please follow this the instructions in `./eval/main.m` and just
-run it to generate the evaluation results in `./eval-result/`.
+One-key evaluation is written in MATLAB code `./eval/matlab/`, please follow this the instructions in `./eval/matlab/main.m` and just run it to generate the evaluation results in `./eval-result/`.
 
 ### 3.4 COD Benchmark Results:
 
-The prediction of our DGNet and DGNet-S can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EfYhCVo-L4ZAmrQoq0oVD9kBdL7LO1wQEwmeJjS92u9nLA?e=IB3Onb). The whole benchmark results can be found at [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EUU-S6qsNWZJj7FEsvLPuv0Bu3CXAUaZQY7fKbwRdAqRGw?e=OYTyXQ).
+The prediction of our DGNet and DGNet-S can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EcwgyI1KDnBDjoFMZCLNJkAB7GjBYGgvDPlBAruSAVCOxw?e=RrBvHd). The whole benchmark results can be found at [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXLiBgp9nGNApBw9im2xznsBJ_ryGEW7hkJlL92gNaRAAg?e=ktOw0B). Here are quantitative performance comparison from three perspectives.
 
 
-<p align="center">
+<!-- <p align="center">
     <img src="assest/QualitativeResult_new_elite_v8.png"/> <br />
     <em> 
     Figure 4: Visualization of popular COD baselines and the proposed DGNet. Interestingly, these competitors fail to provide complete segmentation results for the camouflaged objects that touch the image boundary. By contrast, our approach can precisely locate the target region and provide exact predictions due to the gradient learning strategy.
     </em>
 
-</p>
+</p> -->
 
 <p align="center">
     <img src="assest/Benchmark.png"/> <br />
     <em> 
-    Figure 5: Quantitative results in terms of full metrics for cutting-edge competitors, including 8 SOD-related and 12 COD-related, on three test datasets: NC4K-Test, CAMO-Test, and COD10K-Test. 
-    @R means the ranking of the current metric, and Mean@R indicates the mean ranking of all metrics.
-    Note that E_\phi^{mx}/F_\beta^{mx}, E_\phi^{mn}/F_\beta^{mn}, and E_\phi^{ad}/F_\beta^{ad} denote the maximum, mean, and adaptive value of E-measure/F-measure, respectively.
+    Figure 4: Quantitative results in terms of full metrics for cutting-edge competitors, including 8 SOD-related and 12 COD-related, on three test datasets: NC4K-Test, CAMO-Test, and COD10K-Test. @R means the ranking of the current metric, and Mean@R indicates the mean ranking of all metrics.
     </em>
 
 </p>
@@ -132,9 +127,7 @@ The prediction of our DGNet and DGNet-S can be found in [OneDrive](https://anu36
 <p align="center">
     <img src="assest/SuperClass.png"/> <br />
     <em> 
-    Figure 6: Super-classes (\ie, Amphibian, Aquatic, Flying, Terrestrial, and Other) on the COD10K-Test of the proposed methods (DGNet & DGNet-S) and other 20 competitors. 
-    Symbol \uparrow indicates the higher the score, the better, and symbol \downarrow indicates the lower, the better. 
-    The best score is marked with **bold**.
+    Figure 5: Super-classes (i.e., Amphibian, Aquatic, Flying, Terrestrial, and Other) on the COD10K-Test of the proposed methods (DGNet & DGNet-S) and other 20 competitors. Symbol \uparrow indicates the higher the score, the better, and symbol \downarrow indicates the lower, the better. The best score is marked with bold.
     </em>
 
 </p>
@@ -142,8 +135,7 @@ The prediction of our DGNet and DGNet-S can be found in [OneDrive](https://anu36
 <p align="center">
     <img src="assest/SubClass.png"/> <br />
     <em> 
-    Figure 7: Sub-class results on COD10K-Test of 12 COD-related and 8 SOD-related baselines in terms of structure measure (\mathcal{S}_\alpha), where Am., Aq., Fl., Te., and  Ot. represent Amphibian, Aquatic, Flying, Terrestrial, and Other, respectively. CDL., GP.Fish, and LS.Dragon denote Crocodile, and  GhostPipeFish, LeafySeaDragon, respectively.
-    The best score is marked with **bold**. 
+    Figure 6: Sub-class results on COD10K-Test of 12 COD-related and 8 SOD-related baselines in terms of structure measure (\mathcal{S}_\alpha), where Am., Aq., Fl., Te., and  Ot. represent Amphibian, Aquatic, Flying, Terrestrial, and Other, respectively. CDL., GP.Fish, and LS.Dragon denote Crocodile, and  GhostPipeFish, LeafySeaDragon, respectively. The best score is marked with bold. 
     </em>
 
 </p>
@@ -158,7 +150,3 @@ Please cite our paper if you find the work useful:
           journal={arXiv},
           year={2022}
     } 
-
----
-
-**[⬆ back to top](#0-preface)**
