@@ -2,7 +2,7 @@ import jittor as jt
 from jittor import init
 from jittor import nn
 
-from lib.EfficientNet import EfficientNet
+from jittor.lib.EfficientNet import EfficientNet
 
 
 class ConvBR(nn.Module):

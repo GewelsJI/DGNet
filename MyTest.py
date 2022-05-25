@@ -9,8 +9,8 @@ from scipy import misc
 import torch.nn.functional as F
 import torch.backends.cudnn as cudnn
 
-from utils.dataset import test_dataset as EvalDataset
-from lib.DGNet import DGNet as Network
+from jittor.utils.dataset import test_dataset as EvalDataset
+from jittor.lib.DGNet import DGNet as Network
 import eval.metrics as Measure
 
 
