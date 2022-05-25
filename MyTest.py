@@ -50,7 +50,7 @@ def evaluator(snap_path, val_root, gpu_id, trainsize=352, if_save_map=False):
         print('USE GPU 3')
     cudnn.benchmark = True
 
-    model = Network(channel=64, arc='B4', group_list=[8, 8, 8], group_list_N=[4, 8, 16]).cuda()
+    model = Network(channel=64, arc='B4', M=[8, 8, 8], N=[4, 8, 16]).cuda()
 
     val_loader = EvalDataset(image_root=val_root + 'Imgs/',
                              gt_root=val_root + 'GT/',

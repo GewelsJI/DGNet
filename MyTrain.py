@@ -200,7 +200,7 @@ if __name__ == '__main__':
     cudnn.benchmark = True
 
     # build the model
-    model = Network(channel=64, arc='B4', group_list=[8, 8, 8], group_list_N=[4,8,16]).cuda()
+    model = Network(channel=64, arc='B4', M=[8, 8, 8], N=[4, 8, 16]).cuda()
 
     if opt.load is not None:
         model.load_state_dict(torch.load(opt.load))
