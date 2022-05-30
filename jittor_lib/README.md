@@ -64,17 +64,6 @@ The download link ([Pytorch](https://anu365-my.sharepoint.com/:u:/g/personal/u72
 | PyTorch              	 | 0.857       	 | 0.907     	   | 0.784        	 | 0.042 	    |
 | Jittor               	 | 0.859      	  | 0.909       	 | 0.789        	 | 0.042    	 |
 
-## Speedup
-
-The jittor-based code can speed up the inference efficiency.
-
-| Batch Size  	| PyTorch    	 | Jittor     	 |     Speedup    	|
-|-----------	|--------------|--------------|----------------	|
-|     1     	| 30 FPS     	 | 31 FPS     	 |     1.35x       	|
-|     4     	| 115 FPS    	 | 113 FPS    	 |     1.52x       	|
-|     8     	| 168 FPS    	 | 217 FPS    	 |     1.37x      	|
-|     16    	| 183 FPS    	 | 230 FPS    	 |     1.24x       	|
-
 ## Citation
 
 If you find our work useful in your research, please consider citing:
