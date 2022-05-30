@@ -1,7 +1,7 @@
 import jittor as jt
 from jittor import nn
 
-from jittor_lib.lib import round_filters, round_repeats, drop_connect, get_same_padding_conv2d, get_model_params, \
+from jittor_lib.lib.utils import round_filters, round_repeats, drop_connect, get_same_padding_conv2d, get_model_params, \
     efficientnet_params, load_pretrained_weights, Swish, MemoryEfficientSwish, calculate_output_image_size
 
 VALID_MODELS = (
