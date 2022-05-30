@@ -64,6 +64,17 @@ The download link ([Pytorch](https://anu365-my.sharepoint.com/:u:/g/personal/u72
 | PyTorch              	 | 0.857       	 | 0.907     	   | 0.784        	 | 0.042 	    |
 | Jittor               	 | 0.859      	  | 0.909       	 | 0.789        	 | 0.042    	 |
 
+## Speedup
+
+The jittor-based code can speed up training time.
+ 
+  | 	             | PyTorch    	    | Jittor     	    | Speedup    	  |
+  |---------------|-----------------|-----------------|---------------|
+  | DGNet         | 8.8 hours     	 | 6.4 hours     	 | 1.37x       	 |
+  | DGNet-S     	 | 7.9 hours    	  | 4.8 hours    	  | 1.65x       	 |
+
+
+
 ## Citation
 
 If you find our work useful in your research, please consider citing:
