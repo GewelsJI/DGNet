@@ -8,7 +8,7 @@
 > [Alexander Liniger](https://people.ee.ethz.ch/~aliniger/) &
 > [Luc Van Gool](https://ee.ethz.ch/the-department/faculty/professors/person-detail.OTAyMzM=.TGlzdC80MTEsMTA1ODA0MjU5.html).
 
-This repository contains the source code (pytorch & jittor), prediction results, and evaluation toolbox of our Deep Gradient Network, also called DGNet. The technical report could be found at [arXiv](https://arxiv.org/abs/2205.12853).
+This repository contains the source code, prediction results, and evaluation toolbox of our Deep Gradient Network, also called DGNet. The technical report could be found at [arXiv](https://arxiv.org/abs/2205.12853).
 
 
 ## 1. Features
@@ -62,12 +62,12 @@ This repository contains the source code (pytorch & jittor), prediction results,
 
 ### 3.2. Usage
 
-The training and testing experiments are conducted using [PyTorch](https://github.com/pytorch/pytorch) and [Jittor](https://github.com/Jittor/jittor) libraries with a single GeForce RTX TITAN GPU.
+The training and testing experiments are conducted using [PyTorch](https://github.com/pytorch/pytorch) and [Jittor](https://github.com/Jittor/jittor) libraries with a single GeForce RTX TITAN GPU. Note that we only report the results of the Pytorch-based DGNet in our manuscript.
 
-- For the Jittor usage, please refer to our [Jittor_lib](https://github.com/GewelsJI/DGNet/tree/main/jittor_lib).
-- For the Pytorch usage, please refer to our [Pytorch_lib](https://github.com/GewelsJI/DGNet/tree/main/pytorch_lib).
+- For the Pytorch usage, please refer to our [pytorch_lib](https://github.com/GewelsJI/DGNet/tree/main/pytorch_lib).
 
-We submit the results of the Pytorch implemented DGNet in our manuscript.
+- For the Jittor usage, please refer to our [jittor_lib](https://github.com/GewelsJI/DGNet/tree/main/jittor_lib).
+
 
 ### 3.3 Evaluation
 
