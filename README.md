@@ -67,6 +67,8 @@ The training and testing experiments are conducted using [PyTorch](https://githu
 - For the Jittor usage, please refer to our [Jittor_lib](https://github.com/GewelsJI/DGNet/tree/main/jittor_lib).
 - For the Pytorch usage, please refer to our [Pytorch_lib](https://github.com/GewelsJI/DGNet/tree/main/pytorch_lib).
 
+We submit the results of the Pytorch implemented DGNet in our manuscript.
+
 ### 3.3 Evaluation
 
 One-key evaluation is written in MATLAB code `./eval/matlab/`, please follow this the instructions in `./eval/matlab/main.m` and just run it to generate the evaluation results in `./eval-result/`.

@@ -45,20 +45,22 @@ GeForce RTX TITAN GPU.
 
 ## Performance Comparison
 
-The performance has slight difference due to the different operator implemented between two frameworks.  The download link ([Pytorch](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EcwgyI1KDnBDjoFMZCLNJkAB7GjBYGgvDPlBAruSAVCOxw?e=RrBvHd) / [Jitror](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EbRmYVvdBIhEtRKWBUhzsNMBQ8F7Pnw7sUBAPDeN_Po_6A?e=crMmfP)) of prediction results on four testing dataset, including CAMO, COD10K, NC4K.
+The performance has slight difference between the re-trained Jittor implemented DGNet and the Pytorch implemented DGNet.
+We submit the results of the Pytorch implemented DGNet in our manuscript.
+The download link ([Pytorch](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EcwgyI1KDnBDjoFMZCLNJkAB7GjBYGgvDPlBAruSAVCOxw?e=RrBvHd) / [Jitror](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EbRmYVvdBIhEtRKWBUhzsNMBQ8F7Pnw7sUBAPDeN_Po_6A?e=crMmfP)) of prediction results on four testing dataset, including CAMO, COD10K, NC4K.
 
 
-|  CAMO-Test dataset   	| $S_\alpha$  	 | $E_\phi$  	 | $F_\beta^w$  	 | $M$     	 |
-|----------------------	|---------------|-------------|----------------|----------|
-|  PyTorch             	| 0.839       	 | 0.901     	 | 0.769        	 | 0.057 	  |
-|  Jittor              	| 0.841       	 | 0.891     	 | 0.774        	 | 0.057 	  |
+|  CAMO-Test dataset   	| $S_\alpha$  	 | $E_\phi^ad$  	 | $F_\beta^w$  	 | $M$     	 |
+|----------------------	|---------------|----------------|----------------|----------|
+|  PyTorch             	| 0.839       	 | 0.901     	    | 0.769        	 | 0.057 	  |
+|  Jittor              	| 0.841       	 | 0.891     	    | 0.774        	 | 0.057 	  |
 
-|  COD10K-Test dataset 	| $S_\alpha$  	 | $E_\phi$  	 | $F_\beta^w$  	 | $M$     	 |
+|  COD10K-Test dataset 	| $S_\alpha$  	 | $E_\phi^ad$  	 | $F_\beta^w$  	 | $M$     	 |
 |----------------------	|---------------|-------------|----------------|---------|
 |  PyTorch             	| 0.822       	 | 0.877     	 | 0.693        	 | 0.033 	 |
 |  Jittor              	| 0.826       	 | 0.879     	 | 0.700        	 | 0.033 	 |
 
-| NC4K dataset    	      | $S_\alpha$  	 | $E_\phi$  	   | $F_\beta^w$  	 | $M$     	    |
+| NC4K dataset    	      | $S_\alpha$  	 | $E_\phi^ad$  	   | $F_\beta^w$  	 | $M$     	    |
 |------------------------|---------------|---------------|----------------|------------|
 | PyTorch              	 | 0.857       	 | 0.907     	   | 0.784        	 | 0.042 	    |
 | Jittor               	 | 0.859      	  | 0.909       	 | 0.789        	 | 0.042    	 |
