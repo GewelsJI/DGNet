@@ -8,7 +8,7 @@
 > [Alexander Liniger](https://people.ee.ethz.ch/~aliniger/) &
 > [Luc Van Gool](https://ee.ethz.ch/the-department/faculty/professors/person-detail.OTAyMzM=.TGlzdC80MTEsMTA1ODA0MjU5.html).
 
-This repository contains the source code, prediction results, and evaluation toolbox of our Deep Gradient Network, also called DGNet. The technical report could be found at [arXiv](https://arxiv.org/abs/2205.12853).
+This repository contains the source code (pytorch & jittor), prediction results, and evaluation toolbox of our Deep Gradient Network, also called DGNet. The technical report could be found at [arXiv](https://arxiv.org/abs/2205.12853).
 
 
 ## 1. Features
@@ -29,6 +29,7 @@ This repository contains the source code, prediction results, and evaluation too
 
 ## 2. :fire: NEWS :fire:
 
+- [2022/05/30] :fire: We release the re-implementation of DGNet with different AI frameworks: [Pytorch-based](https://github.com/GewelsJI/DGNet/tree/main/jittor_lib) and [Jittor-based](https://github.com/GewelsJI/DGNet/tree/main/jittor_lib).
 - [2022/05/30] Thank @Katsuya Hyodo for adding our model into [PINTO](https://github.com/PINTO0309/PINTO_model_zoo/tree/main/299_DGNet). This is a repository for storing models that have been inter-converted between various frameworks (e.g., TensorFlow, PyTorch, ONNX).
 - [2022/05/25] Releasing the codebase of DGNet (Pytorch) and whole COD benchmarking results (20 models).
 - [2022/05/23] Creating repository.
@@ -61,11 +62,10 @@ This repository contains the source code, prediction results, and evaluation too
 
 ### 3.2. Usage
 
-The training and testing experiments are conducted using [PyTorch](https://github.com/pytorch/pytorch) and [Jittor](https://github.com/Jittor/jittor) with a single
-GeForce RTX TITAN GPU.
+The training and testing experiments are conducted using [PyTorch](https://github.com/pytorch/pytorch) and [Jittor](https://github.com/Jittor/jittor) libraries with a single GeForce RTX TITAN GPU.
 
-- For the Jittor usage, please refer to `Jittor_lib/README.md`.
-- For the Pytorch usage, please refer to `Pytorch_lib/README.md`.
+- For the Jittor usage, please refer to our [Jittor_lib](https://github.com/GewelsJI/DGNet/tree/main/jittor_lib).
+- For the Pytorch usage, please refer to our [Pytorch_lib](https://github.com/GewelsJI/DGNet/tree/main/pytorch_lib).
 
 ### 3.3 Evaluation
 
