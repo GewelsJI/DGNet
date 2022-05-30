@@ -6,7 +6,7 @@ from tensorboardX import SummaryWriter
 import jittor as jt
 from jittor import nn
 
-import eval.metrics as Measure
+import eval.python.metrics as Measure
 from jittor_lib.lib.DGNet import DGNet as Network
 from jittor_lib.utils.dataset import get_loader, test_dataset
 

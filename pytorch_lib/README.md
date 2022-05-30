@@ -16,7 +16,7 @@ GeForce RTX TITAN GPU.
 
     + Creating a virtual environment in terminal: `conda create -n DGNet python=3.6`.
 
-    + Installing necessary packages: `pip install -r requirements.txt
+    + Installing necessary packages: `pip install -r ./pytorch_lib/requirements.txt
       `
 
 2. Prepare the data:
