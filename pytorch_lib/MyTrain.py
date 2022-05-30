@@ -14,9 +14,9 @@ from torch import optim
 from torchvision.utils import make_grid
 # customized libraries
 import eval.metrics as Measure
-from lib.DGNet import DGNet as Network
-from utils.utils import clip_gradient
-from utils.dataset import get_loader, test_dataset
+from pytorch_lib.lib import DGNet as Network
+from pytorch_lib.utils.utils import clip_gradient
+from pytorch_lib.utils.dataset import get_loader, test_dataset
 
 
 def structure_loss(pred, mask):
@@ -180,7 +180,7 @@ if __name__ == '__main__':
                         help='the test rgb images root')
     parser.add_argument('--gpu_id', type=str, default='1', 
                         help='train use gpu')
-    parser.add_argument('--save_path', type=str, default='./snapshot/Exp02/',
+    parser.add_argument('--save_path', type=str, default='./pytorch_lib/snapshot/Exp02/',
                         help='the path to save model and log')
     opt = parser.parse_args()
 

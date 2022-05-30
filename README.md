@@ -61,43 +61,11 @@ This repository contains the source code, prediction results, and evaluation too
 
 ### 3.2. Usage
 
-The training and testing experiments are conducted using [PyTorch](https://github.com/pytorch/pytorch) with a single
+The training and testing experiments are conducted using [PyTorch](https://github.com/pytorch/pytorch) and [Jittor](https://github.com/Jittor/jittor) with a single
 GeForce RTX TITAN GPU.
 
-1. Prerequisites:
-
-   Note that DGNet is only tested on Ubuntu OS with the following environments. It may work on other operating systems (
-   i.e., Windows) as well but we do not guarantee that it will.
-
-    + Creating a virtual environment in terminal: `conda create -n DGNet python=3.6`.
-
-    + Installing necessary packages: `pip install -r requirements.txt
-      `
-
-2. Prepare the data:
-
-    + downloading testing dataset and move it into `./dataset/TestDataset/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXcBqW3Ses5HlYFeTAPlmiwBtPwXisbr53uIDGoM4h0UOg?e=d5tK9C).
-    + downloading training dataset and move it into `./dataset/TrainDataset/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EUgtKNJSBYpElpgQzrIZLDEBmu9Stp5UL3P5HHkrHGXIyQ?e=5OgCok).
-    + downloading pretrained weights of DGNet and DGNet-S and move it into `./snapshot/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EdjQje05VJZPoEFfFRLWT0sBsevoeyFE8O3PyCRCusUK1A?e=P0Fi9M).
-    + preparing the EfficientNet-B1/B4 weights on ImageNet (refer to [here](https://github.com/GewelsJI/DGNet/blob/00e4d2b54667eb71f734f60d46fffe47fbf2725e/lib/utils.py#L556)).
-
-3. Training Configuration:
-
-    + Assigning your costumed path, like `--save_path `, `--train_root` and `--val_root` in `MyTrain.py`.
-    + Just enjoy it via running `python MyTrain.py` in your terminal.
-
-4. Testing Configuration:
-
-    + After you download all the pre-trained models and testing datasets, just run `MyTest.py` to generate the final
-      prediction map: replace your trained model directory (`--snap_path`).
-
-    + Just enjoy it!
-
-5. Evaluation Configuration
-
-    + Assigning your costumed path, like `--gt_root `, `--pred_root`,`--data_lst` and `--model_lst` in `MyEval.py`.
-    + You can choose to evaluate the model by default setting or evaluate only the super-/subclass by configuring the `--eval_type` in `MyEval.py`.
-    + Just enjoy it via running `python MyEval.py` in your terminal.
+- For the Jittor usage, please refer to `Jittor_lib/README.md`.
+- For the Pytorch usage, please refer to `Pytorch_lib/README.md`.
 
 ### 3.3 Evaluation
 
@@ -105,7 +73,7 @@ One-key evaluation is written in MATLAB code `./eval/matlab/`, please follow thi
 
 ### 3.4 COD Benchmark Results:
 
-The prediction of our DGNet and DGNet-S can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EcwgyI1KDnBDjoFMZCLNJkAB7GjBYGgvDPlBAruSAVCOxw?e=RrBvHd). The whole benchmark results can be found at [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXLiBgp9nGNApBw9im2xznsBJ_ryGEW7hkJlL92gNaRAAg?e=ktOw0B). Here are quantitative performance comparison from three perspectives.
+The prediction of our DGNet and DGNet-S can be found in [Pytorch](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EcwgyI1KDnBDjoFMZCLNJkAB7GjBYGgvDPlBAruSAVCOxw?e=RrBvHd) / [Jitror](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EbRmYVvdBIhEtRKWBUhzsNMBQ8F7Pnw7sUBAPDeN_Po_6A?e=crMmfP). The whole benchmark results can be found at [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXLiBgp9nGNApBw9im2xznsBJ_ryGEW7hkJlL92gNaRAAg?e=ktOw0B). Here are quantitative performance comparison from three perspectives.
 
 
 <!-- <p align="center">
@@ -145,8 +113,8 @@ The prediction of our DGNet and DGNet-S can be found in [OneDrive](https://anu36
 Please cite our paper if you find the work useful:
 
     @article{ji2022gradient,
-          title={Deep Gradient Learning for Efficient Camouflaged Object Detection},
-          author={Ji, Ge-Peng and Fan, Deng-Ping and Chou, Yu-Cheng and Dai, Dengxin and Liniger, Alexander and Van Gool, Luc},
-          journal={arXiv},
-          year={2022}
+      title={Deep Gradient Learning for Efficient Camouflaged Object Detection},
+      author={Ji, Ge-Peng and Fan, Deng-Ping and Chou, Yu-Cheng and Dai, Dengxin and Liniger, Alexander and Van Gool, Luc},
+      journal={arXiv},
+      year={2022}
     } 

@@ -14,12 +14,12 @@ close all;
 clc;
 
 % ---- 1. Camouflage Map Path Setting ----
-CamMapPath = './results';   % Put model results in this folder.
-Models = {'DGNet'};
+CamMapPath = '../../jittor/result/';   % Put model results in this folder.
+Models = {'DGNet_Jittor', 'DGNetS_Jittor'};
 modelNum = length(Models);
 
 % ---- 2. Ground-truth Datasets Setting ----
-DataPath = './dataset/TestDataset/';
+DataPath = '../../dataset/TestDataset/';
 Datasets = {'CAMO', 'NC4K', 'COD10K'};
 % ---- 3. Results Save Path Setting ----
 ResDir = './eval-result/';

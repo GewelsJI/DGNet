@@ -6,7 +6,6 @@ bin-release/
 
 # Other files and folders
 .settings/
-jittor/
 backup/
 
 # Executables

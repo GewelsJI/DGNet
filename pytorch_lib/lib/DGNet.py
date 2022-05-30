@@ -2,7 +2,7 @@
 import torch
 import torch.nn as nn
 # customized libraries
-from lib.EfficientNet import EfficientNet
+from pytorch_lib.lib.EfficientNet import EfficientNet
 
 
 class ConvBR(nn.Module):

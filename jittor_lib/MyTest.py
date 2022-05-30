@@ -1,41 +1,37 @@
 import os
-import torch
 import argparse
-import numpy as np
-from scipy import misc
+import imageio
 
-import torch.nn.functional as F
-import torch.backends.cudnn as cudnn
+import jittor as jt
+from jittor import nn
 
-from jittor.utils.dataset import test_dataset as EvalDataset
-from jittor.lib.DGNet import DGNet as Network
+from jittor_lib.utils.dataset import test_dataset as EvalDataset
+from jittor_lib.lib.DGNet import DGNet as Network
+
+jt.flags.use_cuda = 1
 
 
 def evaluator(model, val_root, map_save_path, trainsize=352):
     val_loader = EvalDataset(image_root=val_root + 'Imgs/',
                              gt_root=val_root + 'GT/',
-                             testsize=trainsize)
-
+                             testsize=trainsize).set_attrs(batch_size=1, shuffle=False)
+    
     model.eval()
-    with torch.no_grad():
-        for i in range(val_loader.size):
-            image, gt, name, _ = val_loader.load_data()
-            gt = np.asarray(gt, np.float32)
+    with jt.no_grad():
+        for image, gt, name, _ in val_loader:
+            c, h, w = gt.shape
 
-            image = image.cuda()
-
-            output = model(image)
-            output = F.upsample(output[0], size=gt.shape, mode='bilinear', align_corners=False)
-            output = output.sigmoid().data.cpu().numpy().squeeze()
-            output = (output - output.min()) / (output.max() - output.min() + 1e-8)
-
-            misc.imsave(map_save_path + name, output)
-            print('>>> prediction save at: {}'.format(map_save_path + name))
+            res = model(image)
+            res = nn.upsample(res[0], size=(h, w), mode='bilinear')
+            res = res.sigmoid().data.squeeze()
+            res = ((res - res.min()) / ((res.max() - res.min()) + 1e-08))
+            imageio.imwrite(map_save_path + name[0], res)
+            print('>>> prediction save at: {}'.format(map_save_path + name[0]))
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--snap_path', type=str, default='./snapshot/DGNet/Net_epoch_best.pth',
+    parser.add_argument('--snap_path', type=str, default='./jittor_lib/snapshot/DGNet_Jittor/Net_epoch_best.pkl',
                         help='train use gpu')
     parser.add_argument('--gpu_id', type=str, default='1',
                         help='train use gpu')
@@ -60,10 +56,9 @@ if __name__ == '__main__':
         os.environ["CUDA_VISIBLE_DEVICES"] = "3"
         print('USE GPU 3')
 
-    cudnn.benchmark = True
-
-    model = Network(channel=64, arc='B4', M=[8, 8, 8], N=[4, 8, 16]).cuda()
-    model.load_state_dict(torch.load(opt.snap_path))
+    model = Network(channel=64, arc='B4', M=[8, 8, 8], N=[4, 8, 16])
+    
+    model.load(opt.snap_path)
     model.eval()
 
     for data_name in ['CAMO', 'COD10K', 'NC4K']:
