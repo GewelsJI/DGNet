@@ -6,8 +6,7 @@ The repo provides inference code of **DGNet** with [Pytorch deep-learning framew
 
 ## Usage
 
-The training and testing experiments are conducted using [PyTorch](https://github.com/pytorch/pytorch) with a single
-GeForce RTX TITAN GPU.
+The training and testing experiments are conducted using [PyTorch](https://github.com/pytorch/pytorch) with a single GeForce RTX TITAN GPU.
 
 1. Prerequisites:
 

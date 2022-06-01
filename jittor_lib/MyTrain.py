@@ -70,11 +70,11 @@ def train(train_loader, model, optimizer, epoch, save_path, writer):
         if ((epoch % 50) == 0):
             model.save(save_path + 'Net_epoch_{}.pkl'.format(epoch))
     except KeyboardInterrupt:
-        print('Keyboard Interrupt: save model and exit.')
+        print('>>> Keyboard Interrupt: save model and exit.')
         if (not os.path.exists(save_path)):
             os.makedirs(save_path)
         model.save(save_path + 'Net_epoch_{}.pkl'.format(epoch))
-        print('Save checkpoints successfully!')
+        print('>>> Save checkpoints successfully!')
         raise
 
 
@@ -160,6 +160,7 @@ if (__name__ == '__main__'):
         print('USE GPU 3')
 
     model = Network(channel=64, arc='B4', M=[8, 8, 8], N=[4, 8, 16])
+    # model = Network(channel=32, arc='B1', M=[8, 8, 8], N=[8, 16, 32])
 
     if (opt.load is not None):
         model.load_parameters(jt.load(opt.load))
@@ -190,8 +191,7 @@ if (__name__ == '__main__'):
     print('>>> start train...')
     for epoch in range(1, opt.epoch):
         cosine_schedule.step()
-        # writer.add_scalar('learning_rate', cosine_schedule.get_lr(base_lr=opt.lr, now_lr=), global_step=epoch)
-        # logging.info('>>> current lr: {}'.format(cosine_schedule.get_lr()[0]))
+        
         train(train_loader, model, optimizer, epoch, save_path, writer)
         if (epoch > (opt.epoch // 2)):
             val(val_loader, model, epoch, save_path, writer)

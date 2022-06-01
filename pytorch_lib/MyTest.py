@@ -63,6 +63,8 @@ if __name__ == '__main__':
     cudnn.benchmark = True
 
     model = Network(channel=64, arc='B4', M=[8, 8, 8], N=[4, 8, 16]).cuda()
+    # model = Network(channel=32, arc='B1', M=[8, 8, 8], N=[8, 16, 32]).cuda()
+    
     model.load_state_dict(torch.load(opt.snap_path))
     model.eval()
 

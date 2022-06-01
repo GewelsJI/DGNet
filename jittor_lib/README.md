@@ -44,9 +44,9 @@ The training and testing experiments are conducted using [Jiitor](https://github
 
 ## Performance Comparison
 
-The performance has slight difference between the re-trained Jittor implemented DGNet and the Pytorch implemented DGNet.
-We submit the results of the Pytorch implemented DGNet in our manuscript.
-The download link ([Pytorch](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EcwgyI1KDnBDjoFMZCLNJkAB7GjBYGgvDPlBAruSAVCOxw?e=RrBvHd) / [Jitror](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EbRmYVvdBIhEtRKWBUhzsNMBQ8F7Pnw7sUBAPDeN_Po_6A?e=crMmfP)) of prediction results on four testing dataset, including CAMO, COD10K, and NC4K.
+We submit the results of the Pytorch implemented DGNet in our manuscript, and we also re-train the DGNet that is rewritted by jittor framework. We observe that the performance has slight fluctuation between the re-trained Jittor-based DGNet and the Pytorch-based DGNet.
+
+The download link ([Pytorch](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EcwgyI1KDnBDjoFMZCLNJkAB7GjBYGgvDPlBAruSAVCOxw?e=RrBvHd) / [Jitror](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EbRmYVvdBIhEtRKWBUhzsNMBQ8F7Pnw7sUBAPDeN_Po_6A?e=crMmfP)) of prediction results on three testing dataset, including CAMO, COD10K, and NC4K.
 
 
 |  CAMO-Test dataset   	| $S_\alpha$  	 | $E_\phi^{ad}$  	 | $F_\beta^w$  	 | $M$     	 |
@@ -66,7 +66,7 @@ The download link ([Pytorch](https://anu365-my.sharepoint.com/:u:/g/personal/u72
 
 ## Speedup
 
-The jittor-based code can speed up training time.
+Jittor-based framework could speed up the training duration, significantly decreasing the experimental efforts.
  
   | 	             | PyTorch    	    | Jittor     	    | Speedup    	  |
   |---------------|-----------------|-----------------|---------------|
