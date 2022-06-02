@@ -31,6 +31,7 @@ def evaluator(model, val_root, map_save_path, trainsize=352):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
+    parser.add_argument('--model', type=str, default='DGNet', choices=['DGNet', 'DGNet-S'])
     parser.add_argument('--snap_path', type=str, default='./jittor_lib/snapshot/DGNet_Jittor/Net_epoch_best.pkl',
                         help='train use gpu')
     parser.add_argument('--gpu_id', type=str, default='1',
@@ -56,8 +57,12 @@ if __name__ == '__main__':
         os.environ["CUDA_VISIBLE_DEVICES"] = "3"
         print('USE GPU 3')
 
-    model = Network(channel=64, arc='B4', M=[8, 8, 8], N=[4, 8, 16])
-    # model = Network(channel=32, arc='B1', M=[8, 8, 8], N=[8, 16, 32])
+    if opt.model == 'DGNet':
+        model = Network(channel=64, arc='B4', M=[8, 8, 8], N=[4, 8, 16])
+    elif opt.model == 'DGNet-S':
+        model = Network(channel=32, arc='B1', M=[8, 8, 8], N=[8, 16, 32])
+    else:
+        raise Exception("Invalid Model Symbol: {}".format(opt.model))
     
     model.load(opt.snap_path)
     model.eval()

@@ -35,6 +35,7 @@ def evaluator(model, val_root, map_save_path, trainsize=352):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
+    parser.add_argument('--model', type=str, default='DGNet', choices=['DGNet', 'DGNet-S'])
     parser.add_argument('--snap_path', type=str, default='./snapshot/DGNet/Net_epoch_best.pth',
                         help='train use gpu')
     parser.add_argument('--gpu_id', type=str, default='1',
@@ -62,9 +63,13 @@ if __name__ == '__main__':
 
     cudnn.benchmark = True
 
-    model = Network(channel=64, arc='B4', M=[8, 8, 8], N=[4, 8, 16]).cuda()
-    # model = Network(channel=32, arc='B1', M=[8, 8, 8], N=[8, 16, 32]).cuda()
-    
+    if opt.model == 'DGNet':
+        model = Network(channel=64, arc='B4', M=[8, 8, 8], N=[4, 8, 16])
+    elif opt.model == 'DGNet-S':
+        model = Network(channel=32, arc='B1', M=[8, 8, 8], N=[8, 16, 32])
+    else:
+        raise Exception("Invalid Model Symbol: {}".format(opt.model))
+
     model.load_state_dict(torch.load(opt.snap_path))
     model.eval()
 

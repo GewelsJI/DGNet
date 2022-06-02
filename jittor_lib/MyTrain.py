@@ -137,6 +137,7 @@ if (__name__ == '__main__'):
     parser.add_argument('--clip', type=float, default=0.5, help='gradient clipping margin')
     parser.add_argument('--decay_rate', type=float, default=0.1, help='decay rate of learning rate')
     parser.add_argument('--decay_epoch', type=int, default=50, help='every n epochs decay learning rate')
+    parser.add_argument('--model', type=str, default='DGNet', choices=['DGNet', 'DGNet-S'])
     parser.add_argument('--load', type=str, default=None, help='train from checkpoints')
     parser.add_argument('--train_root', type=str, default='./dataset/TrainDataset/',
                         help='the training rgb images root')
@@ -159,8 +160,12 @@ if (__name__ == '__main__'):
         os.environ['CUDA_VISIBLE_DEVICES'] = '3'
         print('USE GPU 3')
 
-    model = Network(channel=64, arc='B4', M=[8, 8, 8], N=[4, 8, 16])
-    # model = Network(channel=32, arc='B1', M=[8, 8, 8], N=[8, 16, 32])
+    if opt.model == 'DGNet':
+        model = Network(channel=64, arc='B4', M=[8, 8, 8], N=[4, 8, 16])
+    elif opt.model == 'DGNet-S':
+        model = Network(channel=32, arc='B1', M=[8, 8, 8], N=[8, 16, 32])
+    else:
+        raise Exception("Invalid Model Symbol: {}".format(opt.model))
 
     if (opt.load is not None):
         model.load_parameters(jt.load(opt.load))
