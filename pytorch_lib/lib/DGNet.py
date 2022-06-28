@@ -176,10 +176,10 @@ class DGNet(nn.Module):
         channel = channel
 
         if arc == 'B1':
-            self.context_encoder = EfficientNet.from_name('efficientnet-b1')
+            self.context_encoder = EfficientNet.from_pretrained('efficientnet-b1')
             in_channel_list = [40, 112, 320]
         elif arc == 'B4':
-            self.context_encoder = EfficientNet.from_name('efficientnet-b4')
+            self.context_encoder = EfficientNet.from_pretrained('efficientnet-b4')
             in_channel_list = [56, 160, 448]
         else:
             raise Exception("Invalid Architecture Symbol: {}".format(arc))
