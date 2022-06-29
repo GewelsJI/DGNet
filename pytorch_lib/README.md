@@ -22,7 +22,7 @@ The training and testing experiments are conducted using [PyTorch](https://githu
 
     + downloading testing dataset and move it into `./dataset/TestDataset/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXcBqW3Ses5HlYFeTAPlmiwBtPwXisbr53uIDGoM4h0UOg?e=d5tK9C).
     + downloading training dataset and move it into `./dataset/TrainDataset/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EUgtKNJSBYpElpgQzrIZLDEBmu9Stp5UL3P5HHkrHGXIyQ?e=5OgCok).
-    + downloading pretrained weights of DGNet and DGNet-S and move it into `./pytorch_lib/snapshot/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/ERl_JHGW7OtIiYInVDlqnJgB8hVX8f9yr5T0VIYLOh4aCA?e=9qVoBs).
+    + downloading pretrained weights of DGNet and DGNet-S and move it into `./pytorch_lib/snapshot/`, which can be found in [OneDrive-New](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EdN-cAK5chpMnDnMvr6em8kBP1x3SuZu2ILDHwiuxp955g?e=jJMZ6U).
     + preparing the EfficientNet-B1/B4 weights on ImageNet (refer to [here](https://github.com/GewelsJI/DGNet/blob/00e4d2b54667eb71f734f60d46fffe47fbf2725e/lib/utils.py#L556)).
 
 3. Training Configuration:
