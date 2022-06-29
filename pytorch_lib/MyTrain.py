@@ -52,7 +52,7 @@ def train(train_loader, model, optimizer, epoch, save_path, writer):
 
             preds = model(images)
             loss_pred = structure_loss(preds[0], gts)
-            loss_grad = torch.nn.BCEWithLogitsLoss()(preds[1], grads)
+            loss_grad = grad_loss_func(preds[1], grads)
 
             loss = loss_pred + loss_grad
 
@@ -207,6 +207,8 @@ if __name__ == '__main__':
         model = Network(channel=32, arc='B1', M=[8, 8, 8], N=[8, 16, 32])
     else:
         raise Exception("Invalid Model Symbol: {}".format(opt.model))
+
+    grad_loss_func = torch.nn.MSELoss()
 
     if opt.load is not None:
         model.load_state_dict(torch.load(opt.load))
