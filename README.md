@@ -1,4 +1,4 @@
-# <p align=center>`Deep Gradient Learning for Efficient Camouflaged Object Detection`</p>
+# <p align=center>`Deep Gradient Learning for Efficient Camouflaged Object Detection (MIR 2022)`</p>
 
 > **Authors:**
 > [Ge-Peng Ji](https://github.com/GewelsJI),
@@ -8,7 +8,7 @@
 > [Alexander Liniger](https://people.ee.ethz.ch/~aliniger/), &
 > [Luc Van Gool](https://ee.ethz.ch/the-department/faculty/professors/person-detail.OTAyMzM=.TGlzdC80MTEsMTA1ODA0MjU5.html).
 
-This repository contains the source code, prediction results, and evaluation toolbox of our Deep Gradient Network, also called DGNet. The technical report could be found at [arXiv](https://arxiv.org/abs/2205.12853).
+This official repository contains the source code, prediction results, and evaluation toolbox of Deep Gradient Network (accepted by MIR 2022), also called DGNet. The technical report could be found at [arXiv](https://arxiv.org/abs/2205.12853).
 
 
 ## 1. Features
@@ -29,6 +29,7 @@ This repository contains the source code, prediction results, and evaluation too
 
 ## 2. :fire: NEWS :fire:
 
+- [2022/08/06] Our paper has been accepted by Machine Intelligence Research.
 - [2022/05/30] :fire: We release the implementation of DGNet with different AI frameworks: [Pytorch-based](https://github.com/GewelsJI/DGNet/tree/main/jittor_lib) and [Jittor-based](https://github.com/GewelsJI/DGNet/tree/main/jittor_lib).
 - [2022/05/30] Thank @Katsuya Hyodo for adding our model into [PINTO](https://github.com/PINTO0309/PINTO_model_zoo/tree/main/299_DGNet). This is a repository for storing models that have been inter-converted between various frameworks (e.g., TensorFlow, PyTorch, ONNX).
 - [2022/05/25] Releasing the codebase of DGNet (Pytorch) and whole COD benchmarking results (20 models).
@@ -117,6 +118,6 @@ Please cite our paper if you find the work useful:
     @article{ji2022gradient,
       title={Deep Gradient Learning for Efficient Camouflaged Object Detection},
       author={Ji, Ge-Peng and Fan, Deng-Ping and Chou, Yu-Cheng and Dai, Dengxin and Liniger, Alexander and Van Gool, Luc},
-      journal={arXiv},
+      journal={Machine Intelligence Research},
       year={2022}
     } 
