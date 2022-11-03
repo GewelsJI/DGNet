@@ -46,7 +46,7 @@ The training and testing experiments are conducted using [PyTorch](https://githu
         + test DGNet-PVTv2-B1: `python MyTest.py --gpu_id 1 --model DGNet-PVTv2-B1 --snap_path ./snapshot/DGNet-PVTv2-B1.pth`
         + test DGNet-PVTv2-B2: `python MyTest.py --gpu_id 0 --model DGNet-PVTv2-B2 --snap_path ./snapshot/DGNet-PVTv2-B2.pth`
         + test DGNet-PVTv2-B3: `python MyTest.py --gpu_id 0 --model DGNet-PVTv2-B3 --snap_path ./snapshot/DGNet-PVTv2-B3.pth`
-    + All the segmentation predictions of above DGNet variants could be found in [OneDrive]().
+    + All the segmentation predictions of above DGNet variants could be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EQvv58EvpqlDuKJkEBN7iG4BQ3dPfqI8Y7S4VcKZgFybkA?e=e0Gg9u).
 
 5. Evaluation Configuration
     + Matlab-style eval (reported in our paper)
