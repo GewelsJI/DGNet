@@ -56,7 +56,7 @@ The training and testing experiments are conducted using [PyTorch](https://githu
         + Assigning your costumed competitors (`--model_lst`) in `./lib_pytorch/MyEval.py`
         + Just evaluate them via running  `python MyEval.py`
         + Please note that there maybe has a slight difference between matlab-style and python-style codes.
-        + Evaluation results are available at 
+        + Evaluation results are available at [here](https://github.com/GewelsJI/DGNet/tree/main/lib_pytorch/eval_txt/20221103_DGNet_benchmark)
 
 
 
