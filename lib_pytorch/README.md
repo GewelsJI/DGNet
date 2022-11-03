@@ -34,7 +34,6 @@ The training and testing experiments are conducted using [PyTorch](https://githu
         + train DGNet-PVTv2-B1: `python MyTrain.py --gpu_id 1 --model DGNet-PVTv2-B1  --save_path ./snapshot/Exp-DGNet-PVTv2-B1/`
         + train DGNet-PVTv2-B2: `python MyTrain.py --gpu_id 0 --model DGNet-PVTv2-B2  --save_path ./snapshot/Exp-DGNet-PVTv2-B2/`
         + train DGNet-PVTv2-B3: `python MyTrain.py --gpu_id 1 --model DGNet-PVTv2-B3  --save_path ./snapshot/Exp-DGNet-PVTv2-B3/`
-    + Just enjoy it via running `python ./lib_pytorch/MyTrain.py` in your terminal.
 
 4. Testing Configuration:
     + move into `cd lib_pytorch`
@@ -46,7 +45,6 @@ The training and testing experiments are conducted using [PyTorch](https://githu
         + test DGNet-PVTv2-B1: `python MyTest.py --gpu_id 1 --model DGNet-PVTv2-B1 --snap_path ./snapshot/Exp-DGNet-PVTv2-B1/Net_epoch_best.pth`
         + test DGNet-PVTv2-B2: `python MyTest.py --gpu_id 0 --model DGNet-PVTv2-B2 --snap_path ./snapshot/Exp-DGNet-PVTv2-B2/Net_epoch_best.pth`
         + test DGNet-PVTv2-B3: `python MyTest.py --gpu_id 0 --model DGNet-PVTv2-B3 --snap_path ./snapshot/Exp-DGNet-PVTv2-B3/Net_epoch_best.pth`
-    + Just enjoy it via running `python ./lib_pytorch/MyTest.py` in your terminal.
 
 5. Evaluation Configuration
     + Matlab-style eval (reported in our paper)
