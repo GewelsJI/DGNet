@@ -8,7 +8,7 @@
 > [Alexander Liniger](https://people.ee.ethz.ch/~aliniger/), &
 > [Luc Van Gool](https://ee.ethz.ch/the-department/faculty/professors/person-detail.OTAyMzM=.TGlzdC80MTEsMTA1ODA0MjU5.html).
 
-This official repository contains the source code, prediction results, and evaluation toolbox of Deep Gradient Network (accepted by MIR 2022), also called DGNet. The technical report could be found at [arXiv](https://arxiv.org/abs/2205.12853).
+This official repository contains the source code, prediction results, and evaluation toolbox of Deep Gradient Network (accepted by Machine Intelligence Research 2023), also called DGNet. The technical report could be found at [arXiv](https://arxiv.org/abs/2205.12853).
 
 
 ## 1. Features
@@ -29,7 +29,7 @@ This official repository contains the source code, prediction results, and evalu
 
 ## 2. :fire: NEWS :fire:
 
-- [2022/11/03] We add the support for the [PVTv2](https://github.com/whai362/PVT) Transformer backbone, achieving excitied performance again on COD benchmark. Please enjoy it. ([link](https://github.com/GewelsJI/DGNet/tree/main/lib_pytorch))
+- [2022/11/03] We add the support for the [PVTv2](https://github.com/whai362/PVT) Transformer backbone, achieving excitied performance again on COD benchmark. Please enjoy it -> ([link](https://github.com/GewelsJI/DGNet/tree/main/lib_pytorch))
 - [2022/08/06] Our paper has been accepted by [Machine Intelligence Research (MIR)](https://www.springer.com/journal/11633).
 - [2022/05/30] :fire: We release the implementation of DGNet with different AI frameworks: [Pytorch-based](https://github.com/GewelsJI/DGNet/tree/main/jittor_lib) and [Jittor-based](https://github.com/GewelsJI/DGNet/tree/main/jittor_lib).
 - [2022/05/30] Thank @Katsuya Hyodo for adding our model into [PINTO](https://github.com/PINTO0309/PINTO_model_zoo/tree/main/299_DGNet). This is a repository for storing models that have been inter-converted between various frameworks (e.g., TensorFlow, PyTorch, ONNX).
@@ -60,20 +60,16 @@ This official repository contains the source code, prediction results, and evalu
 </p>
 
 
-> References of neighbor connected decoder (NCD) benchmark works [1] Concealed Object Detection. TPAMI, 2022. <br>
+> References of neighbor connected decoder (NCD) benchmark works [1] Concealed Object Detection. TPAMI, 2023. <br>
 
 ### 3.2. Usage
 
-The training and testing experiments are conducted using [PyTorch](https://github.com/pytorch/pytorch) and [Jittor](https://github.com/Jittor/jittor) libraries with a single GeForce RTX TITAN GPU. Note that we only report the results of the Pytorch-based DGNet in our manuscript.
+We provide various versions for different deep learning platforms, including [PyTorch](https://github.com/pytorch/pytorch) and [Jittor](https://github.com/Jittor/jittor) libraries. Note that we only report the results of the Pytorch-based DGNet in our manuscript.
 
-- For the Pytorch usage, please refer to our [lib_pytorch](https://github.com/GewelsJI/DGNet/tree/main/lib_pytorch).
+- For the Pytorch users, please refer to our [lib_pytorch](https://github.com/GewelsJI/DGNet/tree/main/lib_pytorch).
 
-- For the Jittor usage, please refer to our [lib_jittor](https://github.com/GewelsJI/DGNet/tree/main/lib_jittor).
+- For the Jittor users, please refer to our [lib_jittor](https://github.com/GewelsJI/DGNet/tree/main/lib_jittor).
 
-
-### 3.3 Evaluation
-
-One-key evaluation is written in MATLAB code `./eval/matlab/`, please follow this the instructions in `./eval/matlab/main.m` and just run it to generate the evaluation results in `./eval-result/`.
 
 ### 3.4 COD Benchmark Results:
 
