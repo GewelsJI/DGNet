@@ -17,3 +17,12 @@ backup/
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
+
+dataset/TestDataset/
+dataset/TrainDataset/
+dataset/TestSet.zip
+dataset/TrainSet.zip
+my_workspace/
+lib_pytorch/snapshot/
+lib_pytorch/result/
+lib_ascend/

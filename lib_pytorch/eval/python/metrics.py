@@ -3,7 +3,7 @@
 # @Author   : Johnson-Chou
 # @Email    : johnson111788@gmail.com
 # @FileName : metrics.py
-# @Reference: https://github.com/mczhuge/SOCToolbox
+# @Reference: https://github.com/lartpang/PySODMetrics and https://github.com/mczhuge/SOCToolbox
 
 import torch
 import numpy as np

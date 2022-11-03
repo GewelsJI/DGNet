@@ -6,7 +6,7 @@ import logging
 import numpy as np
 from datetime import datetime
 from tensorboardX import SummaryWriter
-
+from lib.DGNet import DGNet as Network
 import torch
 import torch.nn.functional as F
 import torch.backends.cudnn as cudnn
@@ -14,9 +14,8 @@ from torch import optim
 from torchvision.utils import make_grid
 # customized libraries
 import eval.python.metrics as Measure
-from pytorch_lib.lib.DGNet import DGNet as Network
-from pytorch_lib.utils.utils import clip_gradient
-from pytorch_lib.utils.dataset import get_loader, test_dataset
+from utils.utils import clip_gradient
+from utils.dataset import get_loader, test_dataset
 
 
 def structure_loss(pred, mask):
@@ -173,15 +172,16 @@ if __name__ == '__main__':
     parser.add_argument('--clip', type=float, default=0.5, help='gradient clipping margin')
     parser.add_argument('--decay_rate', type=float, default=0.1, help='decay rate of learning rate')
     parser.add_argument('--decay_epoch', type=int, default=50, help='every n epochs decay learning rate')
-    parser.add_argument('--model', type=str, default='DGNet', choices=['DGNet', 'DGNet-S'])
+    parser.add_argument('--model', type=str, default='DGNet', 
+                        choices=['DGNet', 'DGNet-S', 'DGNet-PVTv2-B0', 'DGNet-PVTv2-B1', 'DGNet-PVTv2-B2', 'DGNet-PVTv2-B3', 'DGNet-PVTv2-B4'])
     parser.add_argument('--load', type=str, default=None, help='train from checkpoints')
-    parser.add_argument('--train_root', type=str, default='./dataset/TrainDataset/',
+    parser.add_argument('--train_root', type=str, default='../dataset/TrainDataset/',
                         help='the training rgb images root')
-    parser.add_argument('--val_root', type=str, default='./dataset/TestDataset/CAMO/',
+    parser.add_argument('--val_root', type=str, default='../dataset/TestDataset/CAMO/',
                         help='the test rgb images root')
     parser.add_argument('--gpu_id', type=str, default='1', 
                         help='train use gpu')
-    parser.add_argument('--save_path', type=str, default='./pytorch_lib/snapshot/Exp02/',
+    parser.add_argument('--save_path', type=str, default='./lib_pytorch/snapshot/Exp02/',
                         help='the path to save model and log')
     opt = parser.parse_args()
 
@@ -202,9 +202,19 @@ if __name__ == '__main__':
 
     # build the model
     if opt.model == 'DGNet':
-        model = Network(channel=64, arc='B4', M=[8, 8, 8], N=[4, 8, 16])
+        model = Network(channel=64, arc='EfficientNet-B4', M=[8, 8, 8], N=[4, 8, 16]).cuda()
     elif opt.model == 'DGNet-S':
-        model = Network(channel=32, arc='B1', M=[8, 8, 8], N=[8, 16, 32])
+        model = Network(channel=32, arc='EfficientNet-B1', M=[8, 8, 8], N=[8, 16, 32]).cuda()
+    elif opt.model == 'DGNet-PVTv2-B0':
+        model = Network(channel=32, arc='PVTv2-B0', M=[8, 8, 8], N=[8, 16, 32]).cuda()
+    elif opt.model == 'DGNet-PVTv2-B1':
+        model = Network(channel=64, arc='PVTv2-B1', M=[8, 8, 8], N=[4, 8, 16]).cuda()   
+    elif opt.model == 'DGNet-PVTv2-B2':
+        model = Network(channel=64, arc='PVTv2-B2', M=[8, 8, 8], N=[4, 8, 16]).cuda()
+    elif opt.model == 'DGNet-PVTv2-B3':
+        model = Network(channel=64, arc='PVTv2-B3', M=[8, 8, 8], N=[4, 8, 16]).cuda()   
+    elif opt.model == 'DGNet-PVTv2-B4':
+        model = Network(channel=64, arc='PVTv2-B4', M=[8, 8, 8], N=[4, 8, 16]).cuda()
     else:
         raise Exception("Invalid Model Symbol: {}".format(opt.model))
 

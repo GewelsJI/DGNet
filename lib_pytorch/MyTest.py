@@ -7,8 +7,8 @@ from scipy import misc
 import torch.nn.functional as F
 import torch.backends.cudnn as cudnn
 
-from pytorch_lib.utils.dataset import test_dataset as EvalDataset
-from pytorch_lib.lib.DGNet import DGNet as Network
+from utils.dataset import test_dataset as EvalDataset
+from lib.DGNet import DGNet as Network
 
 
 def evaluator(model, val_root, map_save_path, trainsize=352):
@@ -30,12 +30,13 @@ def evaluator(model, val_root, map_save_path, trainsize=352):
             output = (output - output.min()) / (output.max() - output.min() + 1e-8)
 
             misc.imsave(map_save_path + name, output)
-            print('>>> prediction save at: {}'.format(map_save_path + name))
+            print('>>> saving prediction at: {}'.format(map_save_path + name))
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model', type=str, default='DGNet', choices=['DGNet', 'DGNet-S'])
+    parser.add_argument('--model', type=str, default='DGNet', 
+                        choices=['DGNet', 'DGNet-S', 'DGNet-PVTv2-B0', 'DGNet-PVTv2-B1', 'DGNet-PVTv2-B2', 'DGNet-PVTv2-B3', 'DGNet-PVTv2-B4'])
     parser.add_argument('--snap_path', type=str, default='./snapshot/DGNet/Net_epoch_best.pth',
                         help='train use gpu')
     parser.add_argument('--gpu_id', type=str, default='1',
@@ -62,11 +63,20 @@ if __name__ == '__main__':
         print('USE GPU 3')
 
     cudnn.benchmark = True
-
     if opt.model == 'DGNet':
-        model = Network(channel=64, arc='B4', M=[8, 8, 8], N=[4, 8, 16])
+        model = Network(channel=64, arc='EfficientNet-B4', M=[8, 8, 8], N=[4, 8, 16]).cuda()
     elif opt.model == 'DGNet-S':
-        model = Network(channel=32, arc='B1', M=[8, 8, 8], N=[8, 16, 32])
+        model = Network(channel=32, arc='EfficientNet-B1', M=[8, 8, 8], N=[8, 16, 32]).cuda()
+    elif opt.model == 'DGNet-PVTv2-B0':
+        model = Network(channel=32, arc='PVTv2-B0', M=[8, 8, 8], N=[8, 16, 32]).cuda()
+    elif opt.model == 'DGNet-PVTv2-B1':
+        model = Network(channel=64, arc='PVTv2-B1', M=[8, 8, 8], N=[4, 8, 16]).cuda()   
+    elif opt.model == 'DGNet-PVTv2-B2':
+        model = Network(channel=64, arc='PVTv2-B2', M=[8, 8, 8], N=[4, 8, 16]).cuda()
+    elif opt.model == 'DGNet-PVTv2-B3':
+        model = Network(channel=64, arc='PVTv2-B3', M=[8, 8, 8], N=[4, 8, 16]).cuda()   
+    elif opt.model == 'DGNet-PVTv2-B4':
+        model = Network(channel=64, arc='PVTv2-B4', M=[8, 8, 8], N=[4, 8, 16]).cuda()
     else:
         raise Exception("Invalid Model Symbol: {}".format(opt.model))
 
@@ -74,10 +84,10 @@ if __name__ == '__main__':
     model.eval()
 
     for data_name in ['CAMO', 'COD10K', 'NC4K']:
-        map_save_path = txt_save_path + "/{}/".format(data_name)
+        map_save_path = txt_save_path + "{}/".format(data_name)
         os.makedirs(map_save_path, exist_ok=True)
         evaluator(
             model=model,
-            val_root='./dataset/TestDataset/' + data_name + '/',
+            val_root='../dataset/TestDataset/' + data_name + '/',
             map_save_path=map_save_path,
             trainsize=352)

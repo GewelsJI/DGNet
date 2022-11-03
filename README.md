@@ -29,6 +29,7 @@ This official repository contains the source code, prediction results, and evalu
 
 ## 2. :fire: NEWS :fire:
 
+- [2022/0]
 - [2022/08/06] Our paper has been accepted by [Machine Intelligence Research (MIR)](https://www.springer.com/journal/11633).
 - [2022/05/30] :fire: We release the implementation of DGNet with different AI frameworks: [Pytorch-based](https://github.com/GewelsJI/DGNet/tree/main/jittor_lib) and [Jittor-based](https://github.com/GewelsJI/DGNet/tree/main/jittor_lib).
 - [2022/05/30] Thank @Katsuya Hyodo for adding our model into [PINTO](https://github.com/PINTO0309/PINTO_model_zoo/tree/main/299_DGNet). This is a repository for storing models that have been inter-converted between various frameworks (e.g., TensorFlow, PyTorch, ONNX).
@@ -65,9 +66,9 @@ This official repository contains the source code, prediction results, and evalu
 
 The training and testing experiments are conducted using [PyTorch](https://github.com/pytorch/pytorch) and [Jittor](https://github.com/Jittor/jittor) libraries with a single GeForce RTX TITAN GPU. Note that we only report the results of the Pytorch-based DGNet in our manuscript.
 
-- For the Pytorch usage, please refer to our [pytorch_lib](https://github.com/GewelsJI/DGNet/tree/main/pytorch_lib).
+- For the Pytorch usage, please refer to our [lib_pytorch](https://github.com/GewelsJI/DGNet/tree/main/lib_pytorch).
 
-- For the Jittor usage, please refer to our [jittor_lib](https://github.com/GewelsJI/DGNet/tree/main/jittor_lib).
+- For the Jittor usage, please refer to our [lib_jittor](https://github.com/GewelsJI/DGNet/tree/main/lib_jittor).
 
 
 ### 3.3 Evaluation
@@ -77,15 +78,6 @@ One-key evaluation is written in MATLAB code `./eval/matlab/`, please follow thi
 ### 3.4 COD Benchmark Results:
 
 The prediction of our DGNet and DGNet-S can be found in [Pytorch](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EcwgyI1KDnBDjoFMZCLNJkAB7GjBYGgvDPlBAruSAVCOxw?e=RrBvHd) / [Jitror](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EbRmYVvdBIhEtRKWBUhzsNMBQ8F7Pnw7sUBAPDeN_Po_6A?e=crMmfP). The whole benchmark results can be found at [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXLiBgp9nGNApBw9im2xznsBJ_ryGEW7hkJlL92gNaRAAg?e=ktOw0B). Here are quantitative performance comparison from three perspectives.
-
-
-<!-- <p align="center">
-    <img src="assest/QualitativeResult_new_elite_v8.png"/> <br />
-    <em> 
-    Figure 4: Visualization of popular COD baselines and the proposed DGNet. Interestingly, these competitors fail to provide complete segmentation results for the camouflaged objects that touch the image boundary. By contrast, our approach can precisely locate the target region and provide exact predictions due to the gradient learning strategy.
-    </em>
-
-</p> -->
 
 <p align="center">
     <img src="assest/Benchmark.png"/> <br />

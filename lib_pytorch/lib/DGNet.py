@@ -2,7 +2,8 @@
 import torch
 import torch.nn as nn
 # customized libraries
-from pytorch_lib.lib.EfficientNet import EfficientNet
+from .EfficientNet import EfficientNet
+from .PVTv2 import *
 
 
 class ConvBR(nn.Module):
@@ -175,12 +176,34 @@ class DGNet(nn.Module):
         super(DGNet, self).__init__()
         channel = channel
 
-        if arc == 'B1':
+        if arc == 'EfficientNet-B1':
+            print('--> using efficientnet-b1 right now')
             self.context_encoder = EfficientNet.from_pretrained('efficientnet-b1')
             in_channel_list = [40, 112, 320]
-        elif arc == 'B4':
+        elif arc == 'EfficientNet-B4':
+            print('--> using efficientnet-b4 right now')
             self.context_encoder = EfficientNet.from_pretrained('efficientnet-b4')
             in_channel_list = [56, 160, 448]
+        elif arc == 'PVTv2-B0':
+            print('--> using PVTv2-B0 right now')
+            self.context_encoder = pvt_v2_b0(pretrained=True)
+            in_channel_list = [64, 160, 256]
+        elif arc == 'PVTv2-B1':
+            print('--> using PVTv2-B1 right now')
+            self.context_encoder = pvt_v2_b1(pretrained=True)
+            in_channel_list = [128, 320, 512]
+        elif arc == 'PVTv2-B2':
+            print('--> using PVTv2-B2 right now')
+            self.context_encoder = pvt_v2_b2(pretrained=True)
+            in_channel_list = [128, 320, 512]
+        elif arc == 'PVTv2-B3':
+            print('--> using PVTv2-B3 right now')
+            self.context_encoder = pvt_v2_b3(pretrained=True)
+            in_channel_list = [128, 320, 512]
+        elif arc == 'PVTv2-B4':
+            print('--> using PVTv2-B4 right now')
+            self.context_encoder = pvt_v2_b4(pretrained=True)
+            in_channel_list = [128, 320, 512]
         else:
             raise Exception("Invalid Architecture Symbol: {}".format(arc))
 
@@ -201,7 +224,7 @@ class DGNet(nn.Module):
         x3 = endpoints['reduction_3']
         x4 = endpoints['reduction_4']
         x5 = endpoints['reduction_5']
-
+        # print(x3.shape, x4.shape, x5.shape)
         xr3 = self.dr3(x3)
         xr4 = self.dr4(x4)
         xr5 = self.dr5(x5)
@@ -218,7 +241,7 @@ class DGNet(nn.Module):
 
 
 if __name__ == '__main__':
-    net = DGNet(channel=64, arc='B4', M=[8, 8, 8], N=[4, 8, 16]).eval()
+    net = DGNet(channel=64, arc='PVTv2-B2', M=[8, 8, 8], N=[4, 8, 16]).eval()
     inputs = torch.randn(1, 3, 352, 352)
     outs = net(inputs)
     print(outs[0].shape)
