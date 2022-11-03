@@ -22,7 +22,7 @@ The training and testing experiments are conducted using [PyTorch](https://githu
 
     + downloading testing dataset and move it into `./dataset/TestDataset/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXcBqW3Ses5HlYFeTAPlmiwBtPwXisbr53uIDGoM4h0UOg?e=d5tK9C).
     + downloading training dataset and move it into `./dataset/TrainDataset/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EUgtKNJSBYpElpgQzrIZLDEBmu9Stp5UL3P5HHkrHGXIyQ?e=5OgCok).
-    + downloading pretrained weights of DGNet and DGNet-S and move it into `./lib_pytorch/snapshot/`, which can be found in [OneDrive-New](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EdN-cAK5chpMnDnMvr6em8kBP1x3SuZu2ILDHwiuxp955g?e=jJMZ6U).
+    + downloading pretrained weights of DGNet and DGNet-S and move it into `./lib_pytorch/snapshot/`, which can be found in [GitHub](https://github.com/GewelsJI/DGNet/releases/tag/Checkpoints).
     + preparing the EfficientNet-B1/B4 weights on ImageNet (refer to [here](https://github.com/GewelsJI/DGNet/blob/00e4d2b54667eb71f734f60d46fffe47fbf2725e/lib/utils.py#L556)).
 
 3. Training Configuration:
@@ -39,12 +39,12 @@ The training and testing experiments are conducted using [PyTorch](https://githu
     + move into `cd lib_pytorch`
     + After you download all the pre-trained models and testing datasets, just run `./lib_pytorch/MyTest.py` to generate the final
       prediction map: replace your trained model directory (`--snap_path`).
-        + test DGNet (EfficientNet-B4): `python MyTest.py --gpu_id 1 --model DGNet --snap_path ./snapshot/DGNet/Net_epoch_best.pth`
-        + test DGNet-S (EfficientNet-B0): `python MyTest.py --gpu_id 1 --model DGNet-S --snap_path ./snapshot/Exp-DGNet-S/Net_epoch_best.pth`
-        + test DGNet-PVTv2-B0: `python MyTest.py --gpu_id 1 --model DGNet-PVTv2-B0 --snap_path ./snapshot/Exp-DGNet-PVTv2-B0/Net_epoch_best.pth`
-        + test DGNet-PVTv2-B1: `python MyTest.py --gpu_id 1 --model DGNet-PVTv2-B1 --snap_path ./snapshot/Exp-DGNet-PVTv2-B1/Net_epoch_best.pth`
-        + test DGNet-PVTv2-B2: `python MyTest.py --gpu_id 0 --model DGNet-PVTv2-B2 --snap_path ./snapshot/Exp-DGNet-PVTv2-B2/Net_epoch_best.pth`
-        + test DGNet-PVTv2-B3: `python MyTest.py --gpu_id 0 --model DGNet-PVTv2-B3 --snap_path ./snapshot/Exp-DGNet-PVTv2-B3/Net_epoch_best.pth`
+        + test DGNet (EfficientNet-B4): `python MyTest.py --gpu_id 1 --model DGNet --snap_path ./snapshot/DGNet.pth`
+        + test DGNet-S (EfficientNet-B0): `python MyTest.py --gpu_id 1 --model DGNet-S --snap_path ./snapshot/DGNet-S.pth`
+        + test DGNet-PVTv2-B0: `python MyTest.py --gpu_id 1 --model DGNet-PVTv2-B0 --snap_path ./snapshot/DGNet-PVTv2-B0.pth`
+        + test DGNet-PVTv2-B1: `python MyTest.py --gpu_id 1 --model DGNet-PVTv2-B1 --snap_path ./snapshot/DGNet-PVTv2-B1.pth`
+        + test DGNet-PVTv2-B2: `python MyTest.py --gpu_id 0 --model DGNet-PVTv2-B2 --snap_path ./snapshot/DGNet-PVTv2-B2.pth`
+        + test DGNet-PVTv2-B3: `python MyTest.py --gpu_id 0 --model DGNet-PVTv2-B3 --snap_path ./snapshot/DGNet-PVTv2-B3.pth`
 
 5. Evaluation Configuration
     + Matlab-style eval (reported in our paper)
@@ -55,6 +55,19 @@ The training and testing experiments are conducted using [PyTorch](https://githu
         + Just evaluate them via running  `python MyEval.py`
         + Please note that there maybe has a slight difference between matlab-style and python-style codes.
         + Evaluation results are available at [here](https://github.com/GewelsJI/DGNet/tree/main/lib_pytorch/eval_txt/20221103_DGNet_benchmark)
+
+6. Model Zoo
+
+- DGNet on COD10K
+
+| Method         | Size | S-measure | Max E-measure | #Params (M) | Download                                                                                            |
+|----------------|:----:|:---------:|:-------------:|:-----------:|-----------------------------------------------------------------------------------------------------|
+| DGNet-S        |  352 |   0.810   |     0.904     |     7.02    | 32M  [[GitHub]](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-S.pth)        |
+| DGNet          |  352 |   0.822   |     0.911     |    19.22    | 80M  [[GitHub]](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet.pth)          |
+| DGNet-PVTv2-B0 |  352 |   0.801   |     0.890     |    15.34    | 16M  [[GitHub]](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B0.pth) |
+| DGNet-PVTv2-B1 |  352 |   0.826   |     0.908     |    26.70    | 60M  [[GitHub]](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B1.pth) |
+| DGNet-PVTv2-B2 |  352 |   0.844   |     0.926     |    46.57    | 104M [[GitHub]](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B2.pth) |
+| DGNet-PVTv2-B3 |  352 |   0.851   |     0.931     |    63.89    | 180M [[GitHub]](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B3.pth) |
 
 
 

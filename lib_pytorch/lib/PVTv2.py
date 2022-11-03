@@ -244,7 +244,7 @@ class PyramidVisionTransformerV2(nn.Module):
             setattr(self, f"norm{i + 1}", norm)
 
         # classification head
-        self.head = nn.Linear(embed_dims[3], num_classes) if num_classes > 0 else nn.Identity()
+        # self.head = nn.Linear(embed_dims[3], num_classes) if num_classes > 0 else nn.Identity()
 
         self.apply(self._init_weights)
 
@@ -270,12 +270,12 @@ class PyramidVisionTransformerV2(nn.Module):
     def no_weight_decay(self):
         return {'pos_embed1', 'pos_embed2', 'pos_embed3', 'pos_embed4', 'cls_token'}  # has pos_embed may be better
 
-    def get_classifier(self):
-        return self.head
+    # def get_classifier(self):
+    #     return self.head
 
-    def reset_classifier(self, num_classes, global_pool=''):
-        self.num_classes = num_classes
-        self.head = nn.Linear(self.embed_dim, num_classes) if num_classes > 0 else nn.Identity()
+    # def reset_classifier(self, num_classes, global_pool=''):
+    #     self.num_classes = num_classes
+    #     self.head = nn.Linear(self.embed_dim, num_classes) if num_classes > 0 else nn.Identity()
 
     def extract_endpoints(self, x):
         B = x.shape[0]
@@ -333,6 +333,8 @@ def pvt_v2_b0(pretrained=False, **kwargs):
     model.default_cfg = _cfg()
     if pretrained:
         state_dict = load_state_dict_from_url('https://github.com/whai362/PVT/releases/download/v2/pvt_v2_b0.pth', progress=True)
+        state_dict.pop('head.weight')
+        state_dict.pop('head.bias')
         model.load_state_dict(state_dict)
     return model
 
@@ -346,6 +348,8 @@ def pvt_v2_b1(pretrained=False, **kwargs):
     model.default_cfg = _cfg()
     if pretrained:
         state_dict = load_state_dict_from_url('https://github.com/whai362/PVT/releases/download/v2/pvt_v2_b1.pth', progress=True)
+        state_dict.pop('head.weight')
+        state_dict.pop('head.bias')
         model.load_state_dict(state_dict)
     return model
 
@@ -358,6 +362,8 @@ def pvt_v2_b2(pretrained=False, **kwargs):
     model.default_cfg = _cfg()
     if pretrained:
         state_dict = load_state_dict_from_url('https://github.com/whai362/PVT/releases/download/v2/pvt_v2_b2.pth', progress=True)
+        state_dict.pop('head.weight')
+        state_dict.pop('head.bias')
         model.load_state_dict(state_dict)
     return model
 
@@ -371,6 +377,8 @@ def pvt_v2_b3(pretrained=False, **kwargs):
     model.default_cfg = _cfg()
     if pretrained:
         state_dict = load_state_dict_from_url('https://github.com/whai362/PVT/releases/download/v2/pvt_v2_b3.pth', progress=True)
+        state_dict.pop('head.weight')
+        state_dict.pop('head.bias')
         model.load_state_dict(state_dict)
 
     return model
@@ -385,6 +393,8 @@ def pvt_v2_b4(pretrained=False, **kwargs):
     model.default_cfg = _cfg()
     if pretrained:
         state_dict = load_state_dict_from_url('https://github.com/whai362/PVT/releases/download/v2/pvt_v2_b4.pth', progress=True)
+        state_dict.pop('head.weight')
+        state_dict.pop('head.bias')
         model.load_state_dict(state_dict)
 
     return model

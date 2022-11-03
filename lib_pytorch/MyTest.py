@@ -6,6 +6,7 @@ from scipy import misc
 
 import torch.nn.functional as F
 import torch.backends.cudnn as cudnn
+from torchvision.models.utils import load_state_dict_from_url
 
 from utils.dataset import test_dataset as EvalDataset
 from lib.DGNet import DGNet as Network
