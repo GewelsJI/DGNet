@@ -1,4 +1,4 @@
-# <p align=center>`Deep Gradient Learning for Efficient Camouflaged Object Detection (MIR 2022)`</p>
+# <p align=center>`Deep Gradient Learning for Efficient Camouflaged Object Detection (MIR 2023)`</p>
 
 > **Authors:**
 > [Ge-Peng Ji](https://github.com/GewelsJI),
@@ -29,7 +29,7 @@ This official repository contains the source code, prediction results, and evalu
 
 ## 2. :fire: NEWS :fire:
 
-- [2022/0]
+- [2022/11/03] We add the support for the [PVTv2](https://github.com/whai362/PVT) Transformer backbone, achieving excitied performance again on COD benchmark. Please enjoy it. ([link](https://github.com/GewelsJI/DGNet/tree/main/lib_pytorch))
 - [2022/08/06] Our paper has been accepted by [Machine Intelligence Research (MIR)](https://www.springer.com/journal/11633).
 - [2022/05/30] :fire: We release the implementation of DGNet with different AI frameworks: [Pytorch-based](https://github.com/GewelsJI/DGNet/tree/main/jittor_lib) and [Jittor-based](https://github.com/GewelsJI/DGNet/tree/main/jittor_lib).
 - [2022/05/30] Thank @Katsuya Hyodo for adding our model into [PINTO](https://github.com/PINTO0309/PINTO_model_zoo/tree/main/299_DGNet). This is a repository for storing models that have been inter-converted between various frameworks (e.g., TensorFlow, PyTorch, ONNX).
@@ -111,5 +111,5 @@ Please cite our paper if you find the work useful:
       title={Deep Gradient Learning for Efficient Camouflaged Object Detection},
       author={Ji, Ge-Peng and Fan, Deng-Ping and Chou, Yu-Cheng and Dai, Dengxin and Liniger, Alexander and Van Gool, Luc},
       journal={Machine Intelligence Research},
-      year={2022}
+      year={2023}
     } 
