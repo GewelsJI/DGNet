@@ -29,7 +29,8 @@ This official repository contains the source code, prediction results, and evalu
 
 ## 2. :fire: NEWS :fire:
 
-- [2022/11/03] We add the support for the [PVTv2](https://github.com/whai362/PVT) Transformer backbone, achieving excitied performance again on COD benchmark. Please enjoy it -> ([link](https://github.com/GewelsJI/DGNet/tree/main/lib_pytorch))
+- [2022/11/14] We convert the PyTorch model to [ONNX model](https://onnx.ai/) that is easier to access hardware optimizations and [Huawei-OM model](https://www.hiascend.com/software/mindx-sdk) that supports Huawei Ascend series AI processors. More details could be found at [lib_ascend](https://github.com/GewelsJI/DGNet/tree/main/lib_ascend).
+- [2022/11/03] We add the support for the [PVTv2](https://github.com/whai362/PVT) Transformer backbone, achieving excitied performance again on COD benchmarks. Please enjoy it -> ([link](https://github.com/GewelsJI/DGNet/tree/main/lib_pytorch))
 - [2022/08/06] Our paper has been accepted by [Machine Intelligence Research (MIR)](https://www.springer.com/journal/11633).
 - [2022/05/30] :fire: We release the implementation of DGNet with different AI frameworks: [Pytorch-based](https://github.com/GewelsJI/DGNet/tree/main/jittor_lib) and [Jittor-based](https://github.com/GewelsJI/DGNet/tree/main/jittor_lib).
 - [2022/05/30] Thank @Katsuya Hyodo for adding our model into [PINTO](https://github.com/PINTO0309/PINTO_model_zoo/tree/main/299_DGNet). This is a repository for storing models that have been inter-converted between various frameworks (e.g., TensorFlow, PyTorch, ONNX).
