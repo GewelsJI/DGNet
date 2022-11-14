@@ -25,4 +25,3 @@ dataset/TrainSet.zip
 my_workspace/
 lib_pytorch/snapshot/
 lib_pytorch/result/
-lib_ascend/
