@@ -231,12 +231,12 @@ python evaluation.py
 
 | Dataset |         Method        | Smeasure | wFmeasure |  MAE  | adpEm | meanEm | maxEm | adpFm | meanFm | maxFm | Download Links |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|   NC4K  |     Exp-DGNet-S-OM    |  0.844   |   0.764   | 0.047 | 0.903 |  0.9   | 0.912 | 0.791 |  0.8   | 0.818 | [Pytorch]()/[ONNX]()/[OM]() |
-|   NC4K  |      Exp-DGNet-OM     |  0.857   |   0.783   | 0.043 |  0.91 | 0.911  | 0.922 | 0.802 | 0.813  | 0.833 | [Pytorch]()/[ONNX]()/[OM]() |
-|   NC4K  | Exp-DGNet-PVTv2-B0-OM |  0.841   |   0.755   |  0.05 | 0.894 | 0.894  | 0.906 |  0.78 | 0.791  | 0.811 | [Pytorch]()/[ONNX]()/[OM]() |
-|   NC4K  | Exp-DGNet-PVTv2-B1-OM |  0.861   |   0.791   | 0.042 |  0.91 | 0.913  | 0.922 |  0.81 | 0.819  | 0.837 | [Pytorch]()/[ONNX]()/[OM]() |
-|   NC4K  | Exp-DGNet-PVTv2-B2-OM |  0.874   |   0.818   | 0.038 | 0.925 | 0.926  | 0.933 | 0.834 | 0.842  | 0.858 | [Pytorch]()/[ONNX]()/[OM]() |
-|   NC4K  | Exp-DGNet-PVTv2-B3-OM |   0.88   |   0.826   | 0.035 |  0.93 | 0.931  | 0.939 | 0.841 | 0.849  | 0.863 | [Pytorch]()/[ONNX]()/[OM]() |
+|   NC4K  |     Exp-DGNet-S-OM    |  0.844   |   0.764   | 0.047 | 0.903 |  0.9   | 0.912 | 0.791 |  0.8   | 0.818 | [Pytorch](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-S.pth)/[ONNX](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-S.onnx)/[OM](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-S.om) |
+|   NC4K  |      Exp-DGNet-OM     |  0.857   |   0.783   | 0.043 |  0.91 | 0.911  | 0.922 | 0.802 | 0.813  | 0.833 | [Pytorch](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet.pth)/[ONNX](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet.onnx)/[OM](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet.om) |
+|   NC4K  | Exp-DGNet-PVTv2-B0-OM |  0.841   |   0.755   |  0.05 | 0.894 | 0.894  | 0.906 |  0.78 | 0.791  | 0.811 | [Pytorch](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B0.pth)/[ONNX](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B0.onnx)/[OM](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B0.om) |
+|   NC4K  | Exp-DGNet-PVTv2-B1-OM |  0.861   |   0.791   | 0.042 |  0.91 | 0.913  | 0.922 |  0.81 | 0.819  | 0.837 | [Pytorch](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B1.pth)/[ONNX](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B1.onnx)/[OM](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B1.om) |
+|   NC4K  | Exp-DGNet-PVTv2-B2-OM |  0.874   |   0.818   | 0.038 | 0.925 | 0.926  | 0.933 | 0.834 | 0.842  | 0.858 | [Pytorch](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B2.pth)/[ONNX](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B2.onnx)/[OM](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B2.om) |
+|   NC4K  | Exp-DGNet-PVTv2-B3-OM |   0.88   |   0.826   | 0.035 |  0.93 | 0.931  | 0.939 | 0.841 | 0.849  | 0.863 | [Pytorch](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B3.pth)/[ONNX](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B3.onnx)/[OM](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B3.om) |
 
 
 - 定性性能验证：
