@@ -6,17 +6,21 @@
 
 ### 1.1 概要描述
 
-在本系统中，目的是基于MindX SDK，在华为云昇腾平台上，开发端到端**伪装目标分割**的参考设计，实现**对图像中的伪装进行识别检测**的功能，达到功能要求
+伪装目标检测（Camouflaged Object Detection, COD）旨在分割具有人工或者自然模式的目标，这些目标能够“完美地”融入背景之中，以避免被发现。一些成功应用已展现出伪装目标检测任务的科学和工业价值，例如：医疗图像分析（包括：息肉和肺部感染分割）、视频理解（例如：运动分割、视频监控和自动驾驶）和休闲艺术。
+
+在本案例的设计目的是：基于MindX SDK工具，在华为云昇腾平台上，开发端到端的伪装目标分割的参考设计案例，实现对图像中的伪装进行识别检测的功能，并达到功能要求
 
 ### 1.2 模型介绍
 
-本项目主要基于用于通用伪装目标分割任务的DGNet模型
+本项目主要基于通用伪装目标分割任务的DGNet（Deep Gradient Network）模型进行开发演示：
 
 - 模型的具体描述和细节可以参考原文：https://arxiv.org/abs/2205.12853
 
 - 具体实现细节可以参考基于PyTorch深度学习框架的代码：https://github.com/GewelsJI/DGNet/tree/main/lib_pytorch
 
-- 所使用的模型是PVTv2-B1版本的DGNet模型，原始的PyTorch模型文件可以在此处下载：https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B1.pth
+- 所使用的公开数据集是NC4K，可以在此处下载：https://mindx.sdk.obs.cn-north-4.myhuaweicloud.com/mindxsdk-referenceapps%20/contrib/snapshots/data.tar
+
+- 所使用的模型是EfficientNet-B4版本的DGNet模型，原始的PyTorch模型文件可以在此处下载：https://mindx.sdk.obs.cn-north-4.myhuaweicloud.com/mindxsdk-referenceapps%20/contrib/snapshots/DGNet.zip
 
 ### 1.3 实现流程
 
