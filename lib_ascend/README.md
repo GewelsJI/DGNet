@@ -8,7 +8,11 @@
 
 伪装目标检测（Camouflaged Object Detection, COD）旨在分割具有人工或者自然模式的目标，这些目标能够“完美地”融入背景之中，以避免被发现。一些成功应用已展现出伪装目标检测任务的科学和工业价值，例如：医疗图像分析（包括：息肉和肺部感染分割）、视频理解（例如：运动分割、视频监控和自动驾驶）和休闲艺术。
 
-具体可以参考如下论文：[2020-CVPR-Camouflaged Object Detection](https://ieeexplore.ieee.org/document/9156837) 和 [2022-TPAMI-Concealed Object Detection](https://ieeexplore.ieee.org/document/9444794)
+通用伪装图像中的目标对象一般是静态的，其表观颜色、结构模式与背景具有高度相似性，因而难以被察觉。针对上述通用伪装图像场景下的复杂性和挑战性，所设计的算法模型需要针对所给定的视觉场景进行更高层次的语义解析与智能理解，并从中检测出具有伪装模式的目标。
+
+本技术方案旨在探索通用伪装场景的解析技术，为各类下游任务提供通用化检测模型和通用化表征等一系列解决方案。目标可以分解为：基于大规模伪装场景数据集设计一个基于目标梯度学习范式的伪装场景解析算法模型，用于针对伪装视觉场景中的伪装目标进行精确分割，形成一个通用化的解决方案以促进各种下游应用的迁移应用。
+
+更多信息具体可以参考如下论文：[2020-CVPR-Camouflaged Object Detection](https://ieeexplore.ieee.org/document/9156837) 和 [2022-TPAMI-Concealed Object Detection](https://ieeexplore.ieee.org/document/9444794)
 
 在本案例的设计目的是：基于MindX SDK工具，在华为云昇腾平台上，开发端到端的伪装目标分割的参考设计案例，实现对图像中的伪装进行识别检测的功能，并达到功能要求
 
@@ -35,7 +39,7 @@
 
 ### 1.4 代码地址
 
-本项目的代码地址为：xxxx
+本项目的代码地址为：xxxx (will be updated later)
 
 ## 2 软件方案介绍
 
@@ -235,14 +239,14 @@ python evaluation.py
 这里给出了所有模型的测评结果，可以看出S-measure指标上均超越了项目交付中提到的大于0.84的要求。
 
 
-| Dataset |         Method        | Smeasure | wFmeasure |  MAE  | adpEm | meanEm | maxEm | adpFm | meanFm | maxFm | Download Links |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-|   NC4K  |     Exp-DGNet-S-OM    |  0.844   |   0.764   | 0.047 | 0.903 |  0.9   | 0.912 | 0.791 |  0.8   | 0.818 | [Pytorch](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-S.pth)/[ONNX](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-S.onnx)/[OM](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-S.om) |
-|   NC4K  |      Exp-DGNet-OM     |  0.857   |   0.783   | 0.043 |  0.91 | 0.911  | 0.922 | 0.802 | 0.813  | 0.833 | [Pytorch](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet.pth)/[ONNX](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet.onnx)/[OM](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet.om) |
-|   NC4K  | Exp-DGNet-PVTv2-B0-OM |  0.841   |   0.755   |  0.05 | 0.894 | 0.894  | 0.906 |  0.78 | 0.791  | 0.811 | [Pytorch](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B0.pth)/[ONNX](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B0.onnx)/[OM](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B0.om) |
-|   NC4K  | Exp-DGNet-PVTv2-B1-OM |  0.861   |   0.791   | 0.042 |  0.91 | 0.913  | 0.922 |  0.81 | 0.819  | 0.837 | [Pytorch](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B1.pth)/[ONNX](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B1.onnx)/[OM](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B1.om) |
-|   NC4K  | Exp-DGNet-PVTv2-B2-OM |  0.874   |   0.818   | 0.038 | 0.925 | 0.926  | 0.933 | 0.834 | 0.842  | 0.858 | [Pytorch](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B2.pth)/[ONNX](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B2.onnx)/[OM](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B2.om) |
-|   NC4K  | Exp-DGNet-PVTv2-B3-OM |   0.88   |   0.826   | 0.035 |  0.93 | 0.931  | 0.939 | 0.841 | 0.849  | 0.863 | [Pytorch](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B3.pth)/[ONNX](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B3.onnx)/[OM](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B3.om) |
+| Dataset |         Method        | Smeasure | wFmeasure |  MAE  | adpEm | meanEm | maxEm | adpFm | meanFm | maxFm | Results Download | Checkpoint Download |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|   NC4K  |     Exp-DGNet-S-OM    |  0.843   |   0.761   | 0.048 | 0.901 | 0.899  | 0.911 | 0.786 | 0.797  | 0.816 | [Seg Results](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/Efe_dMRIsLVNqLEhpscASVwB7P8OWi2oVr2UDKbqZOJs2w?e=TdU1A1) | [PyTorch](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXE9C4h9pGxLtp780AjTSisBaQxn-GxWjy-QQB0aIBHymw?e=qKy4Vc) / [ONNX](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/Ec31R8RW_dVPiIG5Ey_fpzEBapniVTX_XnR7SpQ-T-HEIA?e=cQsKah) / [OM](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EVnWHGYgZkFDmvs91lxWXk0Bjs_Tk7XoUUqspRniXttPCQ?e=YxcEbu) |
+|   NC4K  |      Exp-DGNet-OM     |  0.856   |   0.782   | 0.043 | 0.909 |  0.91  | 0.921 |  0.8  | 0.812  | 0.833 | [Seg Results](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/Ec0HB7BfVY9Knhi3IRwWLxoB4stGbWIE9A05oyw-5nDTtQ?e=CxVF16) | [PyTorch](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EVnWHGYgZkFDmvs91lxWXk0Bjs_Tk7XoUUqspRniXttPCQ?e=YxcEbu) / [ONNX](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/ES6R29AjYaJJoSGmpZPxNmoBGETW7pLj2QM612mTIKqKmA?e=2akBcP) / [OM](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EeHOuPbHuUdGrVraVzdh64UB-ZDvcdrvOKywg3yo__EQSA?e=geMyfG) |
+|   NC4K  | Exp-DGNet-PVTv2-B0-OM |  0.839   |    0.75   | 0.051 | 0.892 | 0.891  | 0.904 | 0.777 | 0.787  | 0.807 | [Seg Results](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/ET6c-JU-_HlCqUIakvQE9zYBgZRz-sBX0Xf6iyD3kj3YRQ?e=uXNleo) | [PyTorch](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EU-cuapS6H1BnjWHXdIGo2MBTcxEtgMgzt4rbGCbjCAJeg?e=awbKQQ) / [ONNX](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EZLxRXW7WcBJlLnebd2LP3UBBA9it_haxusewKm4H-ZJYQ?e=nFVSuY) / [OM](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EZJw-XnnsFJImyeL3crQhxcBR4W7CB4w3tM-ZAkFcUpjag?e=yh4HFp) |
+|   NC4K  | Exp-DGNet-PVTv2-B1-OM |  0.859   |   0.785   | 0.043 | 0.907 | 0.909  | 0.919 | 0.803 | 0.815  | 0.833 | [Seg Results](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EWxQKjqxxhNNsF8u8ypnrRQBHir2IBcHX38XShznZbOLWg?e=xZwv1y) | [PyTorch](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/ETsWYJGo1fVMhoke77cYsMEBdo99XjsRh47XNBh1EGkUlA?e=sPKn1E) / [ONNX](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EUk7jSM-9ntJtmQ6dwwNc6oBmzdkURbzhaluQ5CIEQqQMg?e=Serf3l) / [OM](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EWmh5pEAmetDmR9I6ETJmIQBgfr-dFBzntTn_S4ElBH31Q?e=VNdgBn) |
+|   NC4K  | Exp-DGNet-PVTv2-B2-OM |  0.873   |   0.813   | 0.038 | 0.922 | 0.923  | 0.931 | 0.829 | 0.838  | 0.855 | [Seg Results](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EZILsYt-lrRCr5fu3xfv-mEBEs0RFs_oRXjatdYcWQfGbQ?e=sebvoV) | [PyTorch](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXg3LmvRzsRGu-aw13R_jUQBeDRcgFDfiqXd0GZo4dadSg?e=EnMknP) / [ONNX](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EWdJFWMD3E1JtRuOF9IBylMBKpNrSjztTOOgxnkxt2i-Ng?e=Z7GqaA) / [OM](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/Ea3mQJOdDJVKq_qx-Z4Frl8Bq5sqH3-CwVUKqceIWARxuw?e=NM7Rhp) |
+|   NC4K  | Exp-DGNet-PVTv2-B3-OM |  0.879   |   0.822   | 0.035 | 0.928 | 0.929  | 0.938 | 0.836 | 0.846  | 0.861 | [Seg Results](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EY2xc22ugTZBhZIO3-zfqrwB5fEFzdaeQHJHjQMtGG5afQ?e=AvF8sA) | [PyTorch](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EQAYvlkg-q1EoZF-XyxxWLUBm0oV4Of7Vu7gaklMUnhvGQ?e=4JFHVx) / [ONNX](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/ERC-f89wsFlKsbiYWN3IpiQBf5nBRkvd9SHktTjSBu0PEg?e=vUAETi) / [OM](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/Ee-mfkAiD1FNlVvSK-bia8UB-LZ0RdRCRWv1XBvjKpEjlw?e=XidOTS) |
 
 
 - 定性性能验证：
