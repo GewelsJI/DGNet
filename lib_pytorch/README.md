@@ -56,16 +56,16 @@ The training and testing experiments are conducted using [PyTorch](https://githu
         + Assigning your costumed competitors (`--model_lst`) in `./lib_pytorch/MyEval.py`
         + Just evaluate them via running  `python MyEval.py`
         + Please note that there maybe has a slight difference between matlab-style and python-style codes.
-        + The below table presents the performance comparison among different model variants on COD10K dataset. Completed evaluation results are available at [here](https://github.com/GewelsJI/DGNet/tree/main/lib_pytorch/eval_txt/20221103_DGNet_benchmark).
+        + The below table presents the performance comparison among different model variants on COD10K dataset. Completed evaluation results (*.txt) are available at [here](https://github.com/GewelsJI/DGNet/tree/main/lib_pytorch/eval_txt/20221103_DGNet_benchmark).
 
-      | Method         | Input Size | S-measure | Max E-measure | #Params (M) | Download                                                                                            |
-      |----------------|:----:|:---------:|:-------------:|:-----------:|-----------------------------------------------------------------------------------------------------|
-      | DGNet-S (EfficientNet-B0)        |  352 |   0.810   |     0.904     |     7.02    | 32M  [[GitHub]](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-S.pth)        |
-      | DGNet (EfficientNet-B4)         |  352 |   0.822   |     0.911     |    19.22    | 80M  [[GitHub]](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet.pth)          |
-      | DGNet-PVTv2-B0 |  352 |   0.801   |     0.890     |    15.34    | 16M  [[GitHub]](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B0.pth) |
-      | DGNet-PVTv2-B1 |  352 |   0.826   |     0.908     |    26.70    | 60M  [[GitHub]](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B1.pth) |
-      | DGNet-PVTv2-B2 |  352 |   0.844   |     0.926     |    46.57    | 104M [[GitHub]](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B2.pth) |
-      | DGNet-PVTv2-B3 |  352 |   0.851   |     0.931     |    63.89    | 180M [[GitHub]](https://github.com/GewelsJI/DGNet/releases/download/Checkpoints/DGNet-PVTv2-B3.pth) |
+      | Method         | Input Size | S-measure | Max E-measure | #Params (M) | Results Download | Checkpoint Download |
+      |---|---|---|---|---|---|---|
+      | DGNet-S (EfficientNet-B0)        |  352 |   0.810   |     0.904     |     7.02    | [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXR_QM80Vb1Pj_5ugsIL6WkBXz3vo-TxjHJC6TjQrR90tA?e=DHvvbD) | [OneDrive-32M](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXE9C4h9pGxLtp780AjTSisBaQxn-GxWjy-QQB0aIBHymw?e=qKy4Vc) |
+      | DGNet (EfficientNet-B4)         |  352 |   0.822   |     0.911     |    19.22    | [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/Edrep8XOwWRDtkkKj2fbb5sBXjb23rzfrYQjJI1qEJ3f8g?e=TrTmAg) | [OneDrive-80M](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EVnWHGYgZkFDmvs91lxWXk0Bjs_Tk7XoUUqspRniXttPCQ?e=YxcEbu) |
+      | DGNet-PVTv2-B0 |  352 |   0.801   |     0.890     |    15.34    | [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EbMkc3IAGMpLtAzXt2g55f8BDNdh6Aqc-Wje9qt6ze9QEA?e=iObw0e) | [OneDrive-16M](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EU-cuapS6H1BnjWHXdIGo2MBTcxEtgMgzt4rbGCbjCAJeg?e=awbKQQ) |
+      | DGNet-PVTv2-B1 |  352 |   0.826   |     0.908     |    26.70    | [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EQ1yy6bSRGpJsVIoRGPxzTgBBCuLqAn8FCylNJ5Ag7QQ2A?e=jEsA4h) | [OneDrive-60M](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/ETsWYJGo1fVMhoke77cYsMEBdo99XjsRh47XNBh1EGkUlA?e=sPKn1E) |
+      | DGNet-PVTv2-B2 |  352 |   0.844   |     0.926     |    46.57    | [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/Eaa9a_BAAFBJq2nmnTjRhb4BVaepqQZq_3nQ7CAzG1xP4g?e=uc4K0c) | [OneDrive-104M](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXg3LmvRzsRGu-aw13R_jUQBeDRcgFDfiqXd0GZo4dadSg?e=EnMknP) |
+      | DGNet-PVTv2-B3 |  352 |   0.851   |     0.931     |    63.89    | [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EW59ONfH3lxPhbC2ioyvRFEBb9_eK8K43D5yU-YFl4luog?e=dhYLVD) | [OneDrive-180M](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EQAYvlkg-q1EoZF-XyxxWLUBm0oV4Of7Vu7gaklMUnhvGQ?e=4JFHVx) |
 
 
 
