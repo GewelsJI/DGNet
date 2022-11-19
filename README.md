@@ -29,6 +29,7 @@ This official repository contains the source code, prediction results, and evalu
 
 ## 2. :fire: NEWS :fire:
 
+- [2022/11/18] The segmentation results on CHAMELEON dataset are availbale here: [DGNet (CAHMELEON)](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXz2zGPFwWJLufVlnnNMjoABHd0bq3I-cwQgSTdQLbtaLQ?e=c1xsxB) and [DGNet-S (CHEMELEON)](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EZYA_mIuor1FqA7y5cbrcjoB1nybWNq4mGnBkHADMAZLIQ?e=dEopfd).
 - [2022/11/14] We convert the PyTorch model to [ONNX model](https://onnx.ai/) that is easier to access hardware optimizations and [Huawei-OM model](https://www.hiascend.com/software/mindx-sdk) that supports Huawei Ascend series AI processors. More details could be found at [lib_ascend](https://github.com/GewelsJI/DGNet/tree/main/lib_ascend).
 - [2022/11/03] We add the support for the [PVTv2](https://github.com/whai362/PVT) Transformer backbone, achieving excitied performance again on COD benchmarks. Please enjoy it -> ([link](https://github.com/GewelsJI/DGNet/tree/main/lib_pytorch))
 - [2022/08/06] Our paper has been accepted by [Machine Intelligence Research (MIR)](https://www.springer.com/journal/11633).
