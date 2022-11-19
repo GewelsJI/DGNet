@@ -14,7 +14,7 @@
 
 更多信息具体可以参考如下论文：[2020-CVPR-Camouflaged Object Detection](https://ieeexplore.ieee.org/document/9156837) 和 [2022-TPAMI-Concealed Object Detection](https://ieeexplore.ieee.org/document/9444794)
 
-在本案例的设计目的是：基于MindX SDK工具，在华为云昇腾平台上，开发端到端的伪装目标分割的参考设计案例，实现对图像中的伪装进行识别检测的功能，并达到功能要求
+在本案例的设计目的是：基于MindX SDK工具，在华为云昇腾NPU平台上，开发端到端的伪装目标分割的参考设计案例，实现对图像中的伪装进行识别检测的功能，并达到功能要求
 
 ### 1.2 模型介绍
 
