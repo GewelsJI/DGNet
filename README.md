@@ -71,6 +71,7 @@ We provide various versions for different deep learning platforms, including [Py
 
 - For the Jittor users, please refer to our [lib_jittor](https://github.com/GewelsJI/DGNet/tree/main/lib_jittor).
 
+- For the Huawei Ascend users, please refer to our [lib_ascend](https://github.com/GewelsJI/DGNet/tree/main/lib_ascend).
 
 ### 3.4 COD Benchmark Results:
 

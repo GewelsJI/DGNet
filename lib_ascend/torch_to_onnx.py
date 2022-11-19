@@ -42,16 +42,18 @@ def pth2onnx(model_type, input_file, output_file):
 
 
 if __name__ == "__main__":
+    """
+    # convert ONNX model (*.onnx) to huawei offline model (*.om)
+    source /usr/local/Ascend/ascend-toolkit/set_env.sh
+    atc --framework=5 --model=DGNet-PVTv2-B3.onnx --output=DGNet-PVTv2-B3 --input_shape="image:1,3,352,352" --log=debug --soc_version=Ascend310 > atc.log
+
+    # infer om model
+    conda activate py392
+    . ~/mindx_dir/mxVision/set_env.sh
+    """
     pth2onnx(
         model_type='DGNet-PVTv2-B3', 
         input_file='./snapshots/DGNet-PVTv2-B3/DGNet-PVTv2-B3.pth', 
         output_file='./snapshots/DGNet-PVTv2-B3/DGNet-PVTv2-B3.onnx')
 
 
-"""
-source /usr/local/Ascend/ascend-toolkit/set_env.sh
-atc --framework=5 --model=DGNet-PVTv2-B3.onnx --output=DGNet-PVTv2-B3 --input_shape="image:1,3,352,352" --log=debug --soc_version=Ascend310 > atc.log
-
-conda activate py392
-. ~/mindx_dir/mxVision/set_env.sh
-"""

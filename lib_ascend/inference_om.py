@@ -1,7 +1,4 @@
-#!/usr/bin/env python
-#-*-coding:utf-8-*-
-
-# Copyright(C) 2021. Huawei Technologies Co.,Ltd. All rights reserved.
+# Copyright(C) 2022. Huawei Technologies Co.,Ltd. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,56 +12,93 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""
-Paper Title: Deep Gradient Learning for Camouflaged Object Detection
-Project Page: https://github.com/GewelsJI/DGNet
-Author: Ge-Peng Ji
-Paper Citation:
-@article{ji2022gradient,
-  title={Deep Gradient Learning for Efficient Camouflaged Object Detection},
-  author={Ji, Ge-Peng and Fan, Deng-Ping and Chou, Yu-Cheng and Dai, Dengxin and Liniger, Alexander and Van Gool, Luc},
-  journal={Machine Intelligence Research},
-  year={2023}
-} 
-"""
-
 import os
+import argparse
+
+import cv2
+import imageio
+import mindspore
 import numpy as np
 from mindx.sdk.base import Tensor, Model
-import torch.nn.functional as F
-import torch
-from utils.dataset import test_dataset as EvalDataset
-import imageio
 
 
-def infer(filepath, SAVE_PATH, device_id):
-    model = Model(filepath, device_id)
+def get_image(image_path, mean, std):
+    """
+    get image by its path.
+    :param 
+        image_path: the path of image
+        mean: the mean value of samples (from ImageNet)
+        std: the std value of samples (from ImageNet)
+    :return: a numpy array of image
+    """
+    image_bgr = cv2.imread(image_path)
+    imge_rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
+    image_size = imge_rgb.shape
+    imge_rgb = cv2.resize(imge_rgb, (352, 352))
+    imge_rgb = np.array([imge_rgb])
+    image = imge_rgb.transpose(0, 3, 1, 2).astype(np.float32) / 255.0
+    image = (image - np.asarray(mean)[None, :, None, None]) / np.asarray(std)[None, :, None, None]
+    image = np.ascontiguousarray(image, dtype=np.float32)
+    return image, image_size[0], image_size[1]
+
+
+def infer(om_path, save_path, device_id, data_path='./data/NC4K/Imgs'):
+    """
+    Paper Title: Deep Gradient Learning for Camouflaged Object Detection
+    Original Project Page: https://github.com/GewelsJI/DGNet
+    Author: Ge-Peng Ji
+    Paper Citation Bibtex:
+    @article{ji2022gradient,
+      title={Deep Gradient Learning for Efficient Camouflaged Object Detection},
+      author={Ji, Ge-Peng and Fan, Deng-Ping and Chou, Yu-Cheng and Dai, 
+              Dengxin and Liniger, Alexander and Van Gool, Luc},
+      journal={Machine Intelligence Research},
+      year={2023}
+    } 
+    """
+    model = Model(om_path, device_id)
     print(model)
+    
+    os.makedirs(save_path, exist_ok=True)
+    for img_name in os.listdir(data_path):
+        image, h, w = get_image(
+            os.path.join(data_path, img_name), 
+            mean=[0.485, 0.456, 0.406], 
+            std=[0.229, 0.224, 0.225])
 
-    val_loader = EvalDataset(image_root='./data/NC4K/Imgs/',
-                             gt_root='./data/NC4K/GT/',
-                             testsize=352)
-    os.makedirs(SAVE_PATH, exist_ok=True)
-    for i in range(val_loader.size):
-        images, gt, name, _ = val_loader.load_data()
-        gt = np.asarray(gt, np.float32)
-        images = images.numpy()
-        imageTensor = Tensor(images)
-        imageTensor.to_device(device_id)
-        out = model.infer(imageTensor)
+        # put image array into ascend ai processor
+        image_tensor = Tensor(image)
+        image_tensor.to_device(device_id)
+
+        # infer
+        out = model.infer(image_tensor)
         out = out[0]
         out.to_host()
+        res = np.array(out)
 
-        res = torch.from_numpy(np.array(out))
-        res = F.upsample(res, size=gt.shape, mode='bilinear', align_corners=False)
-        res = res.sigmoid().data.cpu().numpy().squeeze()
+        # save results
+        res = mindspore.Tensor(res)
+        
+        res = mindspore.ops.Sigmoid()(res)
+        res = mindspore.nn.ResizeBilinear()(res, (h, w))
         res = (res - res.min()) / (res.max() - res.min() + 1e-8)
-        print('--> save results: {}'.format(SAVE_PATH+name))
-        imageio.imwrite(SAVE_PATH+name, res)
+        res = res.asnumpy().squeeze()
+        imageio.imwrite(save_path+img_name.replace('.jpg', '.png'), res)
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        '--om_path', type=str, 
+        default='./snapshots/DGNet-PVTv2-B3/DGNet.om',
+        help='the test rgb images root')
+    parser.add_argument(
+        '--save_path', type=str, 
+        default='./seg_results_om/Exp-DGNet-OM/NC4K/',
+        help='the test rgb images root')
+    args = parser.parse_args()
+    
     infer(
-        filepath='./snapshots/DGNet-PVTv2-B3/DGNet-PVTv2-B3.om', 
-        SAVE_PATH='./seg_results_om/Exp-DGNet-PVTv2-B3-OM/NC4K-Test/',
-        device_id=2)
+        om_path=args.om_path, 
+        save_path=args.save_path,
+        device_id=0)
