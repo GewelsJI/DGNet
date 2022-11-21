@@ -41,7 +41,7 @@ The training and testing experiments are conducted using [PyTorch](https://githu
     + After you download all the pre-trained models and testing datasets, just run `./lib_pytorch/MyTest.py` to generate the final
       prediction map: replace your trained model directory (`--snap_path`).
         + test DGNet (EfficientNet-B4): `python MyTest.py --gpu_id 1 --model DGNet --snap_path ./snapshot/DGNet.pth`
-        + test DGNet-S (EfficientNet-B0): `python MyTest.py --gpu_id 1 --model DGNet-S --snap_path ./snapshot/DGNet-S.pth`
+        + test DGNet-S (EfficientNet-B1): `python MyTest.py --gpu_id 1 --model DGNet-S --snap_path ./snapshot/DGNet-S.pth`
         + test DGNet-PVTv2-B0: `python MyTest.py --gpu_id 1 --model DGNet-PVTv2-B0 --snap_path ./snapshot/DGNet-PVTv2-B0.pth`
         + test DGNet-PVTv2-B1: `python MyTest.py --gpu_id 1 --model DGNet-PVTv2-B1 --snap_path ./snapshot/DGNet-PVTv2-B1.pth`
         + test DGNet-PVTv2-B2: `python MyTest.py --gpu_id 0 --model DGNet-PVTv2-B2 --snap_path ./snapshot/DGNet-PVTv2-B2.pth`
@@ -60,7 +60,7 @@ The training and testing experiments are conducted using [PyTorch](https://githu
 
       | Method         | Input Size | S-measure | Max E-measure | #Params (M) | Results Download | Checkpoint Download |
       |---|---|---|---|---|---|---|
-      | DGNet-S (EfficientNet-B0)        |  352 |   0.810   |     0.904     |     7.02    | [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXR_QM80Vb1Pj_5ugsIL6WkBXz3vo-TxjHJC6TjQrR90tA?e=DHvvbD) | [OneDrive-32M](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXE9C4h9pGxLtp780AjTSisBaQxn-GxWjy-QQB0aIBHymw?e=qKy4Vc) |
+      | DGNet-S (EfficientNet-B1)        |  352 |   0.810   |     0.904     |     7.02    | [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXR_QM80Vb1Pj_5ugsIL6WkBXz3vo-TxjHJC6TjQrR90tA?e=DHvvbD) | [OneDrive-32M](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXE9C4h9pGxLtp780AjTSisBaQxn-GxWjy-QQB0aIBHymw?e=qKy4Vc) |
       | DGNet (EfficientNet-B4)         |  352 |   0.822   |     0.911     |    19.22    | [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/Edrep8XOwWRDtkkKj2fbb5sBXjb23rzfrYQjJI1qEJ3f8g?e=TrTmAg) | [OneDrive-80M](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EVnWHGYgZkFDmvs91lxWXk0Bjs_Tk7XoUUqspRniXttPCQ?e=YxcEbu) |
       | DGNet-PVTv2-B0 |  352 |   0.801   |     0.890     |    15.34    | [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EbMkc3IAGMpLtAzXt2g55f8BDNdh6Aqc-Wje9qt6ze9QEA?e=iObw0e) | [OneDrive-16M](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EU-cuapS6H1BnjWHXdIGo2MBTcxEtgMgzt4rbGCbjCAJeg?e=awbKQQ) |
       | DGNet-PVTv2-B1 |  352 |   0.826   |     0.908     |    26.70    | [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EQ1yy6bSRGpJsVIoRGPxzTgBBCuLqAn8FCylNJ5Ag7QQ2A?e=jEsA4h) | [OneDrive-60M](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/ETsWYJGo1fVMhoke77cYsMEBdo99XjsRh47XNBh1EGkUlA?e=sPKn1E) |
