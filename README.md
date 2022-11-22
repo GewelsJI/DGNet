@@ -106,7 +106,7 @@ The prediction of our DGNet and DGNet-S can be found in [Pytorch](https://anu365
 
 Please cite our paper if you find the work useful:
 
-    @article{ji2022gradient,
+    @article{ji2023gradient,
       title={Deep Gradient Learning for Efficient Camouflaged Object Detection},
       author={Ji, Ge-Peng and Fan, Deng-Ping and Chou, Yu-Cheng and Dai, Dengxin and Liniger, Alexander and Van Gool, Luc},
       journal={Machine Intelligence Research},
