@@ -14,7 +14,6 @@
 
 import os
 import argparse
-
 import cv2
 import imageio
 import mindspore
@@ -42,7 +41,7 @@ def get_image(image_path, mean, std):
     return image, image_size[0], image_size[1]
 
 
-def infer(om_path, save_path, device_id, data_path='./data/NC4K/Imgs'):
+def infer(om_path, save_path, device_id, data_path):
     """
     Paper Title: Deep Gradient Learning for Camouflaged Object Detection
     Original Project Page: https://github.com/GewelsJI/DGNet
@@ -91,14 +90,19 @@ if __name__ == "__main__":
     parser.add_argument(
         '--om_path', type=str, 
         default='./snapshots/DGNet-PVTv2-B3/DGNet.om',
-        help='the test rgb images root')
+        help='offline model root')
     parser.add_argument(
         '--save_path', type=str, 
         default='./seg_results_om/Exp-DGNet-OM/NC4K/',
-        help='the test rgb images root')
+        help='save root for the predictions')
+    parser.add_argument(
+        '--save_path', type=str, 
+        default='./data/NC4K/Imgs',
+        help='the test set root') 
     args = parser.parse_args()
     
     infer(
         om_path=args.om_path, 
         save_path=args.save_path,
-        device_id=0)
+        device_id=0,
+        data_path=args.data_path)
