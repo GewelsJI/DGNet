@@ -223,7 +223,7 @@ atc --framework=5 --model=DGNet.onnx --output=DGNet --input_shape="image:1,3,352
 执行离线推理Python脚本
 
 ```bash
-python ./inference_om.py
+python inference_om.py --om_path ./snapshots/DGNet/DGNet.om --save_path ./seg_results_om/Exp-DGNet-OM/NC4K/ --data_path ./data/NC4K/Imgs 
 ```
 
 **步骤3**
