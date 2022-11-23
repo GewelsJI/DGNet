@@ -139,7 +139,8 @@ if __name__ == '__main__':
         choices=['CHAMELEON', 'CAMO', 'COD10K', 'NC4K'])
     parser.add_argument(
         '--model_lst', nargs = '+', type=str, help='candidate competitors',
-        default=['Exp-DGNet-S-OM', 'Exp-DGNet-OM', 'Exp-DGNet-PVTv2-B0-OM', 'Exp-DGNet-PVTv2-B1-OM', 'Exp-DGNet-PVTv2-B2-OM', 'Exp-DGNet-PVTv2-B3-OM'])
+        default=['Exp-DGNet-OM'],
+        choices=['Exp-DGNet-S-OM', 'Exp-DGNet-OM', 'Exp-DGNet-PVTv2-B0-OM', 'Exp-DGNet-PVTv2-B1-OM', 'Exp-DGNet-PVTv2-B2-OM', 'Exp-DGNet-PVTv2-B3-OM'])
     parser.add_argument(
         '--txt_name', type=str, help='candidate competitors',
         default='DGNet_benchmark')
