@@ -96,9 +96,9 @@ if __name__ == "__main__":
         default='./seg_results_om/Exp-DGNet-OM/NC4K/',
         help='save root for the predictions')
     parser.add_argument(
-        '--save_path', type=str, 
+        '--data_path', type=str, 
         default='./data/NC4K/Imgs',
-        help='the test set root') 
+        help='the test set root')
     args = parser.parse_args()
     
     infer(
