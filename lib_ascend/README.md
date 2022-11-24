@@ -20,6 +20,8 @@
 
 本项目主要基于通用伪装目标分割任务的DGNet（Deep Gradient Network）模型进行开发演示：
 
+- 华为昇腾论坛介绍贴：https://bbs.huaweicloud.com/forum/thread-0280104665994741133-1-1.html
+
 - 模型的具体描述和细节可以参考原文：https://arxiv.org/abs/2205.12853
 
 - 具体实现细节可以参考基于PyTorch深度学习框架的代码：https://github.com/GewelsJI/DGNet/tree/main/lib_pytorch
@@ -39,7 +41,7 @@
 
 ### 1.4 代码地址
 
-本项目的代码地址为：xxxx (will be updated later)
+本项目的华为昇腾Ascend/mindxsdk-referenceapps代码地址为：https://gitee.com/ascend/mindxsdk-referenceapps/tree/master/contrib/CamouflagedObjectDetection
 
 ## 2 软件方案介绍
 
