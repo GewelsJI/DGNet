@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 # customized libraries
 from .EfficientNet import EfficientNet
-from .PVTv2 import *
+from .PVTv2 import pvt_v2_b0, pvt_v2_b1, pvt_v2_b2, pvt_v2_b3, pvt_v2_b4
 
 
 class ConvBR(nn.Module):
@@ -78,49 +78,19 @@ class GradientInducedTransition(nn.Module):
         return zt3, zt4, zt5
 
     def gradient_induced_feature_grouping(self, xr, xg, M):
-        if M == 1:
-            q = torch.cat(
-                (xr, xg), 1)
-        elif M == 2:
-            xr_g = torch.chunk(xr, 2, dim=1)
-            xg_g = torch.chunk(xg, 2, dim=1)
-            q = torch.cat(
-                (xr_g[0], xg_g[0], xr_g[1], xg_g[1]), 1)
-        elif M == 4:
-            xr_g = torch.chunk(xr, 4, dim=1)
-            xg_g = torch.chunk(xg, 4, dim=1)
-            q = torch.cat(
-                (xr_g[0], xg_g[0], xr_g[1], xg_g[1], xr_g[2], xg_g[2], xr_g[3], xg_g[3]), 1)
-        elif M == 8:
-            xr_g = torch.chunk(xr, 8, dim=1)
-            xg_g = torch.chunk(xg, 8, dim=1)
-            q = torch.cat(
-                (xr_g[0], xg_g[0], xr_g[1], xg_g[1], xr_g[2], xg_g[2], xr_g[3], xg_g[3],
-                 xr_g[4], xg_g[4], xr_g[5], xg_g[5], xr_g[6], xg_g[6], xr_g[7], xg_g[7]), 1)
-        elif M == 16:
-            xr_g = torch.chunk(xr, 16, dim=1)
-            xg_g = torch.chunk(xg, 16, dim=1)
-            q = torch.cat(
-                (xr_g[0], xg_g[0], xr_g[1], xg_g[1], xr_g[2], xg_g[2], xr_g[3], xg_g[3],
-                 xr_g[4], xg_g[4], xr_g[5], xg_g[5], xr_g[6], xg_g[6], xr_g[7], xg_g[7],
-                 xr_g[8], xg_g[8], xr_g[9], xg_g[9], xr_g[10], xg_g[10], xr_g[11], xg_g[11],
-                 xr_g[12], xg_g[12], xr_g[13], xg_g[13], xr_g[14], xg_g[14], xr_g[15], xg_g[15]), 1)
-        elif M == 32:
-            xr_g = torch.chunk(xr, 32, dim=1)
-            xg_g = torch.chunk(xg, 32, dim=1)
-            q = torch.cat(
-                (xr_g[0], xg_g[0], xr_g[1], xg_g[1], xr_g[2], xg_g[2], xr_g[3], xg_g[3],
-                 xr_g[4], xg_g[4], xr_g[5], xg_g[5], xr_g[6], xg_g[6], xr_g[7], xg_g[7],
-                 xr_g[8], xg_g[8], xr_g[9], xg_g[9], xr_g[10], xg_g[10], xr_g[11], xg_g[11],
-                 xr_g[12], xg_g[12], xr_g[13], xg_g[13], xr_g[14], xg_g[14], xr_g[15], xg_g[15],
-                 xr_g[16], xg_g[16], xr_g[17], xg_g[17], xr_g[18], xg_g[18], xr_g[19], xg_g[19],
-                 xr_g[20], xg_g[20], xr_g[21], xg_g[21], xr_g[22], xg_g[22], xr_g[23], xg_g[23],
-                 xr_g[24], xg_g[24], xr_g[25], xg_g[25], xr_g[26], xg_g[26], xr_g[27], xg_g[27],
-                 xr_g[28], xg_g[28], xr_g[29], xg_g[29], xr_g[30], xg_g[30], xr_g[31], xg_g[31]), 1)
-        else:
-            raise Exception("Invalid Group Number!")
+        if not M in [1, 2, 4, 8, 16, 32]:
+            raise ValueError("Invalid Group Number!: must be one of [1, 2, 4, 8, 16, 32]")
 
-        return q
+        if M == 1:
+            return torch.cat((xr, xg), 1)
+
+        xr_g = torch.chunk(xr, M, dim=1)
+        xg_g = torch.chunk(xg, M, dim=1)
+        foo = list()
+        for i in range(M):
+            foo.extend([xr_g[i], xg_g[i]])
+
+        return torch.cat(foo, 1)
 
 
 class NeighborConnectionDecoder(nn.Module):
@@ -174,7 +144,6 @@ class TextureEncoder(nn.Module):
 class DGNet(nn.Module):
     def __init__(self, channel=32, arc='B0', M=[8, 8, 8], N=[4, 8, 16]):
         super(DGNet, self).__init__()
-        channel = channel
 
         if arc == 'EfficientNet-B1':
             print('--> using efficientnet-b1 right now')
