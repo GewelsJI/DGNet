@@ -257,10 +257,13 @@ python evaluation.py
 
 ## 7 参考引用
 
-    @article{ji2022gradient,
+    @article{ji2023gradient,
       title={Deep Gradient Learning for Efficient Camouflaged Object Detection},
       author={Ji, Ge-Peng and Fan, Deng-Ping and Chou, Yu-Cheng and Dai, Dengxin and Liniger, Alexander and Van Gool, Luc},
       journal={Machine Intelligence Research},
+      pages={92-108},
+      volume={20},
+      issue={1},
       year={2023}
     } 
 
