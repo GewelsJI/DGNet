@@ -80,13 +80,16 @@ Jittor-based framework could speed up the training duration, significantly decre
 If you find our work useful in your research, please consider citing:
     
     
-    @article{ji2022gradient,
-       title={Deep Gradient Learning for Efficient Camouflaged Object Detection},
-       author={Ji, Ge-Peng and Fan, Deng-Ping and Chou, Yu-Cheng and Dai, Dengxin and Liniger, Alexander and Van Gool, Luc},
-       journal={arXiv},
-       year={2022}
-    }
-    
+    @article{ji2023gradient,
+      title={Deep Gradient Learning for Efficient Camouflaged Object Detection},
+      author={Ji, Ge-Peng and Fan, Deng-Ping and Chou, Yu-Cheng and Dai, Dengxin and Liniger, Alexander and Van Gool, Luc},
+      journal={Machine Intelligence Research},
+      pages={92-108},
+      volume={20},
+      issue={1},
+      year={2023}
+    } 
+
     @article{hu2020jittor,
       title={Jittor: a novel deep learning framework with meta-operators and unified graph execution},
       author={Hu, Shi-Min and Liang, Dun and Yang, Guo-Ye and Yang, Guo-Wei and Zhou, Wen-Yang},
