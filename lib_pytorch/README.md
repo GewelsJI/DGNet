@@ -74,9 +74,12 @@ The training and testing experiments are conducted using [PyTorch](https://githu
 If you find our work useful in your research, please consider citing:
     
     
-    @article{ji2022gradient,
-      title={Deep Gradient Learning for Efficient Camouflaged Object Detection},
-      author={Ji, Ge-Peng and Fan, Deng-Ping and Chou, Yu-Cheng and Dai, Dengxin and Liniger, Alexander and Van Gool, Luc},
-      journal={Machine Intelligence Research},
-      year={2023}
-    } 
+      @article{ji2023gradient,
+        title={Deep Gradient Learning for Efficient Camouflaged Object Detection},
+        author={Ji, Ge-Peng and Fan, Deng-Ping and Chou, Yu-Cheng and Dai, Dengxin and Liniger, Alexander and Van Gool, Luc},
+        journal={Machine Intelligence Research},
+        pages={92-108},
+        volume={20},
+        issue={1},
+        year={2023}
+      } 
