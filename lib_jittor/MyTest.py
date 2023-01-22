@@ -5,8 +5,8 @@ import imageio
 import jittor as jt
 from jittor import nn
 
-from jittor_lib.utils.dataset import test_dataset as EvalDataset
-from jittor_lib.lib.DGNet import DGNet as Network
+from lib_jittor.utils.dataset import test_dataset as EvalDataset
+from lib_jittor.lib.DGNet import DGNet as Network
 
 jt.flags.use_cuda = 1
 
@@ -32,7 +32,7 @@ def evaluator(model, val_root, map_save_path, trainsize=352):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--model', type=str, default='DGNet', choices=['DGNet', 'DGNet-S'])
-    parser.add_argument('--snap_path', type=str, default='./jittor_lib/snapshot/DGNet_Jittor/Net_epoch_best.pkl',
+    parser.add_argument('--snap_path', type=str, default='./lib_jittor/snapshot/DGNet_Jittor/Net_epoch_best.pkl',
                         help='train use gpu')
     parser.add_argument('--gpu_id', type=str, default='1',
                         help='train use gpu')

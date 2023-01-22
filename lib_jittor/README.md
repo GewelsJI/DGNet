@@ -20,19 +20,19 @@ The training and testing experiments are conducted using [Jiitor](https://github
 
     + downloading testing dataset and move it into `./dataset/TestDataset/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXcBqW3Ses5HlYFeTAPlmiwBtPwXisbr53uIDGoM4h0UOg?e=d5tK9C).
     + downloading training dataset and move it into `./dataset/TrainDataset/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EUgtKNJSBYpElpgQzrIZLDEBmu9Stp5UL3P5HHkrHGXIyQ?e=5OgCok).
-    + downloading pretrained weights of Jittor implementation DGNet and DGNet-S and move it into `./jittor_lib/snapshot/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EezZ9PWXpGZOkEIieYBA5esBsITit1pKkUjdntvUGut_Dw?e=Y20PrV).
+    + downloading pretrained weights of Jittor implementation DGNet and DGNet-S and move it into `./lib_jittor/snapshot/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EezZ9PWXpGZOkEIieYBA5esBsITit1pKkUjdntvUGut_Dw?e=Y20PrV).
     + preparing the EfficientNet-B1/B4 weights on ImageNet (refer to [here](https://github.com/GewelsJI/DGNet/blob/00e4d2b54667eb71f734f60d46fffe47fbf2725e/lib/utils.py#L556)).
 
 3. Training Configuration:
 
     + Assigning your costumed path, like `--save_path `, `--train_root` and `--val_root` in `MyTrain.py`.
-    + Just enjoy it via running `python ./jittor_lib/MyTrain.py` in your terminal.
+    + Just enjoy it via running `python ./lib_jittor/MyTrain.py` in your terminal.
 
 4. Testing Configuration:
 
-    + After you download all the pre-trained models and testing datasets, just run `./jittor_lib/MyTest.py` to generate the final
+    + After you download all the pre-trained models and testing datasets, just run `./lib_jittor/MyTest.py` to generate the final
       prediction map: replace your trained model directory (`--snap_path`).
-    + Just enjoy it via running `python ./jittor_lib/MyTest.py` in your terminal.
+    + Just enjoy it via running `python ./lib_jittor/MyTest.py` in your terminal.
 
 5. Evaluation Configuration
 

@@ -7,8 +7,8 @@ import jittor as jt
 from jittor import nn
 
 import eval.python.metrics as Measure
-from jittor_lib.lib.DGNet import DGNet as Network
-from jittor_lib.utils.dataset import get_loader, test_dataset
+from lib_jittor.lib.DGNet import DGNet as Network
+from lib_jittor.utils.dataset import get_loader, test_dataset
 
 jt.flags.use_cuda = 1
 
@@ -144,7 +144,7 @@ if (__name__ == '__main__'):
     parser.add_argument('--val_root', type=str, default='./dataset/TestDataset/CAMO/',
                         help='the test rgb images root')
     parser.add_argument('--gpu_id', type=str, default='1', help='train use gpu')
-    parser.add_argument('--save_path', type=str, default='./jittor_lib/snapshot/DGNet_Jittor/',
+    parser.add_argument('--save_path', type=str, default='./lib_jittor/snapshot/DGNet_Jittor/',
                         help='the path to save model and log')
     opt = parser.parse_args()
     if (opt.gpu_id == '0'):

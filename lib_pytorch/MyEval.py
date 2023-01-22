@@ -39,6 +39,10 @@ def evaluator(gt_pth_lst, pred_pth_lst):
             assert os.path.isfile(gt_pth) and os.path.isfile(pred_pth)
             pred_ary = cv2.imread(pred_pth, cv2.IMREAD_GRAYSCALE)
             gt_ary = cv2.imread(gt_pth, cv2.IMREAD_GRAYSCALE)
+            
+            assert len(pred_ary.shape) == 2 and  len(gt_ary.shape) == 2 
+            if pred_ary.shape != gt_ary.shape:
+                pred_ary = cv2.resize(pred_ary, (gt_ary.shape[1], gt_ary.shape[0]), cv2.INTER_NEAREST)
 
             # print(pred_ary, gt_ary)
             FM.step(pred=pred_ary, gt=gt_ary)
