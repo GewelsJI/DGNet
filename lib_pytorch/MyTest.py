@@ -80,8 +80,9 @@ if __name__ == '__main__':
         model = Network(channel=64, arc='PVTv2-B4', M=[8, 8, 8], N=[4, 8, 16]).cuda()
     else:
         raise Exception("Invalid Model Symbol: {}".format(opt.model))
-
-    model.load_state_dict(torch.load(opt.snap_path))
+    
+    # TODO: remove FC layers from snapshots
+    model.load_state_dict(torch.load(opt.snap_path), strict=False)
     model.eval()
 
     for data_name in ['CAMO', 'COD10K', 'NC4K']:
