@@ -18,9 +18,9 @@ The training and testing experiments are conducted using [Jiitor](https://github
 
 2. Prepare the data:
 
-    + downloading testing dataset and move it into `./dataset/TestDataset/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXcBqW3Ses5HlYFeTAPlmiwBtPwXisbr53uIDGoM4h0UOg?e=d5tK9C).
-    + downloading training dataset and move it into `./dataset/TrainDataset/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EUgtKNJSBYpElpgQzrIZLDEBmu9Stp5UL3P5HHkrHGXIyQ?e=5OgCok).
-    + downloading pretrained weights of Jittor implementation DGNet and DGNet-S and move it into `./lib_jittor/snapshot/`, which can be found in [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EezZ9PWXpGZOkEIieYBA5esBsITit1pKkUjdntvUGut_Dw?e=Y20PrV).
+    + downloading the testing dataset and moving it into `./dataset/TestDataset/`, which can be found in [Google Drive](https://drive.google.com/file/d/1L4zo8Mml08Q2sDPnqT01Nqxx4wv6FMDa/view?usp=sharing).
+    + downloading the training dataset and moving it into `./dataset/TrainDataset/`, which can be found in [Google Drive](https://drive.google.com/file/d/11-5bBnfVal03D74dtRlJUpuWfmVLc8x9/view?usp=sharing).
+    + downloading the pretrained weights of DGNet and DGNet-S and moving it into `./lib_pytorch/snapshot/`, which can be found in [Google Drive](https://drive.google.com/file/d/1Sy6cGDYGQVFnTxTGvmJu5QP7spAai6cT/view?usp=sharing).
     + preparing the EfficientNet-B1/B4 weights on ImageNet (refer to [here](https://github.com/GewelsJI/DGNet/blob/00e4d2b54667eb71f734f60d46fffe47fbf2725e/lib/utils.py#L556)).
 
 3. Training Configuration:
@@ -46,7 +46,7 @@ The training and testing experiments are conducted using [Jiitor](https://github
 
 We submit the results of the Pytorch implemented DGNet in our manuscript, and we also re-train the DGNet that is rewritted by jittor framework. We observe that the performance has slight fluctuation between the re-trained Jittor-based DGNet and the Pytorch-based DGNet.
 
-The download link ([Pytorch](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EcwgyI1KDnBDjoFMZCLNJkAB7GjBYGgvDPlBAruSAVCOxw?e=RrBvHd) / [Jitror](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EbRmYVvdBIhEtRKWBUhzsNMBQ8F7Pnw7sUBAPDeN_Po_6A?e=crMmfP)) of prediction results on three testing dataset, including CAMO, COD10K, and NC4K.
+The download link of prediction results ([jittor results, google drive](https://drive.google.com/file/d/1-aYfI8oQp5c8gbiRTC57xEMOFCpIPgmS/view?usp=sharing)) on three testing dataset, including CAMO, COD10K, and NC4K.
 
 
 |  CAMO-Test dataset   	| $S_\alpha$  	 | $E_\phi^{ad}$  	 | $F_\beta^w$  	 | $M$     	 |

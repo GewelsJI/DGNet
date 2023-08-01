@@ -29,7 +29,8 @@ This official repository contains the source code, prediction results, and evalu
 
 ## 2. :fire: NEWS :fire:
 
-- [2022/11/18] The segmentation results on CHAMELEON dataset are availbale here: [DGNet (CAHMELEON)](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXz2zGPFwWJLufVlnnNMjoABHd0bq3I-cwQgSTdQLbtaLQ?e=c1xsxB) and [DGNet-S (CHEMELEON)](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EZYA_mIuor1FqA7y5cbrcjoB1nybWNq4mGnBkHADMAZLIQ?e=dEopfd).
+- [2023/08/01] All onedirve download links are expired due to unkown technical problem. Now all download links are moved to google drive.
+- [2022/11/18] The segmentation results on CHAMELEON dataset are availbale at GoogleDrive: [DGNet (CAHMELEON)](https://drive.google.com/file/d/1-kvhYGUVvLSpI-YswxNu6G8iQhrWdQEP/view?usp=sharing) and [DGNet-S (CHEMELEON)](https://drive.google.com/file/d/1UZM9cV5YUtjK4g-hjopzd1lZHgoguAAb/view?usp=sharing).
 - [2022/11/14] We convert the PyTorch model to [ONNX model](https://onnx.ai/) that is easier to access hardware optimizations and [Huawei-OM model](https://www.hiascend.com/software/mindx-sdk) that supports Huawei Ascend series AI processors. More details could be found at [lib_ascend](https://github.com/GewelsJI/DGNet/tree/main/lib_ascend).
 - [2022/11/03] We add the support for the [PVTv2](https://github.com/whai362/PVT) Transformer backbone, achieving excitied performance again on COD benchmarks. Please enjoy it -> ([link](https://github.com/GewelsJI/DGNet/tree/main/lib_pytorch))
 - [2022/08/06] Our paper has been accepted by [Machine Intelligence Research (MIR)](https://www.springer.com/journal/11633).
@@ -76,7 +77,7 @@ We provide various versions for different deep learning platforms, including [Py
 
 ### 3.4 COD Benchmark Results:
 
-The prediction of our DGNet and DGNet-S can be found in [Pytorch Results](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EcwgyI1KDnBDjoFMZCLNJkAB7GjBYGgvDPlBAruSAVCOxw?e=RrBvHd) / [Jitror Results](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EbRmYVvdBIhEtRKWBUhzsNMBQ8F7Pnw7sUBAPDeN_Po_6A?e=crMmfP). The whole benchmark results can be found at [OneDrive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXLiBgp9nGNApBw9im2xznsBJ_ryGEW7hkJlL92gNaRAAg?e=ktOw0B). Here are quantitative performance comparison from three perspectives. *Note that we used the matlab-based toolbox to generate the reported metrics.*
+The whole benchmark results can be found at [Google Drive](https://anu365-my.sharepoint.com/:u:/g/personal/u7248002_anu_edu_au/EXLiBgp9nGNApBw9im2xznsBJ_ryGEW7hkJlL92gNaRAAg?e=ktOw0B). Here are quantitative performance comparison from three perspectives. *Note that we used the matlab-based toolbox to generate the reported metrics.*
 
 <p align="center">
     <img src="assest/Benchmark.png"/> <br />
