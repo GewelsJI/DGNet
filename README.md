@@ -11,35 +11,40 @@
 This official repository contains the source code, prediction results, and evaluation toolbox of Deep Gradient Network (accepted by Machine Intelligence Research 2023), also called DGNet. The technical report could be found at [arXiv](https://arxiv.org/abs/2205.12853).
 
 
+
+https://github.com/GewelsJI/DGNet/assets/38354957/ceff5686-8b91-4e03-b164-0780c402b68a
+
+
+
 ## 1. Features
 
 <p align="center">
     <img src="assest/BubbleBarFig.png"/> <br />
     <em> 
-    Figure 1: We present the scatter relationship between the performance weighted F-measure and parameters of all competitors on CAMO-Test. These scatters are in various colors for better visual recognition and are also corresponding to the histogram (Right).
-    The larger size of the coloured scatter point, the heavier the model parameter. (Right) We also report the parallel histogram comparison of model's parameters, MACs, and performance.
+    Figure 1: We present the scatter relationship between the performance weighted F-measure and parameters of all competitors on the CAMO-Test. These scatters are in various colours for better visual recognition and are also corresponding to the histogram (Right).
+    The larger size of the coloured scatter point, the heavier the model parameter. (Right) We also report the parallel histogram comparison of the model's parameters, MACs, and performance.
     </em>
 </p>
 
-- **Novel supervision.** We propose to excavate the texture information via learning the object level gradient rather than using boundary-supervised or uncertainty-aware modeling.
+- **Novel supervision.** We propose to excavate the texture information via learning the object level gradient rather than using boundary-supervised or uncertainty-aware modelling.
 
-- **Simple but efficient.** We decouple all the heavy designs as much as we can, yielding a simple but efficient framework. We hope this framework could be served as a baseline learning paradigm for the COD field.
+- **Simple but efficient.** We decouple all the heavy designs as much as we can, yielding a simple but efficient framework. We hope this framework could serve as a baseline learning paradigm for the COD field.
 
-- **Best trade-off.** Our vision is to achieve new SOTA with the best performance-efficiency trade-off on existing cutting-edge COD benchmarks.
+- **Best trade-off.** Our vision is to achieve a new SOTA with the best performance-efficiency trade-off on existing cutting-edge COD benchmarks.
 
 ## 2. :fire: NEWS :fire:
 
-- [2023/08/01] All onedirve download links are expired due to unkown technical problem. Now all download links are moved to google drive.
-- [2022/11/18] The segmentation results on CHAMELEON dataset are availbale at GoogleDrive: [DGNet (CAHMELEON)](https://drive.google.com/file/d/1-kvhYGUVvLSpI-YswxNu6G8iQhrWdQEP/view?usp=sharing) and [DGNet-S (CHEMELEON)](https://drive.google.com/file/d/1UZM9cV5YUtjK4g-hjopzd1lZHgoguAAb/view?usp=sharing).
-- [2022/11/14] We convert the PyTorch model to [ONNX model](https://onnx.ai/) that is easier to access hardware optimizations and [Huawei-OM model](https://www.hiascend.com/software/mindx-sdk) that supports Huawei Ascend series AI processors. More details could be found at [lib_ascend](https://github.com/GewelsJI/DGNet/tree/main/lib_ascend).
-- [2022/11/03] We add the support for the [PVTv2](https://github.com/whai362/PVT) Transformer backbone, achieving excitied performance again on COD benchmarks. Please enjoy it -> ([link](https://github.com/GewelsJI/DGNet/tree/main/lib_pytorch))
+- [2023/08/01] All ovedrive download links are expired due to unknown technical problems. Now all download links are moved to Google Drive.
+- [2022/11/18] The segmentation results on CHAMELEON dataset are available at GoogleDrive: [DGNet (CAHMELEON)](https://drive.google.com/file/d/1-kvhYGUVvLSpI-YswxNu6G8iQhrWdQEP/view?usp=sharing) and [DGNet-S (CHEMELEON)](https://drive.google.com/file/d/1UZM9cV5YUtjK4g-hjopzd1lZHgoguAAb/view?usp=sharing).
+- [2022/11/14] We convert the PyTorch model to [ONNX model](https://onnx.ai/) that is easier to access hardware optimizations and [Huawei-OM model](https://www.hiascend.com/software/mindx-sdk) that supports Huawei Ascend series AI processors. More details can be found at [lib_ascend](https://github.com/GewelsJI/DGNet/tree/main/lib_ascend).
+- [2022/11/03] We add the support for the [PVTv2](https://github.com/whai362/PVT) Transformer backbone, achieving excited performance again on COD benchmarks. Please enjoy it -> ([link](https://github.com/GewelsJI/DGNet/tree/main/lib_pytorch))
 - [2022/08/06] Our paper has been accepted by [Machine Intelligence Research (MIR)](https://www.springer.com/journal/11633).
 - [2022/05/30] :fire: We release the implementation of DGNet with different AI frameworks: [Pytorch-based](https://github.com/GewelsJI/DGNet/tree/main/jittor_lib) and [Jittor-based](https://github.com/GewelsJI/DGNet/tree/main/jittor_lib).
 - [2022/05/30] Thank @Katsuya Hyodo for adding our model into [PINTO](https://github.com/PINTO0309/PINTO_model_zoo/tree/main/299_DGNet). This is a repository for storing models that have been inter-converted between various frameworks (e.g., TensorFlow, PyTorch, ONNX).
 - [2022/05/25] Releasing the codebase of DGNet (Pytorch) and whole COD benchmarking results (20 models).
 - [2022/05/23] Creating repository.
 
-> This project is still work in progress, and we invite all to contribute in making it more acessible and useful. If you have any questions about our paper, feel free to contact me via e-mail (gepengai.ji@gmail.com & johnson111788@gmail.com & dengpfan@gmail.com). And if you are using our code and evaluation toolbox for your research, please cite this paper ([BibTeX](#4-citation)).
+> This project is still a work in progress, and we invite all to contribute to making it more accessible and useful. If you have any questions about our paper, feel free to contact me via e-mail (gepengai.ji@gmail.com & johnson111788@gmail.com & dengpfan@gmail.com). If you are using our code and evaluation toolbox for your research, please cite this paper ([BibTeX](#4-citation)).
 
 ## 3. Proposed Framework
 
@@ -58,12 +63,12 @@ This official repository contains the source code, prediction results, and evalu
     <img src="assest/GIT.png"/> <br />
     <em> 
     Figure 3: Illustration of the proposed gradient-induced transition (GIT). 
-    It use a soft grouping strategy to provide parallel nonlinear projections at multiple fine-grained sub-spaces, which enables the network to probe multi-source representations jointly.
+    It uses a soft grouping strategy to provide parallel nonlinear projections at multiple fine-grained sub-spaces, which enables the network to probe multi-source representations jointly.
     </em>
 </p>
 
 
-> References of neighbor connected decoder (NCD) benchmark works [1] Concealed Object Detection. TPAMI, 2023. <br>
+> References of neighbor-connected decoder (NCD) benchmark works [1] Concealed Object Detection. TPAMI, 2023. <br>
 
 ### 3.2. Usage
 
