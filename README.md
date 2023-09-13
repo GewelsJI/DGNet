@@ -8,9 +8,7 @@
 > [Alexander Liniger](https://people.ee.ethz.ch/~aliniger/), &
 > [Luc Van Gool](https://ee.ethz.ch/the-department/faculty/professors/person-detail.OTAyMzM=.TGlzdC80MTEsMTA1ODA0MjU5.html).
 
-This official repository contains the source code, prediction results, and evaluation toolbox of Deep Gradient Network (accepted by Machine Intelligence Research 2023), also called DGNet. The technical report could be found at [arXiv](https://arxiv.org/abs/2205.12853).
-
-
+This official repository contains the source code, prediction results, and evaluation toolbox of Deep Gradient Network (accepted by Machine Intelligence Research 2023), also called DGNet. The technical report can be found at [arXiv](https://arxiv.org/abs/2205.12853). The following is a quick video to introduce our work:
 
 https://github.com/GewelsJI/DGNet/assets/38354957/ceff5686-8b91-4e03-b164-0780c402b68a
 
@@ -21,12 +19,12 @@ https://github.com/GewelsJI/DGNet/assets/38354957/ceff5686-8b91-4e03-b164-0780c4
 <p align="center">
     <img src="assest/BubbleBarFig.png"/> <br />
     <em> 
-    Figure 1: We present the scatter relationship between the performance weighted F-measure and parameters of all competitors on the CAMO-Test. These scatters are in various colours for better visual recognition and are also corresponding to the histogram (Right).
-    The larger size of the coloured scatter point, the heavier the model parameter. (Right) We also report the parallel histogram comparison of the model's parameters, MACs, and performance.
+    Figure 1: We present the scatter relationship between the performance weighted F-measure and parameters of all competitors on the CAMO-Test. These scatters are in various colors for better visual recognition and are also corresponding to the histogram (Right).
+    The larger the size of the colored scatter point, the heavier the model parameter. (Right) We also report the parallel histogram comparison of the model's parameters, MACs, and performance.
     </em>
 </p>
 
-- **Novel supervision.** We propose to excavate the texture information via learning the object level gradient rather than using boundary-supervised or uncertainty-aware modelling.
+- **Novel supervision.** We propose to excavate the texture information via learning the object level gradient rather than using boundary-supervised or uncertainty-aware modeling.
 
 - **Simple but efficient.** We decouple all the heavy designs as much as we can, yielding a simple but efficient framework. We hope this framework could serve as a baseline learning paradigm for the COD field.
 
@@ -34,7 +32,7 @@ https://github.com/GewelsJI/DGNet/assets/38354957/ceff5686-8b91-4e03-b164-0780c4
 
 ## 2. :fire: NEWS :fire:
 
-- [2023/08/01] All ovedrive download links are expired due to unknown technical problems. Now all download links are moved to Google Drive.
+- [2023/08/01] All onedrive download links are expired due to unknown technical problems. Now all download links are replaced with Google Drive links.
 - [2022/11/18] The segmentation results on CHAMELEON dataset are available at GoogleDrive: [DGNet (CAHMELEON)](https://drive.google.com/file/d/1-kvhYGUVvLSpI-YswxNu6G8iQhrWdQEP/view?usp=sharing) and [DGNet-S (CHEMELEON)](https://drive.google.com/file/d/1UZM9cV5YUtjK4g-hjopzd1lZHgoguAAb/view?usp=sharing).
 - [2022/11/14] We convert the PyTorch model to [ONNX model](https://onnx.ai/) that is easier to access hardware optimizations and [Huawei-OM model](https://www.hiascend.com/software/mindx-sdk) that supports Huawei Ascend series AI processors. More details can be found at [lib_ascend](https://github.com/GewelsJI/DGNet/tree/main/lib_ascend).
 - [2022/11/03] We add the support for the [PVTv2](https://github.com/whai362/PVT) Transformer backbone, achieving excited performance again on COD benchmarks. Please enjoy it -> ([link](https://github.com/GewelsJI/DGNet/tree/main/lib_pytorch))
@@ -54,7 +52,7 @@ https://github.com/GewelsJI/DGNet/assets/38354957/ceff5686-8b91-4e03-b164-0780c4
     <img src="assest/DGNetFramework.png"/> <br />
     <em> 
     Figure 2: Overall pipeline of the proposed DGNet, It consists of two connected learning branches, i.e., context encoder and texture encoder. 
-    Then, we introduce a gradient-induced transition (GIT) to collaboratively aggregate the feature that is derived from the above two encoders. Finally, a neighbor connected decoder (NCD [1]) is adopted to generate the prediction.
+    Then, we introduce a gradient-induced transition (GIT) to collaboratively aggregate the feature that is derived from the above two encoders. Finally, a neighbor-connected decoder (NCD [1]) is adopted to generate the prediction.
     </em>
 </p>
 
@@ -82,7 +80,7 @@ We provide various versions for different deep learning platforms, including [Py
 
 ### 3.4 COD Benchmark Results:
 
-The whole benchmark results can be found at [Google Drive](https://drive.google.com/file/d/1ld-FPFgTEC0iHpxBNSutNCCQ-8Coy5mt/view?usp=sharing). Here are quantitative performance comparison from three perspectives. *Note that we used the matlab-based toolbox to generate the reported metrics.*
+The whole benchmark results can be found at [Google Drive](https://drive.google.com/file/d/1ld-FPFgTEC0iHpxBNSutNCCQ-8Coy5mt/view?usp=sharing). Here are quantitative performance comparisons from three perspectives. *Note that we used the Matlab-based toolbox to generate the reported metrics.*
 
 <p align="center">
     <img src="assest/Benchmark.png"/> <br />
@@ -95,7 +93,7 @@ The whole benchmark results can be found at [Google Drive](https://drive.google.
 <p align="center">
     <img src="assest/SuperClass.png"/> <br />
     <em> 
-    Figure 5: Super-classes (i.e., Amphibian, Aquatic, Flying, Terrestrial, and Other) on the COD10K-Test of the proposed methods (DGNet & DGNet-S) and other 20 competitors. Symbol \uparrow indicates the higher the score, the better, and symbol \downarrow indicates the lower, the better. The best score is marked with bold.
+    Figure 5: Super-classes (i.e., Amphibian, Aquatic, Flying, Terrestrial, and Other) on the COD10K-Test of the proposed methods (DGNet & DGNet-S) and other 20 competitors. Symbol \uparrow indicates the higher the score, the better, and symbol \downarrow indicates the lower, the better. The best score is marked in bold.
     </em>
 
 </p>
@@ -103,7 +101,7 @@ The whole benchmark results can be found at [Google Drive](https://drive.google.
 <p align="center">
     <img src="assest/SubClass.png"/> <br />
     <em> 
-    Figure 6: Sub-class results on COD10K-Test of 12 COD-related and 8 SOD-related baselines in terms of structure measure (\mathcal{S}_\alpha), where Am., Aq., Fl., Te., and  Ot. represent Amphibian, Aquatic, Flying, Terrestrial, and Other, respectively. CDL., GP.Fish, and LS.Dragon denote Crocodile, and  GhostPipeFish, LeafySeaDragon, respectively. The best score is marked with bold. 
+    Figure 6: Sub-class results on COD10K-Test of 12 COD-related and 8 SOD-related baselines in terms of structure measure (\mathcal{S}_\alpha), where Am., Aq., Fl., Te., and  Ot. represent Amphibian, Aquatic, Flying, Terrestrial, and Other, respectively. CDL., GP.Fish, and LS.Dragon denote Crocodile, and  GhostPipeFish, LeafySeaDragon, respectively. The best score is marked in bold. 
     </em>
 
 </p>
