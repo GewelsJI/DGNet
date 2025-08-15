@@ -8,7 +8,7 @@
 > [Alexander Liniger](https://people.ee.ethz.ch/~aliniger/), &
 > [Luc Van Gool](https://ee.ethz.ch/the-department/faculty/professors/person-detail.OTAyMzM=.TGlzdC80MTEsMTA1ODA0MjU5.html).
 
-This official repository contains the source code, prediction results, and evaluation toolbox of Deep Gradient Network (accepted by Machine Intelligence Research 2023), also called DGNet. The technical report can be found at [arXiv](https://arxiv.org/abs/2205.12853). The following is a quick video to introduce our work:
+This official repository contains the source code, prediction results, and evaluation toolbox of Deep Gradient Network (accepted by Machine Intelligence Research 2023), also called DGNet. The technical report can be found at [arXiv](https://arxiv.org/abs/2205.12853) & [Springer](https://link.springer.com/article/10.1007/s11633-022-1365-9). The following is a quick video to introduce our work:
 
 https://github.com/GewelsJI/DGNet/assets/38354957/ceff5686-8b91-4e03-b164-0780c402b68a
 
